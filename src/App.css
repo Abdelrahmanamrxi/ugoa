@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.socialIcon-footer{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.socialIcon-footer{
+    @apply bg-dark_green flex items-center justify-center
+}
+.socialIcon-footer img, .icon{
+    width: 18px;
+    height: 18px;
+}
+
+.footerIcon{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 100%;
+}
+.footerIcon{
+    @apply bg-white flex items-center justify-center
+}
