@@ -9,12 +9,13 @@ import grayMail from '../assets/grayMailIcon.svg';
 import phone from '../assets/phoneIcon.svg';
 import mail from '../assets/mailIcon.svg';
 import loc from '../assets/locIcon.svg';
+import whiteLogo from '../assets/Vertical_White.png';
 
 
 export default function Footer() {
   return (
     <footer className='w-full h-full flex gap-10 bg-secondary p-[7.5rem]'>
-
+      <img src={whiteLogo} className='w-[24rem] h-[24rem] object-cover' alt="" />
       <div className='w-1/2 flex flex-col gap-6 justify-between'>
         {/* 1 left part */}
 
