@@ -1,27 +1,25 @@
 import React from 'react'
-import whiteArrow from '../assets/whiteDownwardArrow.svg';
-import facebook from '../assets/facebookIcon.svg';
-import insta from '../assets/instaIcon.svg';
-import linkedIn from '../assets/inIcon.svg';
-import youtube from '../assets/youtubeIcon.svg';
-import darkArrow from '../assets/darkUpwardArrow.svg';
-import grayMail from '../assets/grayMailIcon.svg';
-import phone from '../assets/phoneIcon.svg';
-import mail from '../assets/mailIcon.svg';
-import loc from '../assets/locIcon.svg';
-import whiteLogo from '../assets/Vertical_White.png';
+import { memo } from 'react';
+import { FaFacebook,FaInstagram,FaYoutube,FaLinkedinIn } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
+import { MdArrowUpward } from "react-icons/md";
+import { IoMailOutline } from "react-icons/io5";
+import { FaLocationDot } from "react-icons/fa6";
+import whiteLogo from '../assets/Vertical_White_Comp.png';
+import { IoArrowDownSharp } from "react-icons/io5";
 
 
-export default function Footer() {
+ function Footer() {
   return (
     <footer className='w-full h-full flex gap-10 bg-secondary p-[7.5rem]'>
-      <img src={whiteLogo} className='w-[24rem] h-[24rem] object-cover' alt="" />
+      <img src={whiteLogo} className='w-1/3 object-cover' alt="" />
       <div className='w-1/2 flex flex-col gap-6 justify-between'>
         {/* 1 left part */}
 
         <div className='flex flex-col gap-4 items-start'> 
           <div className='flex gap-4 items-center'>
-            <img src={whiteArrow} alt="white down ward arrow" />
+           <IoArrowDownSharp size={35} className='text-white -rotate-45'/>
             <h1 className='uppercase text-white font-semibold text-4xl'>contact </h1>
           </div>
           <h1 className='uppercase text-white font-semibold text-4xl'>us today</h1>
@@ -32,10 +30,10 @@ export default function Footer() {
           consultation and discover how we can help your business thrive.</p>
 
           <div className='flex gap-3 items-center'>
-              <a className='socialIcon-footer'><img src={facebook} alt="Facebook-Icon" /></a>
-              <a className='socialIcon-footer'><img src={insta} alt="Instagram-Icon" /></a>
-              <a className='socialIcon-footer'><img src={linkedIn} alt="LinkedIn-Icon" /></a>
-              <a className='socialIcon-footer'><img src={youtube} alt="Youtube-Icon" /></a>          
+              <a className='socialIcon-footer'><FaFacebook className='text-white'/></a>
+              <a className='socialIcon-footer'><FaInstagram className='text-white'/></a>
+              <a className='socialIcon-footer'><FaLinkedinIn className='text-white'/></a>
+              <a className='socialIcon-footer'><FaYoutube className='text-white'/></a>          
           </div>
   
       </div>
@@ -47,7 +45,7 @@ export default function Footer() {
           <h2 className='uppercase text-white mb-2 text-lg font-semibold'>get a free consultation</h2>
           <div className='flex gap-6'>
           <div className="bg-white flex items-center rounded-full px-9 py-2 gap-2">
-            <img src={grayMail} alt="Email icon" className="w-5 h-5" />
+            <IoMailOutline size={20} className='text-gray-500 '/>
             <input 
               className="bg-transparent min-w-[220px] outline-none font-medium placeholder-gray-400"
               placeholder="Enter your email to get started"
@@ -56,9 +54,11 @@ export default function Footer() {
 
             <button 
               className="bg-dark_green hover:bg-dark_green/80 transition w-full text-white font-medium 
-              px-2 py-3 rounded-full flex items-center justify-center gap-3">
+              px-4 py-3 rounded-full flex items-center justify-center gap-3">
               <span className="uppercase">Get Started</span>
-              <img src={darkArrow} alt="Arrow icon" className="footerIcon" />
+              <div className='bg-white text-black rounded-full '>
+              <MdArrowUpward size={30} className='rotate-45'/>
+              </div>
             </button>
      
           </div>
@@ -67,16 +67,16 @@ export default function Footer() {
 
         <div className='flex flex-col gap-6'>
           <div className='flex gap-4 items-center'>
-            <div className='footerIcon'><img className='icon' src={phone} alt="" /></div>
+            <div className='footerIcon'><FaPhoneAlt/></div>
             <p className='text-white font-semibold'>(987)-749-5403</p>
           </div>
           <div className='flex gap-4 items-center'>
-            <div className='footerIcon'><img className='icon' src={mail} alt="" /></div>
+            <div className='footerIcon'><IoMail/></div>
             <p className='text-white font-semibold'>info@conscellence.com</p>
           </div>
           
           <div className='flex gap-4 items-center'>
-            <div className='footerIcon'><img className='icon' src={loc} alt="" /></div>
+            <div className='footerIcon'><FaLocationDot/></div>
             <p className='text-white font-semibold'>
             123 Business Road, Suite 456, City, State, ZIP Code
             </p>
@@ -87,3 +87,4 @@ export default function Footer() {
     </footer>
   )
 }
+export default memo(Footer)

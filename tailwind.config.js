@@ -9,8 +9,13 @@ export default {
       dark_green: "#0D5C63",
       dark:"#435E6F",
       silver:"#A6A6A6",
-      light_silver:"#D9D9D9"
+      light_silver:"#D9D9D9",
+      offwhite:"#FFFFFF",
+      dark_navy:"#252B42"
 
+    },
+    backgroundImage:{
+      "gradient-primary":"linear-gradient(to bottom,#0D5C63 20%,#000000 90%)"
     },
     fontFamily:{
       raleway:["Raleway","sans-serif"]
