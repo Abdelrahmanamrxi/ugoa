@@ -1,90 +1,93 @@
-import React from 'react'
+import React from 'react';
 import { memo } from 'react';
-import { FaFacebook,FaInstagram,FaYoutube,FaLinkedinIn } from "react-icons/fa";
-import { FaPhoneAlt } from "react-icons/fa";
-import { IoMail } from "react-icons/io5";
+import { FaFacebook, FaInstagram, FaYoutube, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
+import { IoMail, IoMailOutline, IoArrowDownSharp } from "react-icons/io5";
 import { MdArrowUpward } from "react-icons/md";
-import { IoMailOutline } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import whiteLogo from '../assets/Vertical_White_Comp.png';
-import { IoArrowDownSharp } from "react-icons/io5";
 
-
- function Footer() {
+function Footer() {
   return (
-    <footer className='w-full h-full flex gap-10 bg-secondary p-[7.5rem]'>
-      <img src={whiteLogo} className='w-1/3 object-cover' alt="" />
-      <div className='w-1/2 flex flex-col gap-6 justify-between'>
-        {/* 1 left part */}
-
-        <div className='flex flex-col gap-4 items-start'> 
-          <div className='flex gap-4 items-center'>
-           <IoArrowDownSharp size={35} className='text-white -rotate-45'/>
-            <h1 className='uppercase text-white font-semibold text-4xl'>contact </h1>
-          </div>
-          <h1 className='uppercase text-white font-semibold text-4xl'>us today</h1>
-        </div>
-
-        <p className=' text-white font-light w-3/5'>
-          Contact us today to schedule a 
-          consultation and discover how we can help your business thrive.</p>
-
-          <div className='flex gap-3 items-center'>
-              <a className='socialIcon-footer'><FaFacebook className='text-white'/></a>
-              <a className='socialIcon-footer'><FaInstagram className='text-white'/></a>
-              <a className='socialIcon-footer'><FaLinkedinIn className='text-white'/></a>
-              <a className='socialIcon-footer'><FaYoutube className='text-white'/></a>          
-          </div>
-  
+    <footer className='w-full grid grid-cols-3 items-start 
+    justify-center gap-8 bg-secondary 
+    md:grid-cols-3 md:gap-4 md:px-12 md:py-10 
+    sm:grid-cols-1 sm:gap-6 sm:px-8 sm:py-4'
+    >
+      
+      {/* Logo Section */}
+      <div className='flex justify-center'>
+        <img src={whiteLogo} className='min-w-xs object-cover' alt="Company Logo" />
       </div>
-
-    {/* 2 */}
-      <div className='w-1/2 flex flex-col gap-6 justify-between items-start'>
-
-        <div>
-          <h2 className='uppercase text-white mb-2 text-lg font-semibold'>get a free consultation</h2>
-          <div className='flex gap-6'>
-          <div className="bg-white flex items-center rounded-full px-9 py-2 gap-2">
-            <IoMailOutline size={20} className='text-gray-500 '/>
-            <input 
-              className="bg-transparent min-w-[220px] outline-none font-medium placeholder-gray-400"
-              placeholder="Enter your email to get started"
-            />
+      
+      {/* Contact Section */}
+      <div className='w-full flex flex-col sm:justify-center sm:items-center gap-6'>
+        <div className='flex md:flex-col sm:items-center  sm:flex-row gap-3 items-start justify-center'>
+          <div className='flex gap-3 items-center'>
+            <IoArrowDownSharp size={30} className='text-white -rotate-45' />
+            <h1 className='uppercase text-white font-semibold text-3xl 
+            sm:text-xl md:text-2xl'>Contact</h1>
           </div>
-
+          <h1 className='uppercase text-white font-semibold text-3xl 
+          sm:text-xl md:text-2xl'>Us Today</h1>
+        </div>
+        <p className='text-white text-xl font-light w-3/4 sm:text-base md:text-lg'>
+          Contact us today to schedule a consultation and discover how we can help your business thrive.
+        </p>
+        <div className='flex gap-3'>
+          <a className='socialIcon-footer'><FaFacebook className='text-white' /></a>
+          <a className='socialIcon-footer'><FaInstagram className='text-white' /></a>
+          <a className='socialIcon-footer'><FaLinkedinIn className='text-white' /></a>
+          <a className='socialIcon-footer'><FaYoutube className='text-white' /></a>
+        </div>
+      </div>
+      
+      {/* Consultation & Contact Details Section */}
+      <div className='w-full flex flex-col gap-6
+      sm:justify-center sm:items-center'>
+        <div>
+          <h2 className='uppercase text-white mb-2 text-lg font-semibold
+          sm:text-xl md:text-2xl'>Get a Free Consultation</h2>
+          <div className='flex gap-4'>
+            <div className="bg-white flex items-center rounded-full px-6 py-2 gap-2 w-full max-w-[250px]">
+              <IoMailOutline size={20} className='text-gray-500' />
+              <input 
+                className="bg-transparent w-full outline-none font-medium placeholder-gray-400
+                sm:text-xs"
+                placeholder="Enter your email"
+              />
+            </div>
             <button 
-              className="bg-dark_green hover:bg-dark_green/80 transition w-full text-white font-medium 
-              px-4 py-3 rounded-full flex items-center justify-center gap-3">
-              <span className="uppercase">Get Started</span>
-              <div className='bg-white text-black rounded-full '>
-              <MdArrowUpward size={30} className='rotate-45'/>
+              className="bg-dark_green hover:bg-dark_green/80 transition w-full max-w-[150px] text-white font-medium px-4 py-3 rounded-full flex items-center justify-center gap-2">
+              <span className="uppercase text-xs">Get Started</span>
+              <div className='bg-white text-black rounded-full p-1'>
+                <MdArrowUpward size={20} className='rotate-45' />
               </div>
             </button>
-     
           </div>
         </div>
 
 
-        <div className='flex flex-col gap-6'>
-          <div className='flex gap-4 items-center'>
-            <div className='footerIcon'><FaPhoneAlt/></div>
-            <p className='text-white font-semibold'>(987)-749-5403</p>
+        <div className='flex flex-col gap-4'>
+          <div className='flex gap-3 items-center'>
+            <div className='footerIcon'><FaPhoneAlt /></div>
+            <p className='text-white sm:text-xs md:text-sm lg:text-base xl:text-lg  font-normal'>+971545423530</p>
           </div>
-          <div className='flex gap-4 items-center'>
-            <div className='footerIcon'><IoMail/></div>
-            <p className='text-white font-semibold'>info@conscellence.com</p>
+          <div className='flex gap-3 items-center'>
+            <div className='footerIcon'><IoMail /></div>
+            <p className='text-white 
+            sm:text-xs md:text-sm lg:text-base xl:text-lg font-normal'>ahmed_elmizayen@ugoa.me</p>
           </div>
-          
-          <div className='flex gap-4 items-center'>
-            <div className='footerIcon'><FaLocationDot/></div>
-            <p className='text-white font-semibold'>
-            123 Business Road, Suite 456, City, State, ZIP Code
+          <div className='flex gap-3 items-center'>
+            <div className='footerIcon'><FaLocationDot /></div>
+            <p className='text-white w-3/4
+            sm:text-xs md:text-sm lg:text-base xl:text-lg font-normal '>
+              Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>
           </div>
         </div>
-
       </div>
     </footer>
-  )
+  );
 }
-export default memo(Footer)
+
+export default memo(Footer);
