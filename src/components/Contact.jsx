@@ -131,7 +131,7 @@ const Contact = () => {
         onMouseLeave={()=>{set_phone(false)}}
       />
      
-      {OnHoverPhone&& <p className="text-gray-500 text-xs mt-1 flex flex-row items-center gap-10"><MdOutlineErrorOutline/> Phone number is optional.</p>}
+      {OnHoverPhone&& <p className="text-gray-500 text-xs mt-1 flex flex-row items-center gap-1"><MdOutlineErrorOutline/> Phone number is optional.</p>}
       </div>
       </div>
        <div className='flex-col gap-10 flex md:gap-5 g md:flex-row w-full'>
