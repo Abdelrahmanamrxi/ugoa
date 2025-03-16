@@ -4,7 +4,7 @@ import { GoArrowDownRight } from "react-icons/go";
 import location_data from '../data/location';
 import {motion} from "motion/react"
 import { MdOutlineEmail } from "react-icons/md";
-import { MdArrowUpward } from "react-icons/md";
+import { MdArrowUpward,MdOutlineErrorOutline } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { MdOutlinePhone } from "react-icons/md";
@@ -13,8 +13,63 @@ import emailjs from "@emailjs/browser"
 import { Map,input_variable,currently_selected,not_selected } from '../utility/ContactFunc.jsx';
 const Contact = () => {
     const[current,set_current]=useState(1)
+    const[data,set_data]=useState({first_name:"",last_name:"",company_name:"",phone_number:"",user_email:"",subject_title:"",message:""})
+    const [error,set_error]=useState({})
+    const[OnHoverPhone,set_phone]=useState(false)
     const form=useRef()
+    const handleChange=(e)=>{
+      const{name,value}=e.target
+      set_data((dt)=>{
+        return {...dt,[name]:value}
+      })
+
+    }
  
+    const sendEmail = async (e) => {
+      e.preventDefault();
+      let now = new Date();
+    
+      const formattedTime = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} at ${
+        now.getHours() % 12 || 12
+      }:${now.getMinutes().toString().padStart(2, "0")} ${now.getHours() >= 12 ? "PM" : "AM"}`;
+      
+      document.getElementById("time").value = formattedTime;
+
+      let new_errors = {};
+      
+      let validateEmail= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      Object.entries(data).forEach(([key, value]) => {
+        if (value.trim() === "" && key!="phone_number") {
+          new_errors[key] = "This is a required field.";
+        }
+        else if(!validateEmail.test(value) && key==="user_email"){
+          new_errors[key]="Invalid Email."
+        }
+        
+      });
+      set_error(new_errors);
+    
+      if (Object.keys(new_errors).length > 0) {
+        return;
+      }
+    
+      try {
+        const response = await emailjs.sendForm(
+          "service_b5wn7kd",
+          "template_qp7079s",
+          form.current,
+          "6kiY5fp0FtdJRFVzu"
+        );
+        console.log("Email has been Sent:", response.text);
+        form.current.reset();
+        set_data({ first_name: "", last_name: "", company_name: "", phone_number: "", user_email: "", subject_title:"",message: "" });
+        set_error({});
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    
+    console.log(error)
   return (
     <div className="h-full relative overflow-hidden flex">
 
@@ -27,54 +82,81 @@ const Contact = () => {
       }}
     ></div>
   
+
     <div className=" flex flex-col w-3/4 m-3 mt-10  pl-10"> 
       <h1 className="uppercase mb-5 font-bold text-dark_green flex flex-row items-center text-2xl  md:text-4xl font-raleway">
         Get in touch <span><GoArrowDownRight /></span>
       </h1>
       
-      <form ref={form}  className="flex flex-col justify-center  w-full border-2 border-dark">
+      <form onSubmit={sendEmail} onChange={handleChange} ref={form} className="flex flex-col justify-center  w-full border-2 border-dark">
   <div className="p-8 flex flex-col gap-10 w-full">
-    <div className="flex flex-col md:flex-row w-full gap-8 md:justify-between">
-      
+    <div className=' flex-col gap-10 flex md:gap-5 g md:flex-row w-full '>
+  <div className='flex-col flex w-full '>
       <input
         type="text"
         placeholder="FIRST NAME"
         name="first_name"
-        className={input_variable}
+        className={`${input_variable} w-full`}
       />
+      {error.first_name&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.first_name}</p>}
+      </div>
+      <div className='flex flex-col w-full'>
       <input
         type="text"
         name="last_name"
         placeholder="LAST NAME"
-        className={input_variable}
+        className={`${input_variable}`}
       />
-    </div>
-    <div className='flex flex-col md:flex-row w-full gap-5 md:justify-between'>
+      {error.last_name&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.last_name}</p>}
+      </div>
+      </div>
+    <div className='md:flex flex flex-col gap-10 md:flex-row md:gap-3'>
+   
+  <div className='w-full flex flex-col'>
     <input
         type="email"
         placeholder="EMAIL"
         name="user_email"
         className={input_variable}
-      />
+      /> 
+      {error.user_email&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.user_email}</p>}
+      </div>
+      <div className='flex flex-col w-full'>
        <input
         type="number"
         name="phone_number"
         placeholder="PHONE"
         className={input_variable}
+        onMouseEnter={()=>{set_phone(true)}}
+        onMouseLeave={()=>{set_phone(false)}}
       />
-        </div>
+     
+      {OnHoverPhone&& <p className="text-gray-500 text-xs mt-1 flex flex-row items-center gap-10"><MdOutlineErrorOutline/> Phone number is optional.</p>}
+      </div>
+      </div>
+       <div className='flex-col gap-10 flex md:gap-5 g md:flex-row w-full'>
+       <div className='flex flex-col w-full'>
         <input
         type="text"
         name="company_name"
         placeholder="COMPANY NAME"
-        className={input_variable}
+        className={`${input_variable} `}
       />
-         <input
-        type="text"
+      {error.company_name&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.company_name}</p>}
+      </div>
+      <div className="flex flex-col w-full">
+        <input type='text' name="subject_title" placeholder='SUBJECT' className={`${input_variable}`}/>
+        {error.subject_title&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.subject_title}</p>}
+      </div>
+      </div>
+      <div className='flex flex-col w-full'>
+         <textarea
         name="message"
         placeholder="MESSAGE"
         className={input_variable}
       />
+      {error.message&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.message}</p>}
+      </div>
       <input type="hidden" name="time" id="time"></input>
        <div className='flex w-full  md:justify-end justify-center mt-7 text-right '>
     <motion.button 
