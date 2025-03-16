@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { IoMdMenu } from "react-icons/io";
-import Logo from '../assets/Horizontal_White.png'
+import Logo from '../assets/Horizontal_White_Comp.png'
 import { MdClose } from "react-icons/md";
 import {motion} from "motion/react"
-import MenuLogo from "../assets/Vertical_White_Comp.png"
+import MenuLogo from "../assets/Vertical_White_Comp_2.png"
 
 
 const Navbar = () => {

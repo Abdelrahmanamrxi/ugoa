@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaYoutube, FaLinkedinIn, FaPhoneAlt } from "re
 import { IoMail, IoMailOutline, IoArrowDownSharp } from "react-icons/io5";
 import { MdArrowUpward } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
-import whiteLogo from '../assets/Vertical_White_Comp.png';
+import whiteLogo from '../assets/Vertical_White_Comp_2.png';
 
 function Footer() {
   return (
