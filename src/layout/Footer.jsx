@@ -35,12 +35,10 @@ ${email}`,
     emailjs
       .send(serviceID, templateID, templateParams, publicKey)
       .then((response) => {
-        console.log("Email sent successfully!", response.status, response.text);
-        alert("Email sent successfully!");
+        console.log("Email sent successfully!", response.status, response.text);     
       })
       .catch((error) => {
         console.error("Failed to send email", error);
-        alert("Failed to send email.");
       })
       .finally(() => setLoading(false));
 
