@@ -11,12 +11,12 @@
 }
 
 .socialIcon-footer{
-    @apply bg-dark_green flex items-center justify-center
+    @apply bg-dark_green object-contain flex items-center justify-center
 }
-.socialIcon-footer img, .icon{
+/* .socialIcon-footer img, .icon{
     width: 18px;
     height: 18px;
-}
+} */
 
 .footerIcon{
     width: 40px;

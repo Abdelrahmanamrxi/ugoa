@@ -1,5 +1,4 @@
-import React from 'react';
-import { memo } from 'react';
+import React, { memo } from 'react';
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { IoMail, IoMailOutline, IoArrowDownSharp } from "react-icons/io5";
 import { MdArrowUpward } from "react-icons/md";
@@ -8,84 +7,130 @@ import whiteLogo from '../assets/Vertical_White_Comp_2.png';
 
 function Footer() {
   return (
-    <footer className='w-full grid grid-cols-3 items-start 
-    justify-center gap-8 bg-secondary 
-    md:grid-cols-3 md:gap-4 md:px-12 md:py-10 
-    sm:grid-cols-1 sm:gap-6 sm:px-8 sm:py-4'
+    <footer 
+      className='w-full grid grid-cols-1 divide-y items-start justify-center gap-4 bg-secondary px-4 py-2
+      xl:grid-cols-3 xl:gap-12 xl:px-12 xl:py-10 xl:divide-x xl:divide-y-0
+      lg:grid-cols-3 lg:gap-10 lg:px-10 lg:py-8 lg:divide-x lg:divide-y-0
+      md:grid-cols-3 md:gap-8 md:px-8 md:py-6 md:divide-x md:divide-y-0
+      sm:grid-cols-1 sm:gap-6 sm:px-6 sm:py-4 sm:divide-y'
     >
-      
-      {/* Logo Section */}
+
+      {/* === SECTION 1: LOGO === */}
       <div className='flex justify-center'>
-        <img src={whiteLogo} className='min-w-xs object-cover' alt="Company Logo" />
+        <img 
+          src={whiteLogo} 
+          alt="Company Logo"
+          className='min-w-xs object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm'  
+        />
       </div>
-      
-      {/* Contact Section */}
-      <div className='w-full flex flex-col sm:justify-center sm:items-center gap-6'>
-        <div className='flex md:flex-col sm:items-center  sm:flex-row gap-3 items-start justify-center'>
-          <div className='flex gap-3 items-center'>
-            <IoArrowDownSharp size={30} className='text-white -rotate-45' />
-            <h1 className='uppercase text-white font-semibold text-3xl 
-            sm:text-xl md:text-2xl'>Contact</h1>
-          </div>
-          <h1 className='uppercase text-white font-semibold text-3xl 
-          sm:text-xl md:text-2xl'>Us Today</h1>
+      {/* === END SECTION 1 === */}
+
+      {/* === SECTION 2: CONTACT INFO === */}
+      <div className='w-full h-full flex flex-col justify-center gap-2 px-2 py-3
+        xl:justify-start xl:gap-8 xl:items-start xl:px-10 xl:py-9
+        lg:justify-start lg:gap-8 lg:items-start lg:px-8 lg:py-9
+        md:justify-start md:gap-6 md:items-start md:px-6 md:py-9
+        sm:justify-start sm:items-start sm:px-4 sm:py-6'>
+
+        {/* Contact Header */}
+        <div className='flex w-full gap-3 items-center'>
+          <IoArrowDownSharp size={25} className='text-white -rotate-45' />
+          <h3 className='uppercase w-full text-white font-semibold text-lg
+            sm:text-xl md:text-xl lg:text-2xl xl:text-3xl'>
+            Contact Us Today
+          </h3>
         </div>
-        <p className='text-white text-xl font-light w-3/4 sm:text-base md:text-lg'>
-          Contact us today to schedule a consultation and discover how we can help your business thrive.
-        </p>
-        <div className='flex gap-3'>
-          <a className='socialIcon-footer'><FaFacebook className='text-white' /></a>
-          <a className='socialIcon-footer'><FaInstagram className='text-white' /></a>
-          <a className='socialIcon-footer'><FaLinkedinIn className='text-white' /></a>
-          <a className='socialIcon-footer'><FaYoutube className='text-white' /></a>
-        </div>
-      </div>
-      
-      {/* Consultation & Contact Details Section */}
-      <div className='w-full flex flex-col gap-6
-      sm:justify-center sm:items-center'>
-        <div>
-          <h2 className='uppercase text-white mb-2 text-lg font-semibold
-          sm:text-xl md:text-2xl'>Get a Free Consultation</h2>
-          <div className='flex gap-4'>
-            <div className="bg-white flex items-center rounded-full px-6 py-2 gap-2 w-full max-w-[250px]">
-              <IoMailOutline size={20} className='text-gray-500' />
-              <input 
-                className="bg-transparent w-full outline-none font-medium placeholder-gray-400
-                sm:text-xs"
-                placeholder="Enter your email"
-              />
-            </div>
-            <button 
-              className="bg-dark_green hover:bg-dark_green/80 transition w-full max-w-[150px] text-white font-medium px-4 py-3 rounded-full flex items-center justify-center gap-2">
-              <span className="uppercase text-xs">Get Started</span>
-              <div className='bg-white text-black rounded-full p-1'>
-                <MdArrowUpward size={20} className='rotate-45' />
-              </div>
-            </button>
+
+        {/* Contact Description & Social Media Links */}
+        <div className='flex flex-col gap-2 xl:gap-10 lg:gap-8 md:gap-6 sm:gap-4'>
+          <p className='text-white text-sm font-light w-3/4 sm:text-md md:text-md lg:text-lg xl:text-xl'>
+            Contact us today to schedule a consultation and discover how we can help your business thrive.
+          </p>
+
+          <div className='flex gap-3'>
+            <a className='socialIcon-footer'><FaFacebook className='text-white' /></a>
+            <a className='socialIcon-footer'><FaInstagram className='text-white' /></a>
+            <a className='socialIcon-footer'><FaLinkedinIn className='text-white' /></a>
+            <a className='socialIcon-footer'><FaYoutube className='text-white' /></a>
           </div>
         </div>
 
+      </div>
+      {/* === END SECTION 2 === */}
 
+      {/* === SECTION 3: CONSULTATION & CONTACT DETAILS === */}
+      <div className='w-full h-full flex flex-col gap-2 px-2 py-3
+        xl:justify-start xl:gap-8 xl:items-start xl:px-10 xl:py-9
+        lg:justify-start lg:gap-8 lg:items-start lg:px-8 lg:py-9
+        md:justify-start md:gap-6 md:items-start md:px-6 md:py-9
+        sm:justify-start sm:items-start sm:px-4 sm:py-6'>
+
+        {/* Consultation Header */}
+        <h2 className='uppercase w-full text-white font-semibold text-lg
+          sm:text-xl md:text-xl lg:text-2xl xl:text-3xl'>
+          Get a Free Consultation
+        </h2>
+
+        {/* Email Input & Button */}
+        <div className="flex items-center gap-3 py-4 w-full">
+
+{/* Input Field (Fixed Size) */}
+<div className="bg-white flex items-center rounded-full px-4 py-2 gap-2 w-[250px] h-10">
+  <IoMailOutline size={18} className="text-gray-500" />
+  <input 
+    className="bg-transparent w-full outline-none font-medium placeholder-gray-400 text-xs"
+    placeholder="Enter your email"
+  />
+</div>
+
+{/* Get Started Button */}
+<button 
+  className="bg-dark_green hover:bg-dark_green/80 transition text-white font-medium px-3 py-2 h-10 
+  rounded-full flex items-center justify-center gap-2 shrink-0">
+
+  {/* Button Text: Hidden on small screens */}
+  <span className="text-xs uppercase hidden lg:block">Get Started</span>
+
+  {/* Arrow Icon (Always Visible) */}
+  <div className="bg-white text-black rounded-full p-1">
+    <MdArrowUpward size={16} className="rotate-45" />
+  </div>
+
+</button>
+</div>
+
+
+
+        {/* Contact Details */}
         <div className='flex flex-col gap-4'>
+          {/* Phone */}
           <div className='flex gap-3 items-center'>
-            <div className='footerIcon'><FaPhoneAlt /></div>
-            <p className='text-white sm:text-xs md:text-sm lg:text-base xl:text-lg  font-normal'>+971545423530</p>
+            <div className='footerIcon'><FaPhoneAlt size={15} /></div>
+            <p className='text-white text-sm font-light w-3/4 sm:text-sm md:text-md lg:text-md xl:text-lg'>
+              +971545423530
+            </p>
           </div>
+
+          {/* Email */}
           <div className='flex gap-3 items-center'>
-            <div className='footerIcon'><IoMail /></div>
-            <p className='text-white 
-            sm:text-xs md:text-sm lg:text-base xl:text-lg font-normal'>ahmed_elmizayen@ugoa.me</p>
+            <div className='footerIcon'><IoMail size={15} /></div>
+            <p className='text-white text-sm font-light w-3/4 sm:text-sm md:text-md lg:text-md xl:text-lg'>
+              ahmed_elmizayen@ugoa.me
+            </p>
           </div>
+
+          {/* Location */}
           <div className='flex gap-3 items-center'>
-            <div className='footerIcon'><FaLocationDot /></div>
-            <p className='text-white w-3/4
-            sm:text-xs md:text-sm lg:text-base xl:text-lg font-normal '>
+            <div className='footerIcon'><FaLocationDot size={15} /></div>
+            <p className='text-white text-sm font-light w-3/4 sm:text-sm md:text-md lg:text-md xl:text-lg'>
               Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>
           </div>
         </div>
+
       </div>
+      {/* === END SECTION 3 === */}
+
     </footer>
   );
 }
