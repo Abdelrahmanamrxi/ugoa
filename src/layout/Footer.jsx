@@ -106,7 +106,7 @@ function Footer() {
           {/* Phone */}
           <div className='flex gap-3 items-center'>
             <div className='footerIcon'><FaPhoneAlt size={15} /></div>
-            <p className='text-white text-sm font-light w-3/4 sm:text-sm md:text-md lg:text-md xl:text-lg'>
+            <p className='text-white text-sm font-light w-3/4 font-raleway sm:text-sm md:text-md lg:text-md xl:text-lg'>
               +971545423530
             </p>
           </div>
@@ -114,7 +114,7 @@ function Footer() {
           {/* Email */}
           <div className='flex gap-3 items-center'>
             <div className='footerIcon'><IoMail size={15} /></div>
-            <p className='text-white text-sm font-light w-3/4 sm:text-sm md:text-md lg:text-md xl:text-lg'>
+            <p className='text-white text-sm font-light w-3/4 font-raleway sm:text-sm md:text-md lg:text-md xl:text-lg'>
               ahmed_elmizayen@ugoa.me
             </p>
           </div>
@@ -122,7 +122,7 @@ function Footer() {
           {/* Location */}
           <div className='flex gap-3 items-center'>
             <div className='footerIcon'><FaLocationDot size={15} /></div>
-            <p className='text-white text-sm font-light w-3/4 sm:text-sm md:text-md lg:text-md xl:text-lg'>
+            <p className='text-white text-sm font-light w-3/4 sm:text-sm md:text-md lg:text-md xl:text-lg font-raleway'>
               Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>
           </div>

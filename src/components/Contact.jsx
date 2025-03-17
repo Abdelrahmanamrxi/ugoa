@@ -90,7 +90,7 @@ const Contact = () => {
       
       <form onSubmit={sendEmail} onChange={handleChange} ref={form} className="flex flex-col justify-center  w-full border-2 border-dark">
   <div className="p-8 flex flex-col gap-10 w-full">
-    <div className=' flex-col gap-10 flex md:gap-5 g md:flex-row w-full '>
+    <div className=' flex-col gap-10 flex md:gap-10 g md:flex-row w-full '>
   <div className='flex-col flex w-full '>
       <input
         type="text"
@@ -110,7 +110,7 @@ const Contact = () => {
       {error.last_name&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.last_name}</p>}
       </div>
       </div>
-    <div className='md:flex flex flex-col gap-10 md:flex-row md:gap-3'>
+    <div className='md:flex flex flex-col gap-10 md:flex-row md:gap-10'>
    
   <div className='w-full flex flex-col'>
     <input
@@ -134,7 +134,7 @@ const Contact = () => {
       {OnHoverPhone&& <p className="text-gray-500 text-xs mt-1 flex flex-row items-center gap-1"><MdOutlineErrorOutline/> Phone number is optional.</p>}
       </div>
       </div>
-       <div className='flex-col gap-10 flex md:gap-5 g md:flex-row w-full'>
+       <div className='flex-col gap-10 flex md:gap-10 g md:flex-row w-full'>
        <div className='flex flex-col w-full'>
         <input
         type="text"
@@ -171,7 +171,7 @@ const Contact = () => {
   </div>
  
 </form>
-<div className='flex gap-5 justify-start m-5  flex-row'>
+<div className='flex gap-5 justify-center md:justify-start sm:justify-center m-5  flex-row'>
 <button onClick={()=>{set_current(1)}}  className={`${current===1?currently_selected:not_selected}`}>Egypt<span className={`${current===1?"bg-white transition-all duration-300 rounded-full p-2 text-black":'bg-dark_green transition-all duration-300 rounded-full text-white p-2'}`}>{current===1?(<RiArrowRightUpLine size={20}/>):<GoArrowDownRight className='font-bold' size={20} />}</span></button>
 <button onClick={()=>{set_current(2)}}  className={`${current===2?currently_selected:not_selected}`}>UAE<span className={`${current===2?"bg-white rounded-full p-2 transition-all duration-300 text-black":"bg-dark_green rounded-full transition-all duration-300 text-white p-2"}`}>{current===2?(<RiArrowRightUpLine size={20}/>):<GoArrowDownRight className='font-bold' size={20} />}</span></button>
 </div>
