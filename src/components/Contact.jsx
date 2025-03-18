@@ -2,7 +2,7 @@ import {useState,useRef} from 'react'
 import Background from '../assets/background.png'
 import { GoArrowDownRight } from "react-icons/go";
 import location_data from '../data/location';
-import {motion} from "motion/react"
+import {easeInOut, motion} from "motion/react"
 import { MdOutlineEmail } from "react-icons/md";
 import { MdArrowUpward,MdOutlineErrorOutline } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -180,7 +180,11 @@ const Contact = () => {
     if(data.id===current){
        
         return(
-            <div key={current} className='w-full flex flex-col justify-center md:flex-row gap-5'>
+            <motion.div 
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            transition={{duration:1,ease:easeInOut}}
+            key={current} className='w-full flex flex-col justify-center md:flex-row gap-5'>
                 <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/4'>
                     <h5><MdOutlinePhone className="text-dark_green" size={30}/></h5>
                     <h6 className="text-dark_navy font-semibold">Phone</h6>
@@ -196,7 +200,7 @@ const Contact = () => {
                     <h6 className="text-white font-semibold">Address</h6>
                     <p className='text-white text-xs sm:text-sm md:text-md lg:text-md xl:text-md'>{data.location}</p>
                 </div>
-            </div>
+            </motion.div>
 
         )
     }

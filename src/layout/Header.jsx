@@ -39,7 +39,7 @@ const Header = () => {
   }
   return (
    <div className={`${backgroundCheck()} text-white md:h-[62vh] lg:h-[54vh] h-[45vh] `}>
-    <Navbar/>
+    <Navbar loc={location.pathname}/>
     {renderContent()}
     </div>
   )

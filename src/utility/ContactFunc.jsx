@@ -2,8 +2,7 @@ export function Map(current){
     if(current===1){
         return (
             <div className='flex justify-center'>
-            <iframe
-            
+            <iframe  
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.027516350922!2d30.97131412465651!3d30.007366274942292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145857790c1a2299%3A0x6ea7212c0a01379e!2z2YXZiNmEINmD2KfYstin2YYg2KjZhNin2LLYpyBrYXphbiBQbGF6YSBNYWxs!5e0!3m2!1sar!2seg!4v1742008042270!5m2!1sar!2seg"
             width="600"
             height="450"
