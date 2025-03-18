@@ -79,6 +79,7 @@ const Contact = () => {
         backgroundImage: `url(${Background})`,
         backgroundRepeat: "repeat-y", 
         backgroundPosition: "center",
+        opacity:0.7
       }}
     ></div>
   
