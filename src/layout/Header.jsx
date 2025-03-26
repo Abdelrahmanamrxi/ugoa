@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import { useLocation } from 'react-router-dom'
 import {motion} from "motion/react"
+import consult from "../assets/consult.jpg"
 
 
 const Header = () => {
@@ -10,6 +11,13 @@ const Header = () => {
     if(location.pathname==="/contact"){
       return "bg-gradient-primary"
     }
+    if(location.pathname==="/services"){
+      return ""
+    }
+  }
+  function backgroundImageCheck(){
+    if(location.pathname==="/services")
+      return `url(${consult})`
   }
   function renderContent(){
     if(location.pathname==="/contact"){
@@ -32,13 +40,12 @@ const Header = () => {
            className='lg:w-1/3 md:w-1/2 mt-5  text-offwhite text-opacity-90 font-raleway text-md md:text-lg '>Read our Global Annual Review, meet our Global Leadership Team, discover our approach to corporate sustainability, our commitment to diversity, inclusion, and more.</motion.p>
         </motion.div>
       </div>
-
-
       )
     }
+  
   }
   return (
-   <div className={`${backgroundCheck()} text-white md:h-[62vh] lg:h-[54vh] h-[45vh] `}>
+   <div style={{backgroundImage:backgroundImageCheck(), backgroundSize:"cover", backgroundPosition:"center" }} className={`${backgroundCheck()} text-white md:h-[62vh] lg:h-[54vh] h-[45vh] `}>
     <Navbar loc={location.pathname}/>
     {renderContent()}
     </div>

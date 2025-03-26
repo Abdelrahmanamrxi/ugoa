@@ -25,12 +25,12 @@ const Navbar = ({loc}) => {
         <MdClose onClick={()=>{set_Menu(false)}} className='cursor-pointer  m-5 ' size={30}/>
         <ul className="text-xl font-raleway flex flex-col gap-6  w-full items-end text-right">
 
-    <Link to="/" className={`${loc==="/"?"bg-secondary":""}hover:bg-secondary w-full transition-all duration-200 py-2 px-4`}>Home</Link>
+    <Link to="/" className={`${loc==="/"?"bg-secondary":""} hover:bg-secondary w-full transition-all duration-200 py-2 px-4`}>Home</Link>
  
-    <Link to="/about" className={`${loc==="/about"?"bg-secondary":""}hover:bg-secondary  transition-all duration-200 w-full py-2 px-4`}>About Us</Link>
+    <Link to="/about" className={`${loc==="/about"?"bg-secondary":""} hover:bg-secondary  transition-all duration-200 w-full py-2 px-4`}>About Us</Link>
  
   
-    <Link to="/services" className={`${loc==="/services"?"bg-secondary":""}hover:bg-secondary transition-all duration-200 w-full py-2 px-4`}>Services</Link>
+    <Link to="/services" className={`${loc==="/services"?"bg-secondary":""} hover:bg-secondary transition-all duration-200 w-full py-2 px-4`}>Services</Link>
  
   
     <Link to="/contact" className={`${loc==="/contact"?"bg-secondary":''} hover:bg-secondary transition-all duration-200 w-full py-2 px-4`}>Contact Us</Link>
@@ -45,8 +45,8 @@ const Navbar = ({loc}) => {
       </motion.div>
     )} 
     <ul className='uppercase hidden  md:flex justify-around md:gap-10 gap-5 text-md font-raleway items-center'>
-      <Link to ="/services" className={` ${loc==="/services"?"font-extrabold":''}hover:font-bold transition-all duration-200 `}>Services</Link>
-      <Link to="/about" className={`${loc==="/about"?"font-extrabold ":''}hover:font-bold transition-all duration-200`}>About Us</Link>
+      <Link to ="/services" className={` ${loc==="/services"?"font-extrabold":''} hover:font-bold transition-all duration-200 `}>Services</Link>
+      <Link to="/about" className={`${loc==="/about"?"font-extrabold ":''} hover:font-bold transition-all duration-200`}>About Us</Link>
       <Link to="/contact" className={` ${loc==="/contact"?"font-extrabold":""} hover:font-bold transition-all duration-200`}>Contact Us</Link>
     </ul>
     <div className='hidden md:flex'>
