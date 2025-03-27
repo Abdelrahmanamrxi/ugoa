@@ -22,7 +22,7 @@ export default function About(){
                 className="w-1/2 max-w-[250px]" src={vLogo} alt=""
                 initial={{opacity:0,x:-30}}
                 animate={{opacity:1,x:0}}
-                transition={{duration:1,ease:"easeOut",delay:1}} />
+                transition={{duration:2,ease:"easeOut",delay:1}} />
                  
                 <motion.p 
                 className="sm:w-1/2 font-raleway text-sm text-justify"
