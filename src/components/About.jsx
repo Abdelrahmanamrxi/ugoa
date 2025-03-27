@@ -6,6 +6,7 @@ import visionIcon from "../assets/vision_icon.svg";
 import { PiTargetLight  } from "react-icons/pi";
 import { whoWeAre } from "../data/content";
 import { TiArrowForward } from "react-icons/ti";
+import horizontalImg from '../assets/horizontalImg.svg';
 
 const fadeInVariants = {
     hidden: { opacity: 0, y: 50,filter: "blur(8px)", scale:0.8},
@@ -122,6 +123,109 @@ export default function About(){
                     })}
 
                 </ul>
+            </div>
+
+            {/* Section 4 */}
+
+            <div className="mt-32 flex h-auto flex-col md:flex-row gap-6 justify-center items-center">
+
+  {/* Image Container */}
+            <motion.div 
+            initial={{opacity:0, x:-50}}
+            whileInView={{opacity:1, x:0}}
+            transition={{duration:0.5,delay:0.3}}
+            viewport={{once:true, amount:0.5}}
+            className="h-full w-full md:w-1/2 flex justify-center items-center overflow-hidden">
+                <img 
+                src={horizontalImg}
+                className="w-full max-h-96 md:max-h-[500px] object-fill" 
+                alt="Background" 
+                />
+            </motion.div>
+
+
+
+
+                <div className="w-full md:w-1/2 px-6 flex flex-col gap-8">
+                <motion.div 
+                initial={{opacity:0, y:30}}
+                whileInView={{opacity:1, y:0}}
+                transition={{duration:0.5,delay:0.3}}
+                viewport={{once:true, amount:0.5}}
+                className="flex items-center gap-4">
+
+                    <h1 className="font-raleway text-2xl md:text-4xl font-bold text-dark_green">Who we do</h1>
+                    <GoArrowDownRight size={30} className=" text-dark_green " />
+
+                </motion.div>
+                <motion.div
+                 variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        staggerChildren: 0.3, // Delays each child’s animation
+                        when: "beforeChildren", // Starts staggering before animating parent
+                      },
+                    },
+                }}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    className="font-raleway flex justify-center items-center flex-col gap-6 text-justify
+                                font-light text-lg">
+
+                    <motion.p
+                    variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    }}>
+                        At UGOA, we are proud to offer our partners a comprehensive consultation service that leverages
+                        over ten years of in-depth experience in the PET recycling industry. 
+                    </motion.p>
+                    <motion.p
+                    variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    }}>              
+                        Our service is built on a
+                        foundation of unmatched hands-on technical and operational expertise combined with advanced
+                        data analytics capabilities.  
+                    </motion.p>
+                    <motion.p
+                    variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    }}>
+                        This unique blend enables us to provide a detailed and multifaceted
+                        market analysis that spans global, regional, and country perspectives, ensuring that our partners
+                        are equipped with the most accurate and actionable insights available.
+                    </motion.p>
+                    <motion.p
+                    variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    }}>                   
+                        Our consultation service delves deep into the dynamics of the recycling industry, with a strong
+                        focus on the global transition toward a circular economy. We provide a robust 10-year forecast for
+                        recycled PET (rPET), analyzing key trends that influence production, demand, and technological
+                        advancements. 
+                    </motion.p>
+                    <motion.p
+                    variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    }}>
+                        Our market analysis covers the evolution of collection rates, highlighting shifts in
+                        waste management practices and the impact these have on the overall supply chain. We also
+                        examine the strategic plans of major brand owners who are committed to increasing their recycled
+                        content, providing insights into how these initiatives are reshaping the market.  
+                    </motion.p>
+                </motion.div>
+                
+                </div>
+
             </div>
         </>
     );

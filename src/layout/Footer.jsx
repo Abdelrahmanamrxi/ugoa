@@ -46,7 +46,7 @@ ${email}`,
   };
 
   return (
-    <footer className="w-full mt-24 grid grid-cols-1 divide-y items-start justify-center gap-4 bg-secondary px-4 py-2
+    <footer className="w-full font-raleway mt-24 grid grid-cols-1 divide-y items-start justify-center gap-4 bg-secondary px-4 py-2
       xl:grid-cols-3 xl:gap-12 xl:px-12 xl:py-10 xl:divide-x xl:divide-y-0
       lg:grid-cols-3 lg:gap-10 lg:px-10 lg:py-8 lg:divide-x lg:divide-y-0
       md:grid-cols-3 md:gap-8 md:px-8 md:py-6 md:divide-x md:divide-y-0
