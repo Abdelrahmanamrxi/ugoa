@@ -33,7 +33,7 @@ const Navbar = ({loc}) => {
     <Link to="/services" className={`${loc==="/services"?"bg-secondary":""} hover:bg-secondary transition-all duration-200 w-full py-2 px-4`}>Services</Link>
  
   
-    <Link to="/contact" className={`${loc==="/contact"?"bg-secondary":''} hover:bg-secondary transition-all duration-200 w-full py-2 px-4`}>Contact Us</Link>
+    <Link to="/contact" className={`${loc==="/contact"?"bg-secondary":''}+ hover:bg-secondary transition-all duration-200 w-full py-2 px-4`}>Contact Us</Link>
 
 </ul>
 
