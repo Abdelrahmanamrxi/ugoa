@@ -1,9 +1,9 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import { useLocation } from 'react-router-dom'
-import {motion} from "motion/react"
-import consult from "../assets/consult.jpg"
-
+import React from 'react';
+import Navbar from '../components/Navbar';
+import { useLocation } from 'react-router-dom';
+import {motion} from "motion/react";
+import consult from "../assets/consult.jpg";
+import aboutImg from "../assets/about_header_img.jpg";
 
 const Header = () => {
   const location=useLocation()
@@ -14,10 +14,18 @@ const Header = () => {
     if(location.pathname==="/services"){
       return ""
     }
+    if(location.pathname==="/about_us"){
+      return ""
+    }
+    
   }
   function backgroundImageCheck(){
-    if(location.pathname==="/services")
+    if(location.pathname==="/services"){
       return `url(${consult})`
+    }
+    if(location.pathname === "/about_us"){
+      return `url(${aboutImg})`;
+    }
   }
   function renderContent(){
     if(location.pathname==="/contact"){
@@ -42,6 +50,31 @@ const Header = () => {
       </div>
       )
     }
+    if(location.pathname==="/about_us"){
+      return(
+      <div>
+        <motion.div
+        className='mt-16 md:ml-8 ml-3 flex flex-col justify-center items-center'
+        initial={{opacity:0,y:20}}
+        animate={{opacity:1,y:-40}}
+        transition={{duration:1.2 ,ease:"easeInOut"}}>
+          <motion.h2 
+          initial={{opacity:0,y:20}}
+          animate={{opacity:1,y:0}}
+          transition={{duration:1.8,ease:"easeOut",delay:0.2}}
+          className="font-raleway font-bold text-white md:text-4xl text-2xl">About Us</motion.h2>
+          <motion.p
+          initial={{opacity:0,y:30}}
+          animate={{opacity:1,y:0}}
+          duration={{duration:2,ease:"easeOut",delay:1}}
+           className='md:w-1/2 mt-5 text-center font-light text-white font-raleway text-xs w-3/4 md:text-md '>
+            Guiding Your Success Journey Through Expertise and Innovation
+          </motion.p>
+        </motion.div>
+      </div>
+      )
+    }
+    
   
   }
   return (

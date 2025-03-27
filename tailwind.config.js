@@ -11,7 +11,8 @@ export default {
       silver:"#A6A6A6",
       light_silver:"#D9D9D9",
       offwhite:"#FFFFFF",
-      dark_navy:"#252B42"
+      dark_navy:"#252B42",
+      darkWhite: '#F8FAFC'
 
     },
     backgroundImage:{

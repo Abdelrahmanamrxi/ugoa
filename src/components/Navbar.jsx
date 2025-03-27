@@ -12,7 +12,7 @@ const Navbar = ({loc}) => {
   const[Menu,set_Menu]=useState(false)
   return (
    <nav className='flex relative md:p-8 p-3 items-center justify-between'>
-    <img src={Logo} className='md:w-24 w-16'/>
+    <img src={Logo} className='max-w-[150px]  md:max-w-[200px] object-cover'/>
     <IoMdMenu onClick={()=>{set_Menu(true)}} className='md:hidden cursor-pointer flex' size={30}/>
     {Menu && (
       <motion.div
@@ -27,7 +27,7 @@ const Navbar = ({loc}) => {
 
     <Link to="/" className={`${loc==="/"?"bg-secondary":""} hover:bg-secondary w-full transition-all duration-200 py-2 px-4`}>Home</Link>
  
-    <Link to="/about" className={`${loc==="/about"?"bg-secondary":""} hover:bg-secondary  transition-all duration-200 w-full py-2 px-4`}>About Us</Link>
+    <Link to="/about_us" className={`${loc==="/about_us"?"bg-secondary":""} hover:bg-secondary  transition-all duration-200 w-full py-2 px-4`}>About Us</Link>
  
   
     <Link to="/services" className={`${loc==="/services"?"bg-secondary":""} hover:bg-secondary transition-all duration-200 w-full py-2 px-4`}>Services</Link>
@@ -46,7 +46,7 @@ const Navbar = ({loc}) => {
     )} 
     <ul className='uppercase hidden  md:flex justify-around md:gap-10 gap-5 text-md font-raleway items-center'>
       <Link to ="/services" className={` ${loc==="/services"?"font-extrabold":''} hover:font-bold transition-all duration-200 `}>Services</Link>
-      <Link to="/about" className={`${loc==="/about"?"font-extrabold ":''} hover:font-bold transition-all duration-200`}>About Us</Link>
+      <Link to="/about_us" className={`${loc==="/about"?"font-extrabold ":''} hover:font-bold transition-all duration-200`}>About Us</Link>
       <Link to="/contact" className={` ${loc==="/contact"?"font-extrabold":""} hover:font-bold transition-all duration-200`}>Contact Us</Link>
     </ul>
     <div className='hidden md:flex'>
