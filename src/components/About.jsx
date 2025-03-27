@@ -57,7 +57,7 @@ export default function About(){
                 <div className="md:w-1/2 flex flex-col gap-4 md:gap-8 md:p-6">
                     <div className="flex justify-start gap-2 md:gap-6 items-center">
                         <img src={visionIcon} className="w-[40px] md:min-w-[64px]" />
-                        <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-4xl">Vision</h2>
+                        <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Vision</h2>
                     </div>
                     <p className="font-raleway font-light text-justify w-full md:w-3/4">
                     To lead the transformation of the global recycling industry by providing strategic solutions 
@@ -69,7 +69,7 @@ export default function About(){
                 <div className="md:w-1/2 flex flex-col gap-8 md:p-6 ">
                     <div className="flex justify-start gap-2 md:gap-6 items-center">
                         <PiTargetLight  size={64} src={visionIcon} className="w-[40px] text-dark_green md:min-w-[64px]" />
-                        <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-4xl">Mission</h2>
+                        <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Mission</h2>
                     </div>
                     <p className="font-raleway font-light text-justify w-3/4">
                     To lead the transformation of the global recycling industry by providing strategic solutions 
