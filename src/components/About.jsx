@@ -1,12 +1,14 @@
 import React from "react";
 import vLogo from "../assets/vertical.png";
-import {color, motion} from "motion/react";
+import {motion} from "motion/react";
 import { GoArrowDownRight } from "react-icons/go";
 import visionIcon from "../assets/vision_icon.svg";
 import { PiTargetLight  } from "react-icons/pi";
-import { whoWeAre } from "../data/content";
+import { whoWeAre, team } from "../data/content";
 import { TiArrowForward } from "react-icons/ti";
 import horizontalImg from '../assets/horizontalImg.svg';
+import TeamCard from "./TeamCards";
+import Map from "./Map.jsx";
 
 const fadeInVariants = {
     hidden: { opacity: 0, y: 50,filter: "blur(8px)", scale:0.8},
@@ -42,7 +44,8 @@ export default function About(){
             </div>
 
             {/* Section 2 */}
-            <motion.div className="mt-24 flex flex-col md:gap-16 md:flex-row md:mx-8 mx-4 gap-10 divide-gray-300 divide-y-2 md:divide-y-0 
+            <motion.div 
+            className="mt-24 flex flex-col md:gap-16 md:flex-row md:mx-8 mx-4 gap-10 divide-gray-300 divide-y-2 md:divide-y-0 
             md:divide-x-[1px] rounded-2xl shadow-lg  md:shadow-xl shadow-dark_green
             justify-center items-center px-4 py-16 md:px-8 md:py-16"
             initial={{ boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)" }}
@@ -55,7 +58,12 @@ export default function About(){
             }}
             transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}>
 
-                <div className="md:w-1/2 flex flex-col gap-4 md:gap-8 md:p-6">
+                <motion.div 
+                initial={{opacity:0, x:-30}}
+                whileInView={{opacity:1, x:0}}
+                transition={{duration:0.8, delay:0.2}}
+                viewport={{once:true, amount:0.5}}
+                className="md:w-1/2 flex flex-col gap-4 md:gap-8 md:p-6">
                     <div className="flex justify-start gap-2 md:gap-6 items-center">
                         <img src={visionIcon} className="w-[40px] md:min-w-[64px]" />
                         <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Vision</h2>
@@ -64,10 +72,15 @@ export default function About(){
                     To lead the transformation of the global recycling industry by providing strategic solutions 
                     that drive circular economies, sustainability, and operational excellence.
                     </p>
-                </div>
+                </motion.div>
 
 
-                <div className="md:w-1/2 flex flex-col gap-8 md:p-6 ">
+                <motion.div 
+                    initial={{opacity:0, x:30}}
+                whileInView={{opacity:1, x:0}}
+                transition={{duration:0.8, delay:0.2}}
+                viewport={{once:true, amount:0.5}}
+                className="md:w-1/2 flex flex-col gap-8 md:p-6 ">
                     <div className="flex justify-start gap-2 md:gap-6 items-center">
                         <PiTargetLight  size={64} src={visionIcon} className="w-[40px] text-dark_green md:min-w-[64px]" />
                         <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Mission</h2>
@@ -76,7 +89,7 @@ export default function About(){
                     To lead the transformation of the global recycling industry by providing strategic solutions 
                     that drive circular economies, sustainability, and operational excellence.
                     </p>
-                </div>
+                </motion.div>
 
                 
             </motion.div>
@@ -85,10 +98,15 @@ export default function About(){
 
             <div className="mt-24 md:mt-48 flex flex-col gap-6 mx-8 md:mx-48">
                 
-                <div className="flex items-center gap-4">
+                <motion.div 
+                initial={{opacity:0,y:30}}
+                whileInView={{opacity:1,y:0}}
+                transition={{duration: 0.6, ease: "easeOut"}}
+                viewport={{once:true, amount:1}}
+                className="flex items-center gap-4">
                     <h1 className="font-raleway text-xl md:text-4xl font-bold text-dark_green">Who we are</h1>
                     <GoArrowDownRight size={30} className=" text-dark_green " />
-                </div>
+                </motion.div>
 
                 <ul className="flex flex-col  gap-6 text-white font-raleway">
                     {whoWeAre.map((data) => {
@@ -227,6 +245,38 @@ export default function About(){
                 </div>
 
             </div>
+
+            {/* Section 5 */}
+            <motion.div 
+            initial={{opacity:0, scale:0.95}}
+            whileInView={{opacity:1, scale:1}}
+            transition={{duration:0.8, delay:0.2}}
+            viewport={{once:true, amount:0.5}}
+            className="flex flex-col py-10 justify-center bg-darkWhite shadow-xl items-center mt-24 gap-14">
+                <h1 className="text-dark_green font-raleway text-2xl md:text-4xl font-bold uppercase">Meet our team</h1>
+                <div className="card px-6 grid grid-cols-1 justify-center items-center md:grid-cols-3 gap-8">
+                    {team.map((card)=>{
+                        return(
+                            <TeamCard key={card.mail}
+                            name={card.name}
+                            image={card.photo}
+                            role={card.role }
+                            email={card.mail}
+                            linkedin={card.linkedIn} />
+                        )
+                    })}
+                </div>
+
+            </motion.div>
+            <motion.div 
+            initial={{opacity:0, scale:0.95}}
+            whileInView={{opacity:1, scale:1}}
+            transition={{duration:0.8, ease:"easeOut"}}
+            viewport={{once:true, amount:0.5}}
+            className="px-4 md:px-20 mt-24">
+                <Map />
+            </motion.div>
+            
         </>
     );
 }

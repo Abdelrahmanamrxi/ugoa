@@ -37,3 +37,58 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Adjust spacing */
+}
+
+/* Smooth transition for each .team card */
+.team {
+    transition: all ease-in-out 500ms;
+    position: relative;
+}
+
+/* Make all images inside .team grayscale by default */
+.team img {
+    filter: grayscale(100%) blur(0);
+    transition: all ease-in-out 500ms;
+}
+
+/* When hovering a .team card, its image turns to color */
+.team:hover img {
+    filter: grayscale(0%) blur(0);
+}
+
+/* Apply grayscale + blur only to other .team cards when one is hovered */
+.card:has(.team:hover) .team:not(:hover) {
+    filter: grayscale(100%) blur(5px);
+    transform: scale(0.95);
+    cursor: pointer;
+}
+
+/* Reset transition for non-hovered team cards */
+.team:not(:hover) {
+    filter: grayscale(0%) blur(0);
+    transform: scale(1);
+}
+
+path {
+    transition: transform 0.1s ease-out, filter 0.1s ease-out;
+    transform-origin: center center;
+    transform-box: fill-box;
+    stroke-width: 10px;  /* Expands the hover detection area */
+    stroke: transparent;  /* Keeps it invisible */
+    pointer-events: all;
+    cursor: pointer;  /* Ensures the path remains interactive */
+  }
+  
+  path:hover {
+    transform: scale(0.7); /* Shrinks smoothly without losing hover */
+    filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.6));
+  }
+
+
+
+

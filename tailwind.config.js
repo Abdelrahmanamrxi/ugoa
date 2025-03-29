@@ -12,8 +12,8 @@ export default {
       light_silver:"#D9D9D9",
       offwhite:"#FFFFFF",
       dark_navy:"#252B42",
-      darkWhite: '#F8FAFC'
-
+      darkWhite: '#F8FAFC',
+      notBlack:"#19352D",
     },
     backgroundImage:{
       "gradient-primary":"linear-gradient(to bottom,#0D5C63 20%,#000000 90%)"

@@ -47,3 +47,30 @@ export const whoWeAre = [
     }
     
   ];
+
+
+  import man from "../assets/man.jpeg";
+  import woman from "../assets/woman.jpeg";
+  export const team=[
+    {
+      name: "Ahmed Elmizayen",
+      role: "Commercial and sustainability Director",
+      photo: man,
+      mail: "Ahmed_Elmizayen@ugoa.me",
+      linkedIn:"https://www.linkedin.com/in/ahmed-elmizayen-3930023b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+    },
+    {
+      name: "Ghada Samir",
+      role: "Supply Chain Director",
+      photo: woman,
+      mail: "Ghada_samir@ugoa.me",
+      linkedIn:"https://www.linkedin.com/in/ghada-samir-661b2a5a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+    },
+    {
+      name: "Ahmed Elkasaby",
+      role: "Technical Director",
+      photo: man,
+      mail: "Ahmed_elkasaby@ugoa.me",
+      linkedIn:"https://www.linkedin.com/in/ahmed-elkasaby-mba-b2698014a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+    },
+  ];
