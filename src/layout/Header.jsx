@@ -85,9 +85,7 @@ const Header = () => {
       )
     }
     if(location.pathname==="/services"){
-      return(
-    
-          
+      return(   
         <div className="relative flex justify-end mr-12 items-center  md:h-screen">
       {/* Background Image */}
       <motion.div
