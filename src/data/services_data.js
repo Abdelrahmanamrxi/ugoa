@@ -2,6 +2,10 @@ import sales from "../assets/sales.svg"
 import search from "../assets/search.svg"
 import sourcing from '../assets/sourcing.svg'
 import technical from '../assets/technical.svg'
+import operation from '../assets/4.jpeg'
+import background_sales from "../assets/consult.jpg";
+import sale_compilance from '../assets/5.png'
+import reuse from '../assets/reuse_comp.jpg'
 
 const services_data=[
     {
@@ -45,5 +49,63 @@ const services_data=[
         paragraph_3:"Watch profits soar as you sell smarter and comply effortlessly.",
         read_more:"We provide an integrated approach to sales, sustainability, and compliance in the recycling industry. Our sales strategy focuses on market demand, optimizing channels, and building long-term buyer partnerships. We align operations with best sustainability practices, reducing carbon emissions and enhancing brand reputation. For compliance, we ensure adherence to local and international regulations, keeping clients informed of industry standards. This holistic approach helps clients achieve financial success while promoting environmental responsibility and regulatory compliance."
     }
+]
+export const new_projects=[
+    {
+        title:"Feasibility Study",
+        text:"Reviewing assumptions to ensure numbers are correct inline with industry trends."
+    },
+    {
+        title:"Pre Installation",
+        text:"Factory layout review, machines selection, tendering process management till contracts signage."
+    },
+    {
+        title:"Installation and Pre-Production",
+        text:"Supervision on installation process while preparing SOPs for each department and start with essential preparation for plant establishment and compliance."
+
+    },
+    {
+        title:"Post Installation",
+        text:"Knowledge transfer of efficient processes in different departments. Optimum production setup, importation process, and start brands approval process."
+    }
+]
+export const old_projects=[
+    {
+        title:"PROJECT ASSESSMENT",
+        text:"Full assessment to line current status to evaluate all relevant factors to gain a comprehensive understanding of the situation at hand."
+    },
+    {
+        title:"INITIAL REPORT ON NEEDED ENHANCMENTS",
+        text:"Report on current line status vs global benchmark and submit development plan with estimated cost to reach the targted result."
+    },
+    {
+        title:"PROCESS DEVELOPMENT",
+        text:"Start the agreed enhancement implementation process while reporting the achieved results vs agreed timeline and cost"
+    },
+    {
+        title:"TRAINING & HANDOVER",
+        text:"In different department. optimum production setup, importation process and start brands approval process"
+    }
+]
+export const service_header=[
+    {
+        id:1,
+        background_title:"OPERATIONAL EFFECIENCY",
+        title:"SEAMLESS PROCESS",
+        text:"WITH MINIMAL RESOURCES",
+        image:operation,
+        background:reuse,
+        background_text:"We focus on operational efficiency and excellence by evaluating process effectiveness and optimizing equipment. Our tailored solutions promote cost reduction, increased productivity, and minimal environmental impact, aligning with industry standards for sustainable scalability."
+    },
+    {
+        id:2,
+        title:"REACHING PEAK PRICEBRAND",
+        text:"BRAND OWNERS APPROVALS",
+        background_title:"SALES & COMPILANCE",
+        image:sale_compilance,
+        background_text:"We deliver an integrated strategy for sales, sustainability, and compliance in recycling, focusing on market demand, optimizing channels, reducing carbon emissions, and ensuring adherence to regulations for financial success and environmental responsibility."
+,       background:background_sales
+    }
+
 ]
 export default services_data
