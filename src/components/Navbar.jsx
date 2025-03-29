@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({loc}) => {
   
-  const[Menu,set_Menu]=useState(false)
+  const[Menu,set_Menu]=useState(false);
+  const [activeLink, setActiveLink]= useState(null);
   return (
    <nav className='flex relative md:p-8 p-5  items-center  justify-between'>
   
@@ -59,9 +60,9 @@ const Navbar = ({loc}) => {
     
     )} 
     <ul className='uppercase hidden m-auto  md:flex justify-around md:gap-10 gap-5 text-md font-raleway items-center'>
-      <Link to ="/services" className={` ${loc==="/services"?"font-extrabold":''} hover:font-bold transition-all duration-200 `}>Services</Link>
-      <Link to="/about_us" className={`${loc==="/about"?"font-extrabold ":''} hover:font-bold transition-all duration-200`}>About Us</Link>
-      <Link to="/contact" className={` ${loc==="/contact"?"font-extrabold":""} hover:font-bold transition-all duration-200`}>Contact Us</Link>
+      <Link to ="/services" onClick={()=>setActiveLink("services")} className={` ${loc==="/services"?"font-bold":''} hover:font-bold ${activeLink==="services"? 'font-bold' :""} transition-all duration-200 `}>Services</Link>
+      <Link to="/about_us" onClick={()=>setActiveLink("about")}  className={`${loc==="/about_us"?"font-bold ":''} hover:font-bold ${activeLink==="about"? 'font-bold' :""} transition-all duration-200`}>About Us</Link>
+      <Link to="/contact" onClick={()=>setActiveLink("contact")} className={` ${loc==="/contact"?"font-bold":""} hover:font-bold ${activeLink==="contact"? 'font-bold' :""} transition-all duration-200`}>Contact Us</Link>
     </ul>
     <div className='hidden md:flex'>
     <p className='border-2   p-2 text-sm rounded-full'>010-2589-6653</p>

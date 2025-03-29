@@ -1,43 +1,32 @@
 import { useState, useEffect } from "react";
 import MapSVG from "./MapSVG.jsx";
 import { GoArrowDownRight } from "react-icons/go";
-import { motion } from "motion/react";
-
-// Create cursor element
-const cursor = document.createElement("div");
-cursor.classList.add("custom-cursor");
-document.body.appendChild(cursor);
-
-// Move cursor with mouse
-document.addEventListener("mousemove", (event) => {
-  cursor.style.left = `${event.clientX}px`;
-  cursor.style.top = `${event.clientY}px`;
-});
+import { motion } from "framer-motion";
 
 function Map() {
   const [showMessage, setShowMessage] = useState(false);
   const [messagePosition, setMessagePosition] = useState({ x: 0, y: 0 });
   const [country, setCountry] = useState("");
 
+  // Map fill colors to country names
+  const countryMap = {
+    "#F24822": "MOROCCO",
+    "#FFC943": "EGYPT",
+    "#42AAF8": "NIGERIA",
+    "#0CF0F0": "MOZAMBIQUE",
+    "#66D575": "GHANA",
+    "#874FFF": "UAE",
+    "#FF9E42": "SAUDI ARABIA",
+    "#BC0202": "OMAN",
+    "#F45DC5": "PAKISTAN",
+  };
+
+  // Handle mouse over on country paths
   const handleMouseOver = (event) => {
     const target = event.target;
-
     if (target.tagName === "path") {
-      // Ensure it's a path
       const fillColor = target.getAttribute("fill");
-      const countryMap = {
-        "#F24822": "MOROCCO",
-        "#FFC943": "EGYPT",
-        "#42AAF8": "NIGERIA",
-        "#0CF0F0": "MOZAMBIQUE",
-        "#66D575": "GHANA",
-        "#874FFF": "UAE",
-        "#FF9E42": "SAUDI ARABIA",
-        "#BC0202": "OMAN",
-        "#F45DC5": "PAKISTAN",
-      };
-
-      if (fillColor in countryMap) {
+      if (countryMap[fillColor]) {
         setCountry(countryMap[fillColor]);
         setShowMessage(true);
       } else {
@@ -47,11 +36,12 @@ function Map() {
     }
   };
 
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      setMessagePosition({ x: event.clientX + 15, y: event.clientY + 15 });
-    };
+  // Update tooltip position
+  const handleMouseMove = (event) => {
+    setMessagePosition({ x: event.clientX + 25, y: event.clientY + 25 });
+  };
 
+  useEffect(() => {
     if (showMessage) {
       window.addEventListener("mousemove", handleMouseMove);
     } else {
@@ -62,14 +52,13 @@ function Map() {
   }, [showMessage]);
 
   return (
-    <>
-      <div className="bg-dark_green gap-8 px-2 md:px-32 py-5 w-full h-full flex flex-col justify-center items-center rounded-3xl relative">
-        
-        <h1 className="text-white pt-10 items-center text-2xl md:text-4xl uppercase font-raleway font-bold">
-          Our presence
-        </h1>
+    <div className="bg-dark_green gap-8 px-2 md:px-10 py-5 w-full h-full flex flex-col justify-center items-center rounded-3xl relative">
+      <h1 className="text-white pt-10 items-center text-2xl md:text-4xl uppercase font-raleway font-bold">
+        Our Presence
+      </h1>
 
-        <div className=" flex flex-col justify-center items-center gap-4">
+      <div className="flex flex-col xl:flex-row relative">
+        <div className="flex flex-col w-2/5 justify-center items-center gap-4">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -77,7 +66,6 @@ function Map() {
             viewport={{ once: true, amount: 0.5 }}
             className="flex flex-col w-3/4 items-center"
           >
-            {/* Content */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -85,21 +73,18 @@ function Map() {
               viewport={{ once: true, amount: 0.5 }}
               className="flex justify-between items-center w-full"
             >
-              <h2 className="md:text-2xl text-lg font-medium font-raleway text-white">
+              <h2 className="md:text-xl text-lg font-medium font-raleway text-white">
                 What services does Conscellence offer?
               </h2>
-              <GoArrowDownRight size={15} className="text-white" />
+              <GoArrowDownRight size={25} className="text-white" />
             </motion.div>
 
-            {/* Animated Bottom Border */}
             <motion.div
-              variants={{
-                hidden: { width: 0 },
-                visible: { width: "100%" },
-              }}
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
               transition={{ duration: 1, ease: "easeInOut" }}
               viewport={{ once: true, amount: 0.5 }}
-              className="h-[1px] bg-white mt-2 origin-left"
+              className="h-[1px] bg-white mt-2"
             />
           </motion.div>
 
@@ -117,27 +102,29 @@ function Map() {
           </motion.p>
         </div>
 
-        <div className="w-full h-full p-10 flex justify-center">
-            <MapSVG onHover={handleMouseOver} />
+        {/* Map Container */}
+        <div className="w-full h-full p-4 flex justify-center">
+          <MapSVG onHover={handleMouseOver} />
         </div>
 
-
+        {/* Tooltip Display */}
         {showMessage && (
           <div
-            className="absolute bg-secondary/95 text-white font-raleway font-medium p-2 rounded-lg opacity-0 transition-opacity duration-500 transform translate-y-2"
+            className="absolute bg-black text-white text-xs md:text-sm font-raleway font-medium p-2 rounded-md md:rounded-lg 
+             transition duration-300 "
             style={{
-              left: messagePosition.x,
-              top: messagePosition.y,
-              opacity: 1,
-              transform: "translateY(0)",
+              left: `${messagePosition.x}px`,
+              top: `${messagePosition.y}px`,
+              transform: "translate(-50%, -50%)",
               pointerEvents: "none",
+              opacity: 1,
             }}
           >
             {country}
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

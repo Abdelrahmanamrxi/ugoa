@@ -76,7 +76,7 @@ const Header = () => {
           <motion.p
           initial={{opacity:0,y:30}}
           animate={{opacity:1,y:0}}
-          duration={{duration:2,ease:"easeOut",delay:1}}
+          duration={{duration:1.8,ease:"easeOut",delay:0.2}}
            className='md:w-1/2 mt-5 text-center font-light text-white font-raleway text-xs w-3/4 md:text-md '>
             Guiding Your Success Journey Through Expertise and Innovation
           </motion.p>

@@ -4,7 +4,7 @@ export default function Map({onHover}){
     
     return(
         <svg
-        className="w-full h-auto min-w-[350px] max-w-[700px] object-cover"
+        className="w-full h-auto sm:min-w-[700px] md:min-w-[800px] max-w-[700px] object-cover"
         onMouseOver={onHover}
         viewBox="0 0 1396 800"
         fill="none"
