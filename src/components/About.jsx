@@ -47,7 +47,7 @@ export default function About(){
             <motion.div 
             className="mt-24 flex flex-col md:gap-16 md:flex-row md:mx-8 mx-4 gap-10 divide-gray-300 divide-y-2 md:divide-y-0 
             md:divide-x-[1px] rounded-2xl shadow-lg  md:shadow-xl shadow-dark_green
-            justify-center items-center px-4 py-16 md:px-8 md:py-16"
+            justify-center items-start px-4 py-16 md:px-8 md:py-16"
             initial={{ boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)" }}
             animate={{
                 boxShadow: [
@@ -80,14 +80,16 @@ export default function About(){
                 whileInView={{opacity:1, x:0}}
                 transition={{duration:0.8, delay:0.2}}
                 viewport={{once:true, amount:0.5}}
-                className="md:w-1/2 flex flex-col gap-4 p-4 md:p-4">
+                className="md:w-1/2 flex flex-col  gap-4 p-4 md:p-4">
                     <div className="flex justify-start gap-2 md:gap-6 items-center">
                         <PiTargetLight  size={64} src={visionIcon} className="w-[40px] text-dark_green md:min-w-[64px]" />
                         <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Mission</h2>
                     </div>
                     <p className="font-raleway font-light xl:text-xl text-justify w-full md:w-3/4">
-                    To lead the transformation of the global recycling industry by providing strategic solutions 
-                    that drive circular economies, sustainability, and operational excellence.
+                     We empower recyclers, brand owners, and governments with expert consultancy, innovative strategies, and supply
+                     chain solutions to optimize recycling operations, enhance sustainability, and achieve long-term profitability.
+                      Through our deep industry expertise,we bridge gaps between stakeholders, enabling seamless integration of 
+                      recycled materials into global markets.
                     </p>
                 </motion.div>
 
