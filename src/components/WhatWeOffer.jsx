@@ -43,7 +43,7 @@ const CheckType=()=>{
           >
             {item.text}
           </motion.p>
-          <hr className="mb-3 mt-5 md:hidden" />
+          <hr className={`mb-3 mt-5 md:hidden ${type==="existing"?"border-t border-black/100":""}`} />
         </div>
       ))}
     </div>

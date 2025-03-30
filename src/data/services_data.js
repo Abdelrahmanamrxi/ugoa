@@ -6,7 +6,12 @@ import operation from '../assets/4.jpeg'
 import background_sales from "../assets/consult.jpg";
 import sale_compilance from '../assets/5.png'
 import reuse from '../assets/reuse_comp.jpg'
-
+import feasibility from '../assets/6.jpg'
+import background_feasibility from '../assets/feas.jpg'
+import tech_design from '../assets/3.jpg'
+import background_tech from '../assets/background_tech.png'
+import waste from '../assets/2.png'
+import waste_background from '../assets/recycle_background.jpg'
 const services_data=[
     {
         id:'1',
@@ -105,6 +110,35 @@ export const service_header=[
         image:sale_compilance,
         background_text:"We deliver an integrated strategy for sales, sustainability, and compliance in recycling, focusing on market demand, optimizing channels, reducing carbon emissions, and ensuring adherence to regulations for financial success and environmental responsibility."
 ,       background:background_sales
+    }
+    ,{
+        id:3,
+        title:"ALL BUSINESS ASPECTS",
+        text:"FINANCIAL & REGULATIONS",
+        background_title:"FEASIBILITY STUDY",
+        background_text:"We specialize in comprehensive feasibility studies for the recycling industry, offering data-driven insights on project viability, financial returns, and sustainability across all stages of the recycling value chain."
+,       image:feasibility,
+        background:background_feasibility
+
+    },{
+        id:4,
+        title:"6 TPH PET PLANT",
+        text:"BOTTLE-2-BOTTLE",
+        background_title:"TECHNICAL DESIGN",
+        background_text:"We offer comprehensive technical support for selecting and customizing recycling machinery, emphasizing capacity, energy efficiency, and operational costs. Our experts integrate advanced sorting technologies to ensure high material purity and optimal performance."
+    ,   image:tech_design,
+        background:background_tech
+
+    },
+    {
+        id:5,
+        title:"RAW MATERIAL",
+        text:"SOURCING WORLDWIDE",
+        background_title:"SOURCING",
+        background_text:"We offer extensive support in sourcing PET waste, ensuring reliable supply chains, evaluating material quality, assessing market dynamics, and securing necessary consumables while promoting sustainability and supplier compliance.",
+        image:waste,
+        background:waste_background
+
     }
 
 ]

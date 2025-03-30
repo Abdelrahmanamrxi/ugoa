@@ -26,7 +26,8 @@ const Services = () => {
             return(
             <motion.div 
             initial={{opacity:0,y:30}}
-            animate={{opacity:1,y:0}}
+            whileInView={{opacity:1,y:0}}
+            viewport={{once:true}}
             transition={{duration:1,ease:"easeInOut",delay:service.id*0.1}}
 
             whileHover={{scale:1.05,transition:{

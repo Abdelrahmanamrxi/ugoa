@@ -1,42 +1,98 @@
-import {useState} from 'react';
+import {useState,useEffect,memo,useMemo,useCallback} from 'react';
 import Navbar from '../components/Navbar';
 import { useLocation } from 'react-router-dom';
-import {motion} from "motion/react";
+import {motion,AnimatePresence} from "motion/react";
 import consult from "../assets/consult.jpg";
 import aboutImg from "../assets/about_header_img.jpg";
 import { service_header } from '../data/services_data';
+import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa"
+import ServiceHeader from './HeaderFiles/ServiceHeader';
 
 const Header = () => {
-  const [service,set_service]=useState(1)
-  const[selected,setSelected]=useState({
-    isSelected:true,
-    image:service_header[0].background,
-    id:1,
-    title:'',
-    text:''
-  })
-  
+  const[IsImagesLoaded,setIsImagesLoaded]=useState(false)
+  const [imageCache,setImageCache]=useState({})
   const location=useLocation()
-  function backgroundCheck(){
-    if(location.pathname==="/contact"){
-      return "bg-gradient-primary"
+  const [selectedService, setSelectedService] = useState({
+    isSelected: true,
+    image: service_header[0].background,
+    id: 1,
+    title: service_header[0].background_title,
+    text: service_header[0].background_text
+  });
+  const preloadAllImages = useCallback(async (image_array) => {
+    try {
+      setIsImagesLoaded(false);
+      const cache = {};
+      
+      await Promise.all(image_array.map(service => 
+        new Promise(resolve => {
+          if (imageCache[service.id]) {
+            resolve();
+            return;
+          }
+         
+          const img = new Image();
+          img.src = service.background;
+          
+          img.onload = () => {
+            cache[service.id] = img.src;
+            resolve();
+          };
+          
+          img.onerror = () => {
+            console.warn(`Failed to load image: ${service.background}`);
+            resolve();
+          };
+        })
+      ));
+  
+      setImageCache(prev => {
+        const newCache = { ...prev, ...cache };
+        return Object.keys(cache).length > 0 ? newCache : prev;
+      });
+      
+      setIsImagesLoaded(true);
+    } catch(err) {
+      console.error("Image preloading failed:", err);
+      setIsImagesLoaded(false);
     }
-    if(location.pathname==="/services"){
-      return ""
-    }
-    if(location.pathname==="/about_us"){
-      return ""
-    }
+  }, [imageCache]);
+  
+  useEffect(() => {
+    let isMounted = true;
     
-  }
-  function backgroundImageCheck(){
-    if(location.pathname==="/services"){
-      return `url(${selected.image})`
+    if (location.pathname === "/services" && isMounted) {
+      preloadAllImages(service_header);
     }
-    if(location.pathname === "/about_us"){
-      return `url(${aboutImg})`;
+  
+    return () => {
+      isMounted = false;
+    };
+  }, [location.pathname, preloadAllImages]);
+  
+  
+ 
+  
+  const backgroundCheck =useMemo(()=>{
+    switch(location.pathname){
+      case "/contact":
+        return "bg-gradient-primary"
+      case "/services":
+        return ""
+      case "/about_us":
+        return ""
     }
-  }
+  },[location.pathname])
+ 
+  
+  const backgroundImageCheck=useMemo(()=>{
+     switch(location.pathname){
+      case "/about_us":
+        return `url(${aboutImg})`
+      case "/services":
+        return `url(${imageCache[selectedService.id]})`
+     }
+  },[location.pathname,imageCache,selectedService.id])
   function renderContent(){
     if(location.pathname==="/contact"){
       return(
@@ -62,9 +118,9 @@ const Header = () => {
     }
     if(location.pathname==="/about_us"){
       return(
-      <div>
+      <div className='h-full flex flex-col justify-center items-center'>
         <motion.div
-        className='mt-16  flex flex-col justify-center items-center'
+        className='w-full'
         initial={{opacity:0,y:20}}
         animate={{opacity:1,y:-40}}
         transition={{duration:1.2 ,ease:"easeInOut"}}>
@@ -72,12 +128,12 @@ const Header = () => {
           initial={{opacity:0,y:20}}
           animate={{opacity:1,y:0}}
           transition={{duration:1.8,ease:"easeOut",delay:0.2}}
-          className="font-raleway font-bold text-white md:text-4xl text-2xl">About Us</motion.h2>
+          className="font-raleway font-bold text-white text-center md:text-4xl text-2xl">About Us</motion.h2>
           <motion.p
           initial={{opacity:0,y:30}}
           animate={{opacity:1,y:0}}
           duration={{duration:2,ease:"easeOut",delay:1}}
-           className='md:w-1/2 mt-5 text-center font-light text-white font-raleway text-xs w-3/4 md:text-md '>
+           className='w-full mt-5 text-center font-light text-white font-raleway text-xs  md:text-md '>
             Guiding Your Success Journey Through Expertise and Innovation
           </motion.p>
         </motion.div>
@@ -85,80 +141,75 @@ const Header = () => {
       )
     }
     if(location.pathname==="/services"){
-      return(   
-        <div className="relative flex justify-end mr-12 items-center  md:h-screen">
-      {/* Background Image */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center backdrop-blur-lg  transition-all duration-500"
-        style={{
-          backgroundImage: selected.id !== null ? `url(${service_header.image})` : "none",
-          opacity: selected.id !== null ? 1 : 0.5,
-          zIndex:-1
-        }}
-      />
-    
+      
+      return (
+        <div>
+       <ServiceHeader imageCache={imageCache} IsImagesLoaded={IsImagesLoaded} OnSelectChange={setSelectedService}/>
+        </div>
 
-      {/* Card Container */}
-      <div className="relative flex gap-6">
-        {service_header.map((card) => (
-          <motion.div
-            
-            key={card.id}
-            onClick={() => setSelected({isSelected:true,image:card.background,id:card.id,title:card.background_title,text:card.background_text})}
-            className="relative w-48 h-52  min-h-32 bg-white rounded-lg shadow-lg cursor-pointer overflow-hidden"
-            initial={{ scale: 1 }}
-            animate={{
-              scale: selected.id === card.id ? 1.1 : 1,
-              y: selected.id === card.id ? -20 : 0,
-              height: selected.id === card.id ? "20rem" : "16rem",
-              zIndex: selected.id === card.id ? 10 : 1,
-            }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Card Background Image */}
-            <motion.div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${card.image})` }}
-              
-              
-            />
-
-            {/* Card Content */}
-            <motion.div
-              className="absolute bottom-0 w-full p-4 text-white "
-            >
-              <h3 className="text-xl font-bold">{card.title}</h3>
-              <p className="text-sm">{card.text}</p>
-            </motion.div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
    
+
       )
     }
   
   }
+  const SmoothBackground = ({ image, prevImage, blur }) => (
+    <div className="absolute inset-0 w-full h-full">
+      {/* Permanent fallback */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url(${prevImage})`,
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+          filter: blur ? "blur(4px)" : "none"
+        }}
+      />
+      
+      {/* Animated foreground */}
+      <motion.div
+        key={image}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url(${image})`,
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+          filter: blur ? "blur(4px)" : "none"
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      />
+    </div>
+  );
+  
   return (
     
-    <div className="relative w-full">
-    {/* Blurred Background Image */}
-    <div
-    
-      className={`${backgroundCheck()} absolute inset-0 w-full h-full  bg-cover bg-center`}
-      style={{
-        backgroundImage: backgroundImageCheck(),
-        filter:location.pathname==="/services"? "blur(4px)":'', // This blurs ONLY the background
-      }}
-    ></div>
+    <div className="relative w-full">   
+{location.pathname === "/services" && IsImagesLoaded ? (
+   <SmoothBackground 
+   image={imageCache[selectedService.id]} 
+   prevImage={service_header[0].background}
+   blur
+ />
+):(<p>Loading..</p>)}
+      {/**UNDER IS THE HEADER OF THE OTHER PAGES */}
+        {location.pathname!="/services"?<motion.div
+          key="background-image"
+        className={`${backgroundCheck} absolute transition-all duration-300 inset-0 w-full h-full lg:h-[52vh] bg-cover bg-center`}
+        style={{
+          backgroundImage: backgroundImageCheck,
+          filter: location.pathname === "/services" ? "blur(4px)" : "",
+        }}/>:''}
   
-    {/* Content Container (Not Blurred) */}
     <div className="text-white z-10  ">
       <Navbar loc={location.pathname} />
       <div className={`${location.pathname==="/services"?"h-screen":'h-[24vh] md:h-[40vh]'}`}>
       {renderContent()}
       </div>
-    </div>
+      </div>
+  
+    
   </div>
   
     
