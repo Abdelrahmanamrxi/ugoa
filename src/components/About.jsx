@@ -28,7 +28,7 @@ export default function About(){
                 transition={{duration:2,ease:"easeOut",delay:1}} />
                  
                 <motion.p 
-                className="sm:w-1/2 font-raleway text-sm text-justify"
+                className="sm:w-1/2 font-raleway text-sm xl:text-xl text-justify"
                 initial={{opacity:0,x:30}}
                 animate={{opacity:1,x:0}}
                 transition={{duration:1,ease:"easeOut",delay:1}}>
@@ -68,7 +68,7 @@ export default function About(){
                         <img src={visionIcon} className="w-[40px] md:min-w-[64px]" />
                         <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Vision</h2>
                     </div>
-                    <p className="font-raleway font-light text-justify w-full md:w-3/4">
+                    <p className="font-raleway font-light text-justify xl:text-xl w-full md:w-3/4">
                     To lead the transformation of the global recycling industry by providing strategic solutions 
                     that drive circular economies, sustainability, and operational excellence.
                     </p>
@@ -85,7 +85,7 @@ export default function About(){
                         <PiTargetLight  size={64} src={visionIcon} className="w-[40px] text-dark_green md:min-w-[64px]" />
                         <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Mission</h2>
                     </div>
-                    <p className="font-raleway font-light text-justify w-3/4">
+                    <p className="font-raleway font-light xl:text-xl text-justify w-3/4">
                     To lead the transformation of the global recycling industry by providing strategic solutions 
                     that drive circular economies, sustainability, and operational excellence.
                     </p>
@@ -108,7 +108,7 @@ export default function About(){
                     <GoArrowDownRight size={30} className=" text-dark_green " />
                 </motion.div>
 
-                <ul className="flex flex-col  gap-6 text-white font-raleway">
+                <ul className="flex flex-col gap-6 text-white font-raleway">
                     {whoWeAre.map((data) => {
                         return (
                             <motion.li
@@ -119,11 +119,11 @@ export default function About(){
                             key={data.id}
                             className={`flex relative items-center px-8 py-4 md:px-14 md:py-8 text-justify
                                 ${data.role ? 'bg-dark_green' : "bg-primary"}
-                                ${data.border} w-full h-60`}
+                                ${data.border} w-full h-64`}
                             >
-                            <span className="font-semibold text-sm sm:text-lg md:text-xl">
+                            <span className="font-semibold text-sm sm:text-lg md:text-xl xl:text-2xl">
                                 {data.title}
-                                <p className={`${data.role ? 'font-bold' : 'font-light'} text-xs sm:text-sm md:text-lg`}>
+                                <p className={`${data.role ? 'font-bold' : 'font-light'} text-xs sm:text-sm md:text-lg xl:text-2xl`}>
                                 {data.content}
                                 </p>
                             </span>
@@ -192,7 +192,7 @@ export default function About(){
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
                     className="font-raleway flex justify-center items-center flex-col gap-6 text-justify
-                                font-light text-lg">
+                                font-light text-lg xl:text-xl">
 
                     <motion.p
                     variants={{
@@ -273,7 +273,7 @@ export default function About(){
             whileInView={{opacity:1, scale:1}}
             transition={{duration:0.8, ease:"easeOut"}}
             viewport={{once:true, amount:0.5}}
-            className="px-4 md:px-20 mt-24">
+            className="px-4 md:px-10 mt-24">
                 <Map />
             </motion.div>
             
