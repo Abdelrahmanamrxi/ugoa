@@ -1,5 +1,5 @@
 import React from "react";
-import vLogo from "../assets/vertical.png";
+import vLogo from "../assets/Vertical.png";
 import {motion} from "motion/react";
 import { GoArrowDownRight } from "react-icons/go";
 import visionIcon from "../assets/vision_icon.svg";
