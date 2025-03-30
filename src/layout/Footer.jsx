@@ -1,10 +1,12 @@
 import React, { memo, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
-import { IoMail, IoMailOutline, IoArrowDownSharp } from "react-icons/io5";
+import { IoMail } from "react-icons/io5";
 import { MdArrowUpward } from "react-icons/md";
-import { IoLocationSharp } from "react-icons/io5";
 import whiteLogo from "../assets/Vertical_White_Comp_2.png";
+import locationIcon from "../assets/locationIcon.svg";
+import { GoArrowDownRight } from "react-icons/go";
+import { IoMdMail } from "react-icons/io";
 
 function Footer() {
   const [email, setEmail] = useState("");
@@ -65,7 +67,7 @@ ${email}`,
         sm:justify-start sm:items-start sm:px-4 sm:py-6">
 
         <div className="flex w-full gap-3 items-center">
-          <IoArrowDownSharp size={25} className="text-white -rotate-45" />
+          <GoArrowDownRight size={25} className="text-white" />
           <h3 className="uppercase w-full text-white font-semibold text-lg sm:text-xl lg:text-2xl xl:text-3xl">
             Contact Us Today
           </h3>
@@ -99,7 +101,7 @@ ${email}`,
         {/* Email Input & Button */}
         <form onSubmit={sendEmail} className="flex items-center gap-3 py-4 w-full">
           <div className="bg-white flex items-center rounded-full px-4 py-2 gap-2 w-[250px] h-10">
-            <IoMailOutline size={18} className="text-gray-500" />
+            <IoMdMail size={18} className="text-gray-500" />
             <input
               type="email"
               className="bg-transparent w-full outline-none font-medium placeholder-gray-400 text-xs"
@@ -123,17 +125,17 @@ ${email}`,
         {/* Contact Details */}
         <div className="flex flex-col gap-4">
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><FaPhoneAlt size={20} /></div>
+            <div className="footerIcon"><FaPhoneAlt size={15} /></div>
             <p className="text-white text-sm xl:text-lg font-light">+971545423530</p>
           </div>
 
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><IoMail size={20} /></div>
+            <div className="footerIcon"><IoMail size={15} /></div>
             <p className="text-white text-sm xl:text-lg font-light">ahmed_elmizayen@ugoa.me</p>
           </div>
 
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><IoLocationSharp size={20} /></div>
+            <div className="footerIcon"><img src={locationIcon} className="w-3 h-3" alt="" /></div>
             <p className="text-white text-sm xl:text-lg font-light">
               Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>
