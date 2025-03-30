@@ -172,7 +172,7 @@ export default function About(){
                 viewport={{once:true, amount:0.5}}
                 className="flex items-center gap-4">
 
-                    <h1 className="font-raleway text-2xl md:text-4xl font-bold text-dark_green">Who we do</h1>
+                    <h1 className="font-raleway text-2xl md:text-4xl font-bold text-dark_green uppercase">What we do</h1>
                     <GoArrowDownRight size={30} className=" text-dark_green " />
 
                 </motion.div>
