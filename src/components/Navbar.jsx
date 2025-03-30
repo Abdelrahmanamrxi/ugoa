@@ -26,7 +26,7 @@ const Navbar = ({loc}) => {
       animate={{ x: "0%" }}
       exit={{ x: "100%" }} // Add exit animation
       transition={{ duration: 0.3, ease: "easeIn" }} // Smooth opening & closing
-      className="fixed top-0 right-0 transform w-2/3 h-full sm:flex-row-reverse sm:justify-center sm:items-center bg-primary z-50 flex flex-col transition-transform ease-in-out duration-800 overflow-y-auto"
+      className="fixed top-0 right-0 transform w-2/3 h-full sm:flex-row-reverse sm:justify-center sm:items-center bg-dark_navy/40 backdrop-blur-md z-50 flex flex-col transition-transform ease-in-out duration-800 overflow-y-auto"
     >
       {/* Fixed Close Button */}
       <motion.div 
