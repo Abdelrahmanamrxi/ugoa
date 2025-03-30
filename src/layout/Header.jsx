@@ -74,12 +74,15 @@ const Header = () => {
   
   const backgroundCheck =useMemo(()=>{
     switch(location.pathname){
+      case "/":
+        return "bg-black"
       case "/contact":
         return "bg-gradient-primary"
       case "/services":
         return ""
       case "/about_us":
         return ""
+      
     }
   },[location.pathname])
  

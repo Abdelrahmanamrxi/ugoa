@@ -76,12 +76,12 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
         interval=setInterval(()=>{
             nextCard()
 
-        },4000)
+        },5000)
         }
         if(auto_switch && service_index+1===service_header.length){
            interval=setInterval(()=>{
             set_service(0)
-           },4000)
+           },5000)
         }
         return ()=>clearInterval(interval)
     },[auto_switch,service_index])
@@ -102,7 +102,8 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
 
 
    return (
-         <div className='flex flex-row items-center   justify-between xl:m-8 lg:m-4'>
+         <div 
+         className='flex flex-row items-center   justify-between xl:m-8 lg:m-4'>
   
    <div className="relative hidden z-10 xl:w-1/4 lg:w-1/3    lg:ml-8 lg:flex flex-col gap-6 text-white max-w-lg">
    
