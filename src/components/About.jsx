@@ -63,7 +63,7 @@ export default function About(){
                 whileInView={{opacity:1, x:0}}
                 transition={{duration:0.8, delay:0.2}}
                 viewport={{once:true, amount:0.5}}
-                className="md:w-1/2 flex flex-col gap-4 md:gap-8 md:p-6">
+                className="md:w-1/2 flex flex-col gap-4 p-4 md:p-4">
                     <div className="flex justify-start gap-2 md:gap-6 items-center">
                         <img src={visionIcon} className="w-[40px] md:min-w-[64px]" />
                         <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Vision</h2>
@@ -80,12 +80,12 @@ export default function About(){
                 whileInView={{opacity:1, x:0}}
                 transition={{duration:0.8, delay:0.2}}
                 viewport={{once:true, amount:0.5}}
-                className="md:w-1/2 flex flex-col gap-8 md:p-6 ">
+                className="md:w-1/2 flex flex-col gap-4 p-4 md:p-4">
                     <div className="flex justify-start gap-2 md:gap-6 items-center">
                         <PiTargetLight  size={64} src={visionIcon} className="w-[40px] text-dark_green md:min-w-[64px]" />
                         <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">Mission</h2>
                     </div>
-                    <p className="font-raleway font-light xl:text-xl text-justify w-3/4">
+                    <p className="font-raleway font-light xl:text-xl text-justify w-full md:w-3/4">
                     To lead the transformation of the global recycling industry by providing strategic solutions 
                     that drive circular economies, sustainability, and operational excellence.
                     </p>
