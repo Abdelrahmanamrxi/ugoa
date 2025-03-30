@@ -1,9 +1,9 @@
-import {useState,useRef} from 'react'
+import {useState} from 'react'
 import { GoArrowDownRight } from "react-icons/go";
 import services_data from '../data/services_data';
 import { FaArrowRight } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
-import {motion,useScroll,useTransform} from "motion/react"
+import {motion} from "motion/react"
 import WhatWeOffer from './WhatWeOffer';
 import { new_projects,old_projects } from '../data/services_data';
 

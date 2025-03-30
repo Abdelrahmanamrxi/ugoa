@@ -1,8 +1,7 @@
-import {useState,useEffect,memo,useMemo,useCallback} from 'react';
+import {useState,useEffect,useMemo,useCallback} from 'react';
 import Navbar from '../components/Navbar';
 import { useLocation } from 'react-router-dom';
 import {motion,AnimatePresence} from "motion/react";
-import consult from "../assets/consult.jpg";
 import aboutImg from "../assets/about_header_img.jpg";
 import { service_header } from '../data/services_data';
 import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa"

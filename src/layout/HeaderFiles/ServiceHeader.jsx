@@ -1,5 +1,4 @@
 import {useState,useEffect} from 'react';
-import Navbar from '../../components/Navbar';
 import { useLocation } from 'react-router-dom';
 import {motion,AnimatePresence} from "motion/react";
 import { service_header } from '../../data/services_data';
