@@ -3,7 +3,7 @@ import emailjs from "@emailjs/browser";
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { IoMail, IoMailOutline, IoArrowDownSharp } from "react-icons/io5";
 import { MdArrowUpward } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
+import { IoLocationSharp } from "react-icons/io5";
 import whiteLogo from "../assets/Vertical_White_Comp_2.png";
 
 function Footer() {
@@ -47,8 +47,8 @@ ${email}`,
 
   return (
     <footer className="w-full font-raleway mt-24 grid grid-cols-1 divide-y items-start justify-center gap-4 bg-secondary px-4 py-2
-      xl:grid-cols-3 xl:gap-12 xl:px-12 xl:py-10 xl:divide-x xl:divide-y-0
-      lg:grid-cols-3 lg:gap-10 lg:px-10 lg:py-8 lg:divide-x lg:divide-y-0
+      xl:gap-12 xl:px-12 xl:py-10
+       lg:gap-10 lg:px-10 lg:py-8 
       md:grid-cols-3 md:gap-8 md:px-8 md:py-6 md:divide-x md:divide-y-0
       sm:grid-cols-1 sm:gap-6 sm:px-6 sm:py-4 sm:divide-y">
       
@@ -59,20 +59,20 @@ ${email}`,
 
       {/* === SECTION 2: CONTACT INFO === */}
       <div className="w-full h-full flex flex-col justify-center gap-2 px-2 py-3
-        xl:justify-start xl:gap-8 xl:items-start xl:px-10 xl:py-9
-        lg:justify-start lg:gap-8 lg:items-start lg:px-8 lg:py-9
-        md:justify-start md:gap-6 md:items-start md:px-6 md:py-9
+        xl:gap-8 xl:px-10
+        lg:justify-start lg:gap-8 lg:px-8 lg:py-9
+         md:gap-6 md:px-6 md:py-9
         sm:justify-start sm:items-start sm:px-4 sm:py-6">
 
         <div className="flex w-full gap-3 items-center">
           <IoArrowDownSharp size={25} className="text-white -rotate-45" />
-          <h3 className="uppercase w-full text-white font-semibold text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl">
+          <h3 className="uppercase w-full text-white font-semibold text-lg sm:text-xl lg:text-2xl xl:text-3xl">
             Contact Us Today
           </h3>
         </div>
 
         <div className="flex flex-col gap-2 xl:gap-10 lg:gap-8 md:gap-6 sm:gap-4">
-          <p className="text-white text-sm font-light w-3/4 sm:text-md md:text-md lg:text-lg xl:text-xl">
+          <p className="text-white text-sm font-light w-3/4 sm:text-md lg:text-lg xl:text-2xl">
             Contact us today to schedule a consultation and discover how we can help your business thrive.
           </p>
 
@@ -87,9 +87,9 @@ ${email}`,
 
       {/* === SECTION 3: CONSULTATION & CONTACT DETAILS === */}
       <div className="w-full h-full flex flex-col gap-2 px-2 py-3
-        xl:justify-start xl:gap-8 xl:items-start xl:px-10 xl:py-9
-        lg:justify-start lg:gap-8 lg:items-start lg:px-8 lg:py-9
-        md:justify-start md:gap-6 md:items-start md:px-6 md:py-9
+        xl:px-10
+        lg:gap-8 lg:px-8 
+        md:gap-6 md:px-6 md:py-9
         sm:justify-start sm:items-start sm:px-4 sm:py-6">
 
         <h2 className="uppercase w-full text-white font-semibold text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl">
@@ -123,18 +123,18 @@ ${email}`,
         {/* Contact Details */}
         <div className="flex flex-col gap-4">
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><FaPhoneAlt size={15} /></div>
-            <p className="text-white text-sm font-light">+971545423530</p>
+            <div className="footerIcon"><FaPhoneAlt size={20} /></div>
+            <p className="text-white text-sm xl:text-lg font-light">+971545423530</p>
           </div>
 
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><IoMail size={15} /></div>
-            <p className="text-white text-sm font-light">ahmed_elmizayen@ugoa.me</p>
+            <div className="footerIcon"><IoMail size={20} /></div>
+            <p className="text-white text-sm xl:text-lg font-light">ahmed_elmizayen@ugoa.me</p>
           </div>
 
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><FaLocationDot size={15} /></div>
-            <p className="text-white text-sm font-light">
+            <div className="footerIcon"><IoLocationSharp size={20} /></div>
+            <p className="text-white text-sm xl:text-lg font-light">
               Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>
           </div>

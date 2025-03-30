@@ -10,7 +10,7 @@ export default function TeamCard({ name, role, image, email, linkedin }) {
         <div 
             onMouseEnter={() => setVisible(true)}  // Show icons on hover
             onMouseLeave={() => setVisible(false)} // Hide icons when not hovering
-            className="flex relative team gap-8 w-[300px] h-[350px] md:w-[410px] md:h-[400px] flex-col shadow-lg
+            className="flex relative team gap-8 w-[300px] h-[350px] md:w-[410px] md:h-[400px] xl:w-[510px] xl:h-[500px] flex-col shadow-lg
                        justify-between items-center rounded-2xl transition-all duration-500"
         >
             {/* Profile Image */}
@@ -18,8 +18,8 @@ export default function TeamCard({ name, role, image, email, linkedin }) {
 
             {/* Name & Role */}
             <div className="flex absolute flex-col bottom-6 py-4 justify-center items-center">
-                <h3 className="text-notBlack font-bold font-raleway text-lg md:text-xl">{name}</h3>
-                <h4 className="text-gray-500 font-raleway font-light text-sm md:text-base">{role}</h4>
+                <h3 className="text-notBlack font-bold font-raleway text-lg md:text-xl xl:text-2xl">{name}</h3>
+                <h4 className="text-gray-500 font-raleway font-light text-sm md:text-base xl:text-xl">{role}</h4>
             </div>
 
             {/* Social Icons - Only Show When Hovering on the Card */}

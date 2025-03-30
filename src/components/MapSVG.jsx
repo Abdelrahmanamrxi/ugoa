@@ -4,12 +4,15 @@ export default function Map({onHover}){
     
     return(
         <svg
-        className="w-full h-auto sm:min-w-[700px] md:min-w-[800px] max-w-[700px] object-cover"
+        className="w-full h-auto sm:w-[95vw] md:w-[90vw] lg:w-[85vw] max-w-full"
         onMouseOver={onHover}
-        viewBox="0 0 1396 800"
+        viewBox="0 0 1400 800"  // Try adjusting these numbers
+        preserveAspectRatio="xMidYMid meet"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         >
+
+
         <g filter="url(#filter0_dddd_328_2670)">
         <path d="M694.791 384.391H688.614L685.525 378.871L688.614 373.352H694.791L697.791 378.871L694.791 384.391Z" fill="white"/>
         <path d="M683.231 391.384H677.142L674.054 385.772L677.142 380.252H683.231L686.319 385.772L683.231 391.384Z" fill="white"/>

@@ -52,13 +52,14 @@ function Map() {
   }, [showMessage]);
 
   return (
-    <div className="bg-dark_green gap-8 px-2 md:px-10 py-5 w-full h-full flex flex-col justify-center items-center rounded-3xl relative">
-      <h1 className="text-white pt-10 items-center text-2xl md:text-4xl uppercase font-raleway font-bold">
+    <div className="bg-dark_green gap-8 px-2 md:px-10 py-5 w-full h-full flex flex-col justify-center lg:justify-start items-center lg:items-start rounded-xl md:rounded-3xl relative">
+      <h1 className="text-white pt-10 lg:ml-10 xl:ml-14 text-2xl md:text-4xl xl:text-5xl uppercase font-raleway font-bold">
         Our Presence
       </h1>
+      
 
-      <div className="flex flex-col xl:flex-row relative">
-        <div className="flex flex-col w-2/5 justify-center items-center gap-4">
+      <div className="flex flex-col justify-center itemes-center py-6 gap-6 lg:flex-row relative">
+        <div className="flex flex-col w-full lg:w-2/5 justify-center items-center gap-4">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -73,7 +74,7 @@ function Map() {
               viewport={{ once: true, amount: 0.5 }}
               className="flex justify-between items-center w-full"
             >
-              <h2 className="md:text-xl text-lg font-medium font-raleway text-white">
+              <h2 className="md:text-xl xl:text-3xl text-lg font-medium font-raleway text-white">
                 What services does Conscellence offer?
               </h2>
               <GoArrowDownRight size={25} className="text-white" />
@@ -84,7 +85,7 @@ function Map() {
               whileInView={{ width: "100%" }}
               transition={{ duration: 1, ease: "easeInOut" }}
               viewport={{ once: true, amount: 0.5 }}
-              className="h-[1px] bg-white mt-2"
+              className="h-[1px] xl:h-[2px] bg-white mt-2"
             />
           </motion.div>
 
@@ -93,7 +94,7 @@ function Map() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-justify font-raleway md:text-base font-light w-3/4 text-sm"
+            className="text-white text-justify font-raleway md:text-base font-light w-3/4 text-sm xl:text-2xl"
           >
             We offer a range of services including Customized Strategy
             Development, Operational Efficiency Optimization, Market Analysis
@@ -103,14 +104,14 @@ function Map() {
         </div>
 
         {/* Map Container */}
-        <div className="w-full h-full p-4 flex justify-center">
+        <div className="w-full h-full p-1 flex justify-center items-center">
           <MapSVG onHover={handleMouseOver} />
         </div>
 
         {/* Tooltip Display */}
         {showMessage && (
           <div
-            className="absolute bg-black text-white text-xs md:text-sm font-raleway font-medium p-2 rounded-md md:rounded-lg 
+            className="absolute bg-black text-white text-xs md:text-sm lg:text-base xl:text-lg font-raleway font-medium p-2 rounded-md md:rounded-lg 
              transition duration-300 "
             style={{
               left: `${messagePosition.x}px`,
