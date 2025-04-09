@@ -19,7 +19,7 @@ const Services = () => {
    
   return (
     <div className='relative overflow-hidden'>
-        <div className='m-8'>
+    <div className='m-8'>
     <h1 className=' uppercase font-raleway w-1/12 mb-8 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-3xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
     <div className="md:grid md:grid-cols-2 md:grid-rows-2 flex flex-col gap-6">
         {services_data.map((service)=>{

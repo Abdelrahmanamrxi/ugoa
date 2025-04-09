@@ -193,8 +193,8 @@ const Header = () => {
    image={imageCache[selectedService.id]} 
    prevImage={service_header[0].background}
    blur
- />
-):(<p>Loading..</p>)}
+ /> // fixing this later to adjust loading all pages
+):''}
       {/**UNDER IS THE HEADER OF THE OTHER PAGES */}
         {location.pathname!="/services"?<motion.div
           key="background-image"
