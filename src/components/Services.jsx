@@ -1,30 +1,42 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import { GoArrowDownRight } from "react-icons/go";
 import services_data from '../data/services_data';
 import { FaArrowRight } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
-import {motion} from "motion/react"
+import {AnimatePresence, motion} from "motion/react"
 import WhatWeOffer from './WhatWeOffer';
 import { new_projects,old_projects } from '../data/services_data';
 
 
 const Services = () => {
-    
+  
     const[service,set_service]=useState({
         id:null,
         title:"",
         icon:"",
         read_more:""
     })
+    useEffect(() => {
+      if (service.id) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+    
+      return () => {
+        document.body.style.overflow = 'auto';
+      };
+    }, [service]);
    
   return (
     <div className='relative overflow-hidden'>
-    <div className='m-8'>
-    <h1 className=' uppercase font-raleway w-1/12 mb-8 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-3xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
-    <div className="md:grid md:grid-cols-2 md:grid-rows-2 flex flex-col gap-6">
+    <div className='md:m-8'>
+    <h1 className=' uppercase font-raleway w-1/12 m-5 mb-8 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-3xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
+    <div className="md:grid md:grid-cols-2 md:grid-rows-2 m-5 flex flex-col gap-6">
         {services_data.map((service)=>{
             return(
             <motion.div 
+            onClick={()=>{set_service({ id:service.id,title:service.title,icon:service.icon,read_more:service.read_more})}}
             initial={{opacity:0,y:30}}
             whileInView={{opacity:1,y:0}}
             viewport={{once:true}}
@@ -54,14 +66,15 @@ const Services = () => {
         })}
         
         </div>
+        <AnimatePresence>
       {service.id&&<motion.div 
          initial={{ opacity: 0, scale: 0.8 }} 
          animate={{ opacity: 1, scale: 1 }} 
          exit={{ opacity: 0, scale: 0}} 
-         transition={{ duration: 0.5, ease: "easeInOut" }}
-      
+         transition={{ duration: 0.3, ease: "easeInOut" }}
             className='fixed inset-0 z-50 
             flex items-center justify-center transition-all backdrop-blur-sm h-full '>
+
             <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>
             <div className='flex flex-row justify-between items-center gap-3'>
             <div className='flex flex-row gap-4 items-center'>
@@ -77,6 +90,7 @@ const Services = () => {
             </div>
             </motion.div>
   }
+  </AnimatePresence>
 <div className="m-8 grid grid-cols-1 justify-center items-center">
     {/**WHAT WE OFFER TO NEW PROJECTS */}
     <WhatWeOffer projects={new_projects} type="new"/>

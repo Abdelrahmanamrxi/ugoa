@@ -76,7 +76,7 @@ const Navbar = ({loc}) => {
       <Link to="/contact" onClick={()=>setActiveLink("contact")} className={` ${loc==="/contact"?"font-bold":""} hover:font-bold ${activeLink==="contact"? 'font-bold' :""} transition-all duration-200`}>Contact Us</Link>
     </ul>
     <div className='hidden md:flex'>
-    <p className='border-2 bg-red-200  p-2 text-sm rounded-full'>010-2589-6653</p>
+    <p className='border-2 p-2 text-sm rounded-full'>010-2589-6653</p>
     </div>
     </nav>
   )
