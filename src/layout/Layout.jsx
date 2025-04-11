@@ -111,7 +111,7 @@ const Layout = () => {
   <Header setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} setSelectedService={setSelectedService}/>
     <Outlet/>
 
-    <motion.a href='#header' className='fixed z-40 bottom-3 right-4 md:bottom-6 md:right-6 shadow-md rounded-full shadow-black/40'
+    <motion.a href='#header' className='fixed z-40 bottom-5 right-5 md:bottom-6 md:right-6 shadow-md rounded-full shadow-black/40'
     initial={{y:0}}
     animate={{y:-5}}
     transition={{repeat: Infinity, repeatType: "reverse", 
