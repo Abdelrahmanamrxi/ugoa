@@ -13,12 +13,13 @@ const Layout = () => {
     title: service_header[0].background_title,
     text: service_header[0].background_text
   });
+  const location=useLocation()
    const[IsImagesLoadedHeader,setIsImagesLoadedHeader]=useState({
-      loading:true,
+      loading:location.pathname==="/"? false:true,
       loc:""
     })
     const[IsImagesLoadedFooter,setIsImagesLoadedFooter]=useState(false)
-    const location=useLocation()
+  
     const preloadAllImagesHeader = useCallback(async (input,name) => {
       try {
         setIsImagesLoadedHeader({loading:true , loc:location.pathname});
@@ -103,7 +104,7 @@ const Layout = () => {
   
   return(
     <>
-  {IsImagesLoadedHeader.loading===false?
+  {IsImagesLoadedHeader.loading===false ?
   <>
   <Header setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} setSelectedService={setSelectedService}/>
     <Outlet/>
