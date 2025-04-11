@@ -47,7 +47,7 @@ const Services = () => {
                 ease:"easeInOut"
             }}}
             key={service.id} className="shadow-md cursor-pointer  flex flex-row">
-  <img alt={service.title} loading='lazy' className='bg-dark_green w-1/4 lg:w-1/5  object-contain md:h-full p-5 rounded-tl-lg rounded-bl-lg' src={service.icon}/>
+  <img alt={service.title}  className='bg-dark_green w-1/4 lg:w-1/5  object-contain md:h-full p-5 rounded-tl-lg rounded-bl-lg' src={service.icon}/>
     <div className="flex flex-col relative justify-between font-raleway gap-2 m-3">
       <h2 className="text-dark_green text-xl font-semibold">{service.title}</h2>
       <ul className="text-gray-500 tracking-wide  leading-relaxed text-xs md:text-sm">
@@ -78,7 +78,7 @@ const Services = () => {
             <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>
             <div className='flex flex-row justify-between items-center gap-3'>
             <div className='flex flex-row gap-4 items-center'>
-            <img loading='lazy' src={service.icon} className='md:w-24 w-12'/>
+            <img  src={service.icon} className='md:w-24 w-12'/>
             <h2 className='text-white font-semibold text-sm md:text-2xl '>{service.title}</h2>
             </div>
         
