@@ -19,7 +19,6 @@ const Layout = () => {
       loading:location.pathname==="/" || location.pathname==="/contact"? false:true,
       loc:""
     })
-    const[IsImagesLoadedFooter,setIsImagesLoadedFooter]=useState(false)
   
     const preloadAllImagesHeader = useCallback(async (input,name) => {
       try {
@@ -109,7 +108,7 @@ const Layout = () => {
   <>
   <Header setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} setSelectedService={setSelectedService}/>
     <Outlet/>
-    <Footer IsImagesLoaded={IsImagesLoadedFooter} setIsImagesLoaded={setIsImagesLoadedHeader}/>
+    <Footer />
     </>
     
     :<p>Loading..</p>}

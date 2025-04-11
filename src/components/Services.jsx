@@ -70,7 +70,7 @@ const Services = () => {
          key={service.id}
          initial={{ opacity: 0}} 
          animate={{ opacity: 1} }
-         exit={{ opacity: 0,x:"100%" }} 
+         exit={{ opacity: 0,x:"10%" }} 
          transition={{ duration: 0.3, ease: "easeInOut" }}
             className='fixed inset-0 z-50 
             flex items-center justify-center transition-all backdrop-blur-sm h-full '>
@@ -82,7 +82,9 @@ const Services = () => {
             <h2 className='text-white font-semibold text-sm md:text-2xl '>{service.title}</h2>
             </div>
         
-            <p onClick={()=>{set_service({})}} className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
+            <p onClick={()=>{setTimeout(()=>{
+              set_service({})
+            },300)}} className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
            
             </div>
             <p className='text-white text-md md:text-lg leading-relaxed mt-4 font-raleway'>{service.read_more}</p>
