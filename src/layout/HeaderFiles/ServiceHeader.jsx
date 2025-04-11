@@ -9,7 +9,6 @@ import { MdKeyboardArrowLeft,MdKeyboardArrowRight } from "react-icons/md";
 export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectChange}) {
     const [service_index,set_service]=useState(0)
     const [auto_switch,set_switch]=useState(true)
-      const location=useLocation()
      
       const[selected,setSelected]=useState({
         isSelected:true,
@@ -81,6 +80,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
         if(auto_switch && service_index+1===service_header.length){
            interval=setInterval(()=>{
             set_service(0)
+            setVisibleCards(service_header.slice(0,VIS_AMOUNT))
            },5000)
         }
         return ()=>clearInterval(interval)

@@ -7,69 +7,20 @@ import { service_header } from '../data/services_data';
 import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa"
 import ServiceHeader from './HeaderFiles/ServiceHeader';
 
-const Header = () => {
-  const[IsImagesLoaded,setIsImagesLoaded]=useState(false)
-  const [imageCache,setImageCache]=useState({})
+const Header = ({IsImagesLoaded,setIsImagesLoaded,selectedService,imageCache,setSelectedService}) => {
   const location=useLocation()
-  const [selectedService, setSelectedService] = useState({
-    isSelected: true,
-    image: service_header[0].background,
-    id: 1,
-    title: service_header[0].background_title,
-    text: service_header[0].background_text
-  });
-  const preloadAllImages = useCallback(async (image_array) => {
-    try {
-      setIsImagesLoaded(false);
-      const cache = {};
-      
-      await Promise.all(image_array.map(service => 
-        new Promise(resolve => {
-          if (imageCache[service.id]) {
-            resolve();
-            return;
-          }
-         
-          const img = new Image();
-          img.src = service.background;
-          
-          img.onload = () => {
-            cache[service.id] = img.src;
-            resolve();
-          };
-          
-          img.onerror = () => {
-            console.warn(`Failed to load image: ${service.background}`);
-            resolve();
-          };
-        })
-      ));
-  
-      setImageCache(prev => {
-        const newCache = { ...prev, ...cache };
-        return Object.keys(cache).length > 0 ? newCache : prev;
-      });
-      
-      setIsImagesLoaded(true);
-    } catch(err) {
-      console.error("Image preloading failed:", err);
-      setIsImagesLoaded(false);
+  const PageHeaderLoad=()=>{
+    if(location.pathname==="/services" && IsImagesLoaded){
+      return (
+        <SmoothBackground 
+        image={imageCache[selectedService.id]} 
+        prevImage={service_header[0].background}
+        blur
+      /> 
+      )
     }
-  }, [imageCache]);
-  
-  useEffect(() => {
-    let isMounted = true;
-    
-    if (location.pathname === "/services" && isMounted) {
-      preloadAllImages(service_header);
-    }
-  
-    return () => {
-      isMounted = false;
-    };
-  }, [location.pathname, preloadAllImages]);
-  
-  
+  }
+ 
  
   
   const backgroundCheck =useMemo(()=>{
@@ -88,13 +39,12 @@ const Header = () => {
  
   
   const backgroundImageCheck=useMemo(()=>{
-     switch(location.pathname){
-      case "/about_us":
-        return `url(${aboutImg})`
-      case "/services":
+     if(location.pathname==="/about_us" && IsImagesLoaded.loading===false)
+        return `url(${imageCache["about_img"]})`
+      if(location.pathname==="/services" && IsImagesLoaded.loading===false) 
         return `url(${imageCache[selectedService.id]})`
-     }
-  },[location.pathname,imageCache,selectedService.id])
+      else  return ""
+  },[location.pathname,imageCache,IsImagesLoaded])
   function renderContent(){
     if(location.pathname==="/contact"){
       return(
@@ -118,7 +68,7 @@ const Header = () => {
       </div>
       )
     }
-    if(location.pathname==="/about_us"){
+    if(location.pathname==="/about_us" && IsImagesLoaded.loading===false){
       return(
       <div className='h-full flex flex-col justify-center items-center'>
         <motion.div
@@ -142,7 +92,7 @@ const Header = () => {
       </div>
       )
     }
-    if(location.pathname==="/services"){
+    if(location.pathname==="/services" && IsImagesLoaded.loading===false){
       
       return (
         <div>
@@ -188,13 +138,7 @@ const Header = () => {
   return (
     
     <div className="relative w-full">   
-{location.pathname === "/services" && IsImagesLoaded ? (
-   <SmoothBackground 
-   image={imageCache[selectedService.id]} 
-   prevImage={service_header[0].background}
-   blur
- /> // fixing this later to adjust loading all pages
-):''}
+       {PageHeaderLoad()}
       {/**UNDER IS THE HEADER OF THE OTHER PAGES */}
         {location.pathname!="/services"?<motion.div
           key="background-image"
@@ -204,12 +148,12 @@ const Header = () => {
           filter: location.pathname === "/services" ? "blur(4px)" : "",
         }}/>:''}
   
-    <div className="text-white z-10  ">
+  {IsImagesLoaded.loading===false?<div className="text-white z-10  ">
       <Navbar loc={location.pathname} />
       <div className={`${location.pathname==="/services"?"h-screen":'h-[24vh] md:h-[40vh]'}`}>
       {renderContent()}
       </div>
-      </div>
+      </div>:''}
   
     
   </div>

@@ -20,7 +20,8 @@ const services_data=[
         paragraph_1:"Ditch risky ventures, embrace informed leaps.",
         paragraph_2:"Our feasibility studies illuminate hidden pitfalls and ignite success, turning “might-be” into “must-be” projects.",
         paragraph_3:"Partner with us, invest with confidence.",
-        read_more:"We specialize in delivering comprehensive feasibility studies for the recycling industry, providing clients with up-to-date, accurate, data-driven insights to guide investment and operational decisions. We combine deep expertise in recycling technologies, market trends, and environmental regulations to assess project viability, financial returns, and sustainability impacts. Our studies cover all stages of the recycling value chain—from material sourcing and processing capabilities to end-product markets and sales channels."
+        read_more:"We are specialized in delivering comprehensive feasibility studies for the recycling industry, providing clients with up to date accurate, data-driven insights toguide investment and operational decisions. We combine deep expertise in recycling technologies,market trends, and environmental regulations to assess project viability, financial returns, and sustainability impacts. Our studies cover all stages of the recycling value chain—from material sourcing and processing capabilities to end-product markets and sales channels. "
+
     }
     ,
     {
@@ -43,7 +44,7 @@ const services_data=[
         paragraph_2:"Design, build and optimize operations, from sorting systems to pellet production.",
         paragraph_3:"Maximize yield, minimize costs.",
         paragraph_4:"Turn waste into profit with our expert blueprint",
-        read_more:"We provide end-to-end technical support in selecting and customizing machinery for recycling lines, focusing on capacity, energy efficiency, and operational costs. Our experts help define key operational parameters, while integrating advanced sorting technologies to ensure high material purity. We also evaluate process efficiency, optimizing equipment and operations for cost reduction, increased productivity, and minimal environmental impact. Through Line customization, we tailor machinery configurations to meet specific project needs, ensuring efficient ,sustainable and scalable that align with industry standards. and provide highest output with best cost"
+        read_more:"We provide end-to-end technical support in selecting and customizing machinery for recycling lines, focusing on capacity, energy efficiency, and operational costs. Our experts help define key operational parameters, while integrating advanced sorting technologies to ensure high material purity. We also evaluate process efficiency, optimizing equipment and operations for cost reduction, increased productivity, and minimal environmental impact. Through Line customization, we tailor machinery configurations to meet specific project needs, ensuring efficient, sustainable and scalable that align with industry standards. and provide highest output with best cost."
     },
     {
         id:'4',
@@ -54,7 +55,7 @@ const services_data=[
         paragraph_3:"Watch profits soar as you sell smarter and comply effortlessly.",
         read_more:"We provide an integrated approach to sales, sustainability, and compliance in the recycling industry. Our sales strategy focuses on market demand, optimizing channels, and building long-term buyer partnerships. We align operations with best sustainability practices, reducing carbon emissions and enhancing brand reputation. For compliance, we ensure adherence to local and international regulations, keeping clients informed of industry standards. This holistic approach helps clients achieve financial success while promoting environmental responsibility and regulatory compliance."
     }
-]
+    ]
 export const new_projects=[
     {
         title:"Feasibility Study",

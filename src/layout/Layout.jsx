@@ -1,16 +1,119 @@
-import React from 'react'
+import {useState,useCallback,useEffect} from 'react'
 import Header from './Header'
 import Footer from './Footer'
-import { Outlet } from 'react-router-dom'
-
+import { Outlet,useLocation} from 'react-router-dom'
+import { service_header } from '../data/services_data';
+import aboutImg from "../assets/about_header_img.jpg"
 const Layout = () => {
-  return (
+  const [imageCache,setImageCache]=useState({})
+  const [selectedService, setSelectedService] = useState({
+    isSelected: true,
+    image: service_header[0].background,
+    id: 1,
+    title: service_header[0].background_title,
+    text: service_header[0].background_text
+  });
+   const[IsImagesLoadedHeader,setIsImagesLoadedHeader]=useState({
+      loading:true,
+      loc:""
+    })
+    const[IsImagesLoadedFooter,setIsImagesLoadedFooter]=useState(false)
+    const location=useLocation()
+    const preloadAllImagesHeader = useCallback(async (input,name) => {
+      try {
+        setIsImagesLoadedHeader({loading:true , loc:location.pathname});
+        const cache = {};
+        const loadImage = (service) =>
+          new Promise((resolve) => {
+            if (imageCache[service.id]) {
+              resolve();
+              return;
+            }
+    
+            const img = new Image();
+            img.src = service.background;
+    
+            img.onload = () => {
+              cache[service.id] = img.src;
+              resolve();
+            };
+    
+            img.onerror = () => {
+              console.warn(`Failed to load image: ${service.background}`);
+              resolve();
+            };
+            
+          });
+    
+        if (Array.isArray(input)) {
+          await Promise.all(input.map(service => loadImage(service)));
+          setImageCache((prev) => {
+            const newCache = { ...prev, ...cache };
+            return Object.keys(cache).length > 0 ? newCache : prev;
+          });
+        } else {
+          if(!imageCache[name]){
+          await new Promise((resolve) => {
+            const img = new Image();
+            img.src = input;
+    
+            img.onload = () => {
+              cache[name] = img.src;
+              resolve();
+            };
+    
+            img.onerror = () => {
+              console.warn(`Failed to load image: ${input.background}`);
+              resolve();
+            };
+          
+          });
+          setImageCache((prev) => {
+            const newCache = { ...prev, ...cache };
+            return Object.keys(cache).length > 0 ? newCache : prev;
+          });
+        }
+        }
+    
+      
+        if(Object.keys(imageCache).length>0){
+          setIsImagesLoadedHeader({loc:location.pathname,loading:false});
+        }
+      } catch (err) {
+        console.error("Image preloading failed:", err);
+        setIsImagesLoadedHeader({loading:true,loc:location.pathname});
+      }
+    }, [imageCache,location.pathname]);
+    
+      useEffect(() => {
+        let isMounted = true;
+        if (location.pathname === "/services" && isMounted) {
+          preloadAllImagesHeader(service_header);
+        }
+        if(location.pathname==="/about_us" && isMounted){
+          preloadAllImagesHeader(aboutImg,"about_img")
+        }
+      
+        return () => {
+          isMounted = false;
+        };
+      }, [location.pathname, preloadAllImagesHeader]);
+      
+      
+  
+  return(
     <>
-    <Header/>
+  {IsImagesLoadedHeader.loading===false?
+  <>
+  <Header setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} setSelectedService={setSelectedService}/>
     <Outlet/>
-    <Footer/>
-
+    <Footer IsImagesLoaded={IsImagesLoadedFooter} setIsImagesLoaded={setIsImagesLoadedHeader}/>
     </>
+    :<p>Loading..</p>}
+    
+    
+  
+  </>
   )
 }
 
