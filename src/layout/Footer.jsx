@@ -56,7 +56,7 @@ ${email}`,
       
       {/* === SECTION 1: LOGO === */}
       <div className="flex justify-center">
-        <img src={whiteLogo} alt="Company Logo" className="min-w-xs object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm" />
+        <img src={whiteLogo} alt="Company Logo" loading="lazy" className="min-w-xs object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm" />
       </div>
 
       {/* === SECTION 2: CONTACT INFO === */}

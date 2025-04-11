@@ -5,6 +5,7 @@ import location_data from '../data/location';
 import {easeInOut, motion} from "motion/react"
 import { MdOutlineEmail } from "react-icons/md";
 import { MdArrowUpward,MdOutlineErrorOutline } from "react-icons/md";
+import { CiLocationOn } from "react-icons/ci";
 import { FaPhoneAlt } from "react-icons/fa";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { MdOutlinePhone } from "react-icons/md";
@@ -84,8 +85,8 @@ const Contact = () => {
     ></div>
   
 
-    <div className=" flex flex-col w-3/4 m-3 mt-10  pl-10"> 
-      <h1 className="uppercase mb-5 font-bold text-dark_green flex flex-row items-center text-lg sm:text-lg md:text-xl lg:text-2xl xl:text-3xl   font-raleway">
+    <div className=" flex flex-col w-3/4 m-3 mt-10 md:pl-10 pl-5"> 
+      <h1 className="uppercase mb-5 font-bold text-dark_green flex flex-row items-center text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-3xl   font-raleway">
         Get in touch <span><GoArrowDownRight /></span>
       </h1>
       
@@ -197,7 +198,7 @@ const Contact = () => {
                     <p className='text-gray-600 text-xs sm:text-sm md:text-md lg:text-md xl:text-md break-words'>{data.email}</p>
                 </div>
                 <div className='flex font-raleway flex-col bg-dark_green gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/4'>
-                    <h5><IoLocationOutline className="text-white" size={30}/></h5>
+                    <h5><CiLocationOn className="text-white " size={30}/></h5>
                     <h6 className="text-white font-semibold">Address</h6>
                     <p className='text-white text-xs sm:text-sm md:text-md lg:text-md xl:text-md'>{data.location}</p>
                 </div>

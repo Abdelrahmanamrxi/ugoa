@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { Outlet,useLocation} from 'react-router-dom'
 import { service_header } from '../data/services_data';
 import aboutImg from "../assets/about_header_img.jpg"
+
 const Layout = () => {
   const [imageCache,setImageCache]=useState({})
   const [selectedService, setSelectedService] = useState({
@@ -15,7 +16,7 @@ const Layout = () => {
   });
   const location=useLocation()
    const[IsImagesLoadedHeader,setIsImagesLoadedHeader]=useState({
-      loading:location.pathname==="/"? false:true,
+      loading:location.pathname==="/" || location.pathname==="/contact"? false:true,
       loc:""
     })
     const[IsImagesLoadedFooter,setIsImagesLoadedFooter]=useState(false)
@@ -110,6 +111,7 @@ const Layout = () => {
     <Outlet/>
     <Footer IsImagesLoaded={IsImagesLoadedFooter} setIsImagesLoaded={setIsImagesLoadedHeader}/>
     </>
+    
     :<p>Loading..</p>}
     
     
