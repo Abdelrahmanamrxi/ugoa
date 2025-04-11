@@ -4,6 +4,8 @@ import Footer from './Footer'
 import { Outlet,useLocation} from 'react-router-dom'
 import { service_header } from '../data/services_data';
 import aboutImg from "../assets/about_header_img.jpg"
+import { PiArrowFatLineUp } from "react-icons/pi";
+import {motion} from "motion/react";
 const Layout = () => {
   const [imageCache,setImageCache]=useState({})
   const [selectedService, setSelectedService] = useState({
@@ -108,7 +110,15 @@ const Layout = () => {
   <>
   <Header setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} setSelectedService={setSelectedService}/>
     <Outlet/>
-    <Footer IsImagesLoaded={IsImagesLoadedFooter} setIsImagesLoaded={setIsImagesLoadedHeader}/>
+
+    <motion.a href='#header' className='fixed z-40 bottom-3 right-4 md:bottom-6 md:right-6 shadow-md rounded-full shadow-black/40'
+    initial={{y:0}}
+    animate={{y:-5}}
+    transition={{repeat: Infinity, repeatType: "reverse", 
+    duration:1, ease:'easeInOut'}}>
+      <PiArrowFatLineUp size={30} className='bg-dark p-1 text-white rounded-full'/>
+    </motion.a>
+  <Footer IsImagesLoaded={IsImagesLoadedFooter} setIsImagesLoaded={setIsImagesLoadedHeader}/>
     </>
     :<p>Loading..</p>}
     

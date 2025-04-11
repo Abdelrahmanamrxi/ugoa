@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { IoMdMenu } from "react-icons/io";
 import Logo from '../assets/Horizontal_White_Comp_3.png'
 import { MdClose } from "react-icons/md";
@@ -10,6 +10,21 @@ const Navbar = ({loc}) => {
   
   const[Menu,set_Menu]=useState(false);
   const [activeLink, setActiveLink]= useState(null);
+  const menuRef= useRef();
+
+  useEffect(() => {
+    const handleOutsideClick = (e) =>{
+      if(Menu && menuRef.current && !menuRef.current.contains(e.target)){
+        set_Menu(false);
+      }
+    };
+      document.addEventListener("mousedown",handleOutsideClick);
+
+      return () => {
+        document.removeEventListener("mousedown", handleOutsideClick)
+      };
+  }, [Menu])
+
   return (
    <nav className='flex relative md:p-8 p-5  items-center  justify-between'>
   
@@ -22,6 +37,7 @@ const Navbar = ({loc}) => {
   {Menu && (
     <motion.div
       key="sidebar"
+      ref={menuRef}
       initial={{ x: "100%" }}
       animate={{ x: "0%" }}
       exit={{ x: "100%" }} // Add exit animation

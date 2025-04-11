@@ -28,7 +28,7 @@ export default function About(){
                 transition={{duration:2,ease:"easeOut",delay:1}} />
                  
                 <motion.p 
-                className="sm:w-1/2 font-raleway text-sm xl:text-xl text-justify"
+                className="sm:w-1/2 font-raleway font-light text-sm xl:text-xl text-justify"
                 initial={{opacity:0,x:30}}
                 animate={{opacity:1,x:0}}
                 transition={{duration:1,ease:"easeOut",delay:1}}>
@@ -192,7 +192,7 @@ export default function About(){
                 }}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
+                    viewport={{ once: true }}
                     className="font-raleway flex justify-center items-center flex-col gap-6 text-justify
                                 font-light text-lg xl:text-xl">
 
@@ -253,7 +253,7 @@ export default function About(){
             initial={{opacity:0, scale:0.95}}
             whileInView={{opacity:1, scale:1}}
             transition={{duration:0.8, delay:0.2}}
-            viewport={{once:true, amount:0.5}}
+            viewport={{once:true, amount:0.2}}
             className="flex flex-col py-10 justify-center bg-darkWhite shadow-xl items-center mt-24 gap-14">
                 <h1 className="text-dark_green font-raleway text-2xl md:text-4xl font-bold uppercase">Meet our team</h1>
                 <div className="card px-6 grid grid-cols-1 justify-center items-center md:grid-cols-3 gap-8">
@@ -274,7 +274,7 @@ export default function About(){
             initial={{opacity:0, scale:0.95}}
             whileInView={{opacity:1, scale:1}}
             transition={{duration:0.8, ease:"easeOut"}}
-            viewport={{once:true, amount:0.5}}
+            viewport={{once:true, amount:0.2}}
             className="px-4 md:px-10 mt-24">
                 <Map />
             </motion.div>

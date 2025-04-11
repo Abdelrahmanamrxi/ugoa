@@ -137,7 +137,7 @@ const Header = ({IsImagesLoaded,setIsImagesLoaded,selectedService,imageCache,set
   
   return (
     
-    <div className="relative w-full">   
+    <div id='header' className="relative w-full">   
        {PageHeaderLoad()}
       {/**UNDER IS THE HEADER OF THE OTHER PAGES */}
         {location.pathname!="/services"?<motion.div
