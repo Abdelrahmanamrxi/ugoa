@@ -27,7 +27,6 @@ const Services = () => {
         document.body.style.overflow = 'auto';
       };
     }, [service]);
-   
   return (
     <div className='relative overflow-hidden'>
     <div className='md:m-8'>
@@ -47,7 +46,7 @@ const Services = () => {
                 ease:"easeInOut"
             }}}
             key={service.id} className="shadow-md cursor-pointer  flex flex-row">
-  <img alt={service.title} loading='lazy' className='bg-dark_green w-1/4 lg:w-1/5  object-contain md:h-full p-5 rounded-tl-lg rounded-bl-lg' src={service.icon}/>
+  <img alt={service.title}  className='bg-dark_green w-1/4 lg:w-1/5  object-contain md:h-full p-5 rounded-tl-lg rounded-bl-lg' src={service.icon}/>
     <div className="flex flex-col relative justify-between font-raleway gap-2 m-3">
       <h2 className="text-dark_green text-xl font-semibold">{service.title}</h2>
       <ul className="text-gray-500 tracking-wide  leading-relaxed text-xs md:text-sm">
@@ -64,13 +63,14 @@ const Services = () => {
   </motion.div>
             )
         })}
-        
+       
         </div>
-        <AnimatePresence>
+        <AnimatePresence exitBeforeEnter>
       {service.id&&<motion.div 
-         initial={{ opacity: 0, scale: 0.8 }} 
-         animate={{ opacity: 1, scale: 1 }} 
-         exit={{ opacity: 0, scale: 0}} 
+         key={service.id}
+         initial={{ opacity: 0}} 
+         animate={{ opacity: 1} }
+         exit={{ opacity: 0,x:"10%" }} 
          transition={{ duration: 0.3, ease: "easeInOut" }}
             className='fixed inset-0 z-50 
             flex items-center justify-center transition-all backdrop-blur-sm h-full '>
@@ -78,11 +78,13 @@ const Services = () => {
             <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>
             <div className='flex flex-row justify-between items-center gap-3'>
             <div className='flex flex-row gap-4 items-center'>
-            <img loading='lazy' src={service.icon} className='md:w-24 w-12'/>
+            <img  src={service.icon} className='md:w-24 w-12'/>
             <h2 className='text-white font-semibold text-sm md:text-2xl '>{service.title}</h2>
             </div>
         
-            <p onClick={()=>{set_service({})}} className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
+            <p onClick={()=>{setTimeout(()=>{
+              set_service({})
+            },300)}} className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
            
             </div>
             <p className='text-white text-md md:text-lg leading-relaxed mt-4 font-raleway'>{service.read_more}</p>

@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { Outlet,useLocation} from 'react-router-dom'
 import { service_header } from '../data/services_data';
 import aboutImg from "../assets/about_header_img.jpg"
+
 import { PiArrowFatLineUp } from "react-icons/pi";
 import {motion} from "motion/react";
 const Layout = () => {
@@ -17,10 +18,9 @@ const Layout = () => {
   });
   const location=useLocation()
    const[IsImagesLoadedHeader,setIsImagesLoadedHeader]=useState({
-      loading:location.pathname==="/"? false:true,
+      loading:location.pathname==="/" || location.pathname==="/contact"? false:true,
       loc:""
     })
-    const[IsImagesLoadedFooter,setIsImagesLoadedFooter]=useState(false)
   
     const preloadAllImagesHeader = useCallback(async (input,name) => {
       try {
@@ -118,8 +118,9 @@ const Layout = () => {
     duration:1, ease:'easeInOut'}}>
       <PiArrowFatLineUp size={30} className='bg-dark p-1 text-white rounded-full'/>
     </motion.a>
-  <Footer IsImagesLoaded={IsImagesLoadedFooter} setIsImagesLoaded={setIsImagesLoadedHeader}/>
+  <Footer />
     </>
+    
     :<p>Loading..</p>}
     
     
