@@ -9,7 +9,21 @@ import { new_projects,old_projects } from '../data/services_data';
 
 
 const Services = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth <= 768);  // Check if the viewport width is less than or equal to 768px
+  };
   
+  checkMobile();  // Check on mount
+  
+  window.addEventListener('resize', checkMobile);  // Listen to resize events
+
+  return () => {
+    window.removeEventListener('resize', checkMobile);  // Clean up the event listener
+  };
+}, []);
     const[service,set_service]=useState({
         id:null,
         title:"",
@@ -65,16 +79,17 @@ const Services = () => {
         })}
        
         </div>
-        <AnimatePresence exitBeforeEnter>
-      {service.id&&<motion.div 
-         key={service.id}
+       
+        <AnimatePresence>
+      {service.id&& !isMobile &&( 
+      <motion.div 
+         key="modal"
          initial={{ opacity: 0}} 
          animate={{ opacity: 1} }
-         exit={{ opacity: 0,x:"10%" }} 
+         exit={{ opacity: 0, x: window.innerWidth > 768 ? "10%" : 0 }} 
          transition={{ duration: 0.3, ease: "easeInOut" }}
             className='fixed inset-0 z-50 
-            flex items-center justify-center transition-all backdrop-blur-sm h-full '>
-
+            flex items-center justify-center  transition-all backdrop-blur-sm h-full '>
             <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>
             <div className='flex flex-row justify-between items-center gap-3'>
             <div className='flex flex-row gap-4 items-center'>
@@ -82,17 +97,35 @@ const Services = () => {
             <h2 className='text-white font-semibold text-sm md:text-2xl '>{service.title}</h2>
             </div>
         
-            <p onClick={()=>{setTimeout(()=>{
-              set_service({})
-            },300)}} className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
+            <p onClick={()=>{set_service({})} }className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
            
             </div>
             <p className='text-white text-md md:text-lg leading-relaxed mt-4 font-raleway'>{service.read_more}</p>
                 
             </div>
             </motion.div>
+      )
   }
   </AnimatePresence>
+  {service.id && isMobile && (
+     <div 
+        className='fixed inset-0 z-50 
+        flex items-center justify-center service-webkit transition-opacity  backdrop-blur-sm h-full '>
+        <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>
+        <div className='flex flex-row justify-between items-center gap-3'>
+        <div className='flex flex-row gap-4 items-center'>
+        <img  src={service.icon} className='md:w-24 w-12'/>
+        <h2 className='text-white font-semibold text-sm md:text-2xl '>{service.title}</h2>
+        </div>
+    
+        <p onClick={()=>{set_service({})} }className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
+       
+        </div>
+        <p className='text-white text-md md:text-lg leading-relaxed mt-4 font-raleway'>{service.read_more}</p>
+            
+        </div>
+        </div>
+  )}
 <div className="m-8 grid grid-cols-1 justify-center items-center">
     {/**WHAT WE OFFER TO NEW PROJECTS */}
     <WhatWeOffer projects={new_projects} type="new"/>

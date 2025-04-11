@@ -99,11 +99,16 @@ path {
   
 
 
-
   .bg-smooth {
     transform: translateZ(0);
     backface-visibility: hidden;
     will-change: transform, opacity;
     transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
     background-size: 100% 100%;
+}
+.service-webkit{
+    -webkit-perspective: 1000px; /* For Safari/older browsers */
+    perspective: 1000px;         /* Standard property */
+    -webkit-backface-visibility: hidden; /* For Safari/older browsers */
+    backface-visibility: hidden; /* Standard property */
 }
