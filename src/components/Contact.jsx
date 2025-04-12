@@ -1,4 +1,4 @@
-import {useState,useRef} from 'react'
+import {useState,useRef,Suspense,lazy} from 'react'
 import Background from '../assets/background.png'
 import { GoArrowDownRight } from "react-icons/go";
 import location_data from '../data/location';
@@ -11,7 +11,9 @@ import { RiArrowRightUpLine } from "react-icons/ri";
 import { MdOutlinePhone } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import emailjs from "@emailjs/browser"
-import { Map,input_variable,currently_selected,not_selected } from '../utility/ContactFunc.jsx';
+const  EGMAP=lazy(()=>import('../utility/EGMap.jsx'))
+const UAEMAP=lazy(()=>import('../utility/UAEMap.jsx'))
+import { input_variable,currently_selected,not_selected } from '../utility/ContactFunc.jsx';
 const Contact = () => {
     const[current,set_current]=useState(1)
     const[data,set_data]=useState({first_name:"",last_name:"",company_name:"",phone_number:"",user_email:"",subject_title:"",message:""})
@@ -85,7 +87,7 @@ const Contact = () => {
     ></div>
   
 
-    <div className=" flex flex-col w-3/4 m-3 mt-10 md:pl-10 pl-5"> 
+    <div className=" flex flex-col w-3/4 m-8 mt-10 md:pl-10  "> 
       <h1 className="uppercase mb-5 font-bold text-dark_green flex flex-row items-center text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-3xl   font-raleway">
         Get in touch <span><GoArrowDownRight /></span>
       </h1>
@@ -155,7 +157,8 @@ const Contact = () => {
          <textarea
         name="message"
         placeholder="MESSAGE"
-        className={input_variable}
+        style={{width:"100%",height:"150px"}}
+        className={`${input_variable} resize-none mt-5  `}
       />
       {error.message&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.message}</p>}
       </div>
@@ -165,7 +168,7 @@ const Contact = () => {
     initial={{scale:1}}
     whileHover={{scale:1.1}}
     whileTap={{scale:0.9}}
-    className='uppercase text-xs sm:text-sm md:text-md lg:text-md xl:text-md font-semibold bg-primary text-white font-raleway rounded-full w-full md:w-1/3 py-2'>Send A Message</motion.button>
+    className='uppercase text-xs sm:text-sm md:text-md lg:text-md xl:text-md font-semibold bg-primary text-white font-raleway rounded-full w-full md:w-1/3 py-3'>Send A Message</motion.button>
 
    
   </div>
@@ -208,7 +211,10 @@ const Contact = () => {
     }
 
 })}
-{Map(current)}
+<Suspense fallback={<p className='flex items-center justify-center text-secondary font-semibold text-lg'>Loading..</p>}>
+{current===1 && <EGMAP/>}
+{current===2 && <UAEMAP/>}
+</Suspense>
     
 
 
