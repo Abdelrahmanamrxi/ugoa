@@ -235,10 +235,13 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
      >
     <AnimatePresence>
   {visible_cards.map((card, index) => {
-    // Calculate position based on selection
     const isSelected = selected.id === card.id;
-    const targetX = isSelected ? -40 : 0; // Selected card moves 40px left
+    const selectedIndex = visible_cards.findIndex(c => selected.id === c.id);
     
+    // Only apply x movement to selected card
+    const targetX = isSelected ? -40 : 0;
+    
+    // Remove marginRight animation that was causing jumps
     return (
       <motion.div
         key={card.id}
@@ -261,23 +264,21 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
           opacity: isSelected ? 1 : 0.8,
           height: isSelected ? "20rem" : "16rem",
           zIndex: isSelected ? 10 : 1,
-          x: targetX, // This moves selected card left
-          // Other cards move right to make space
-          marginRight: isSelected ? 0 : index < visible_cards.findIndex(c => selected.id === c.id) ? -20 : 0
+          x: targetX
         }}
         exit={{
           opacity: 0,
           x: 60,
           scale: 0.8,
-          transition: { duration: 0.5 }
+          transition: { duration: 0.6 }
         }}
         transition={{
-          duration: 0.7,
-          ease: "easeInOut"
+          duration: 0.7, // Faster transition
+          ease: [0.2, 0, 0, 1] // Smoother easing
         }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        layout
+        layout="position" // Only animate position, not size
       >
         {/* Card Background Image */}
         <motion.div
