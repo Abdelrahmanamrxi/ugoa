@@ -9,6 +9,7 @@ import { PiArrowFatLineUp } from "react-icons/pi";
 import {motion} from "motion/react";
 const Layout = ({scrollToServices}) => {
   const [imageCache,setImageCache]=useState({})
+  
   const [selectedService, setSelectedService] = useState({
     isSelected: true,
     image: service_header[0].background,
@@ -25,66 +26,96 @@ const Layout = ({scrollToServices}) => {
     const preloadAllImagesHeader = useCallback(async (input, name) => {
       try {
         setIsImagesLoadedHeader({loading: true, loc: location.pathname});
-        const bgCache = {};
-        const cardCache = {};
-    
-        const loadImage = (url, id, cacheType) => 
-          new Promise((resolve) => {
-            const currentCache = cacheType === 'bg' ? imageCache : cardsCache;
-            if (currentCache[id]) {
-              resolve();
-              return;
-            }
-    
-            const img = new Image();
-            img.src = url;
-    
-            img.onload = () => {
-              if (cacheType === 'bg') {
-                bgCache[id] = url;
-              } else {
-                cardCache[id] = url;
-              }
-              resolve();
-            };
-    
-            img.onerror = () => {
-              console.warn(`Failed to load ${cacheType} image: ${url}`);
-              resolve();
-            };
-          });
-    
+        
+        // For array input (services page)
         if (Array.isArray(input)) {
+          const bgCache = {};
+          const cardCache = {};
+    
           await Promise.all(input.map(service => 
             Promise.all([
-              loadImage(service.background, service.id, 'bg'), // Background images
-              loadImage(service.image, service.id, 'card')    // Card images
+              // Background images
+              new Promise(resolve => {
+                if (imageCache[service.id]) {
+                  resolve();
+                  return;
+                }
+                const img = new Image();
+                img.src = service.background;
+                img.onload = () => {
+                  bgCache[service.id] = service.background;
+                  resolve();
+                };
+                img.onerror = () => {
+                  console.warn(`Failed to load bg image: ${service.background}`);
+                  resolve();
+                };
+              }),
+              
+              // Card images
+              new Promise(resolve => {
+                if (cardsCache[service.id]) {
+                  resolve();
+                  return;
+                }
+                const img = new Image();
+                img.src = service.image;
+                img.onload = () => {
+                  cardCache[service.id] = service.image;
+                  resolve();
+                };
+                img.onerror = () => {
+                  console.warn(`Failed to load card image: ${service.image}`);
+                  resolve();
+                };
+              })
             ])
           ));
-          
-          // Update both caches only if we have new images
+    
+          // Update caches if we loaded new images
           if (Object.keys(bgCache).length > 0) {
             setImageCache(prev => ({...prev, ...bgCache}));
           }
           if (Object.keys(cardCache).length > 0) {
             setCardsCache(prev => ({...prev, ...cardCache}));
           }
-        } else {
-          if (!imageCache[name]) {
-            await loadImage(input, name, 'bg');
-            setImageCache(prev => ({...prev, ...bgCache}));
-          }
-        }
     
-        if (Object.keys(imageCache).length > 0 && Object.keys(cardsCache).length > 0) {
-          setIsImagesLoadedHeader({loc: location.pathname, loading: false});
+          // For services page, we need both caches loaded
+          setIsImagesLoadedHeader({
+            loc: location.pathname,
+            loading: !(Object.keys(bgCache).length > 0 || !(Object.keys(cardCache).length > 0))
+          });
+        } 
+        // For single image input (about us page)
+        else {
+          // Skip if already cached
+          if (!imageCache[name]) {
+            await new Promise(resolve => {
+              const img = new Image();
+              img.src = input;
+              img.onload = () => {
+                setImageCache(prev => ({...prev, [name]: input}));
+                resolve();
+              };
+              img.onerror = () => {
+                console.warn(`Failed to load image: ${input}`);
+                resolve();
+              };
+            });
+          }
+          
+          // For about page, just check the single image
+          setIsImagesLoadedHeader({
+            loc: location.pathname,
+            loading: !imageCache[name]
+          });
         }
       } catch (err) {
         console.error("Image preloading failed:", err);
         setIsImagesLoadedHeader({loading: true, loc: location.pathname});
       }
     }, [imageCache, cardsCache, location.pathname]);
-    
+   
       useEffect(() => {
         let isMounted = true;
         if (location.pathname === "/services" && isMounted) {
