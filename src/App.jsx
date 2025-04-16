@@ -26,6 +26,7 @@ function App() {
     <Route path="/services" element={
     <Services
     refProp={serviceRef}
+    scrollToServices={scrollToServices}
     />}/>
     <Route path="/about_us" element={<About/>}/>
 

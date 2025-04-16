@@ -233,45 +233,66 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
       }}
      
      >
-       {visible_cards.map((card) => (
-         <motion.div
-          
-           key={card.id}
-           onClick={() => {
-            ChooseCard({
-              isSelected: true,
-              image: card.background,
-              id: card.id,
-              title: card.background_title,
-              text: card.background_text
-            });
-          
-          }}
-           
-           className={`relative xl:w-48 xl:h-52 w-40 h-42 min-h-32  bg-white rounded-lg transition-opacity duration-500 ${selected.id === card.id ? 'opacity-100 z-10' : 'opacity-50 z-0'} shadow-lg cursor-pointer overflow-hidden`}
-           initial={{ scale: 1 }}
-           animate={{
-             scale: selected.id === card.id ? 1.2 : 1,
-             y: selected.id === card.id ? -20 : 0,
-             opacity: selected.id === card.id ? 1 : 0.8,
-             height: selected.id === card.id ? "20rem" : "16rem",
-             zIndex: selected.id === card.id ? 10 : 1,
-             x:selected.id===card.id? -10:0
-          
-           }}
-           
-           transition={{ duration: 0.7, ease: "easeInOut" ,
-           }}
-         >
-           {/* Card Background Image */}
-           <motion.div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${card.image})` }} />
- 
-           {/* Card Content */}
-           <motion.div className="absolute bottom-0 w-full p-4 text-white">
-             <h3 className="text-xl  font-raleway font-bold">{card.title}</h3>
-           </motion.div>
-         </motion.div>
-       ))}
+    <AnimatePresence>
+  {visible_cards.map((card, index) => {
+    // Calculate position based on selection
+    const isSelected = selected.id === card.id;
+    const targetX = isSelected ? -40 : 0; // Selected card moves 40px left
+    
+    return (
+      <motion.div
+        key={card.id}
+        onClick={() => {
+          ChooseCard({
+            isSelected: true,
+            image: card.background,
+            id: card.id,
+            title: card.background_title,
+            text: card.background_text
+          });
+        }}
+        className={`relative xl:w-48 xl:h-52 w-40 h-42 min-h-32 bg-white rounded-lg ${
+          isSelected ? 'opacity-100 z-10' : 'opacity-50 z-0'
+        } shadow-lg cursor-pointer overflow-hidden`}
+        initial={{ scale: 1, x: 0, opacity: 0 }}
+        animate={{
+          scale: isSelected ? 1.2 : 1,
+          y: isSelected ? -20 : 0,
+          opacity: isSelected ? 1 : 0.8,
+          height: isSelected ? "20rem" : "16rem",
+          zIndex: isSelected ? 10 : 1,
+          x: targetX, // This moves selected card left
+          // Other cards move right to make space
+          marginRight: isSelected ? 0 : index < visible_cards.findIndex(c => selected.id === c.id) ? -20 : 0
+        }}
+        exit={{
+          opacity: 0,
+          x: 60,
+          scale: 0.8,
+          transition: { duration: 0.5 }
+        }}
+        transition={{
+          duration: 0.7,
+          ease: "easeInOut"
+        }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        layout
+      >
+        {/* Card Background Image */}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${card.image})` }}
+        />
+        
+        {/* Card Content */}
+        <motion.div className="absolute bottom-0 w-full p-4 text-white">
+          <h3 className="text-xl font-raleway font-bold">{card.title}</h3>
+        </motion.div>
+      </motion.div>
+    );
+  })}
+</AnimatePresence>
      </motion.div>
     
      {/* Arrow Below Cards */}
