@@ -43,30 +43,52 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
 
       
     const nextCard = () => {
+      let newIndex;
       if (service_index < service_header.length - 1) {
-        let newIndex = service_index + 1;
-        set_service(newIndex)
-        const cards=getVisibleCards(newIndex,VIS_AMOUNT,service_header)
-        setVisibleCards(cards)
-     
-    
+        newIndex = service_index + 1;
+      } else {
+        newIndex = 0;
       }
-      else{
-        set_service(0)
-        setVisibleCards(service_header.slice(0,VIS_AMOUNT))
-    };
-    
+      
+      set_service(newIndex);
+      const cards = getVisibleCards(newIndex, VIS_AMOUNT, service_header);
+      setVisibleCards(cards);
+      
+      // Update selected card when wrapping around
+      const newSelected = {
+        isSelected: true,
+        image: cardsCache[service_header[newIndex].id] || service_header[newIndex].background,
+        id: service_header[newIndex].id,
+        title: service_header[newIndex].background_title,
+        text: service_header[newIndex].background_text
+      };
+      
+      setSelected(newSelected);
+      OnSelectChange(newSelected);
   }
     const prevCard = () => {
+      let newIndex;
       if (service_index > 0) {
-        const newIndex = service_index - 1;
-        set_service(newIndex);
-        const cards=getVisibleCards(newIndex,VIS_AMOUNT,service_header)
-        setVisibleCards(cards)
-    
-      
-      
+        newIndex = service_index - 1;
+      } else {
+        newIndex = service_header.length - 1;
       }
+      
+      set_service(newIndex);
+      const cards = getVisibleCards(newIndex, VIS_AMOUNT, service_header);
+      setVisibleCards(cards);
+      
+      const newSelected = {
+        isSelected: true,
+        image: cardsCache[service_header[newIndex].id] || service_header[newIndex].background,
+        id: service_header[newIndex].id,
+        title: service_header[newIndex].background_title,
+        text: service_header[newIndex].background_text
+      };
+      
+      setSelected(newSelected);
+      OnSelectChange(newSelected);
+    
     }
     useEffect(()=>{
        let interval;
