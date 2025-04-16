@@ -8,7 +8,7 @@ import WhatWeOffer from './WhatWeOffer';
 import { new_projects,old_projects } from '../data/services_data';
 
 
-const Services = () => {
+const Services = ({refProp}) => {
   const [isMobile, setIsMobile] = useState(false);
 
 useEffect(() => {
@@ -45,7 +45,7 @@ useEffect(() => {
     <div className='relative overflow-hidden'>
     <div className='md:m-8'>
     <h1 className=' uppercase font-raleway w-1/12 m-5 mb-8 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-3xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
-    <div className="md:grid md:grid-cols-2 md:grid-rows-2 m-5 flex flex-col gap-6">
+    <div ref={refProp} className="md:grid md:grid-cols-2 md:grid-rows-2 m-5 flex flex-col gap-6">
         {services_data.map((service)=>{
             return(
             <motion.div 
@@ -109,6 +109,7 @@ useEffect(() => {
   </AnimatePresence>
   {service.id && isMobile && (
      <div 
+        ref={refProp}
         className='fixed inset-0 z-50 
         flex items-center justify-center service-webkit transition-opacity  backdrop-blur-sm h-full '>
         <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>

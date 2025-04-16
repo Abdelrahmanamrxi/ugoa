@@ -7,7 +7,7 @@ import { service_header } from '../data/services_data';
 import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa"
 import ServiceHeader from './HeaderFiles/ServiceHeader';
 
-const Header = ({IsImagesLoaded,setIsImagesLoaded,selectedService,imageCache,setSelectedService}) => {
+const Header = ({IsImagesLoaded,setIsImagesLoaded,selectedService,imageCache,setSelectedService,scrollToServices}) => {
   const location=useLocation()
   const PageHeaderLoad=()=>{
     if(location.pathname==="/services" && IsImagesLoaded){
@@ -96,7 +96,7 @@ const Header = ({IsImagesLoaded,setIsImagesLoaded,selectedService,imageCache,set
       
       return (
         <div>
-       <ServiceHeader imageCache={imageCache} IsImagesLoaded={IsImagesLoaded} OnSelectChange={setSelectedService}/>
+       <ServiceHeader scrollToServices={scrollToServices} imageCache={imageCache} IsImagesLoaded={IsImagesLoaded} OnSelectChange={setSelectedService}/>
         </div>
 
    

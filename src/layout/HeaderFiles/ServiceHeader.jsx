@@ -6,7 +6,7 @@ import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa
 import { MdKeyboardArrowLeft,MdKeyboardArrowRight } from "react-icons/md";
 
 
-export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectChange}) {
+export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectChange,scrollToServices}) {
     const [service_index,set_service]=useState(0)
     const [auto_switch,set_switch]=useState(true)
   
@@ -179,7 +179,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
         }}
         className="will-change-transform"
       >
-        <button className="bg-dark_green font-semibold font-raleway hover:bg-opacity-80 px-5 py-2">
+        <button onClick={scrollToServices} className="bg-dark_green font-semibold font-raleway hover:bg-opacity-80 px-5 py-2">
           Explore
         </button>
       </motion.div>
@@ -384,7 +384,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
             opacity: 0 
           }}
         >
-          <button className="bg-dark_green font-raleway font-medium px-5 py-2 rounded-md min-w-[120px]">
+          <button onClick={scrollToServices} className="bg-dark_green font-raleway font-medium px-5 py-2 rounded-md min-w-[120px]">
             Explore
           </button>
         </motion.div>

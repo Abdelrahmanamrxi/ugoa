@@ -7,7 +7,7 @@ import aboutImg from "../assets/about_header_img.jpg"
 
 import { PiArrowFatLineUp } from "react-icons/pi";
 import {motion} from "motion/react";
-const Layout = () => {
+const Layout = ({scrollToServices}) => {
   const [imageCache,setImageCache]=useState({})
   const [selectedService, setSelectedService] = useState({
     isSelected: true,
@@ -108,7 +108,7 @@ const Layout = () => {
     <>
   {IsImagesLoadedHeader.loading===false ?
   <>
-  <Header setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} setSelectedService={setSelectedService}/>
+  <Header scrollToServices={scrollToServices} setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} setSelectedService={setSelectedService}/>
     <Outlet/>
 
     <motion.a href='#header' className='fixed z-40 bottom-5 right-5 md:bottom-6 md:right-6 shadow-md rounded-full shadow-black/40'
