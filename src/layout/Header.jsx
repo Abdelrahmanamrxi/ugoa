@@ -106,7 +106,7 @@ const Header = ({IsImagesLoaded,setIsImagesLoaded,selectedService,imageCache,set
   
   }
   const SmoothBackground = ({ image, prevImage, blur }) => (
-    <div className="absolute inset-0 w-full h-full">
+    <div className="absolute inset-0 w-full h-full overflow-hidden">
       {/* Permanent fallback */}
       <div 
         className="absolute inset-0 bg-cover bg-center"

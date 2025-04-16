@@ -2,16 +2,21 @@ import sales from "../assets/sales.svg"
 import search from "../assets/search.svg"
 import sourcing from '../assets/sourcing.svg'
 import technical from '../assets/technical.svg'
-import operation from '../assets/4.jpeg'
+import operation from '../assets/12.jpg'
 import background_sales from "../assets/consult.jpg";
-import sale_compilance from '../assets/5.png'
+import sale_compilance from '../assets/11.jpg'
 import reuse from '../assets/reuse_comp.jpg'
-import feasibility from '../assets/6.jpg'
+import feasibility from '../assets/10.jpg'
 import background_feasibility from '../assets/feas.jpg'
-import tech_design from '../assets/3.jpg'
+import tech_design from '../assets/14.jpg'
 import background_tech from '../assets/background_tech.png'
-import waste from '../assets/2.png'
+import sourcing_card from '../assets/15.jpg'
 import waste_background from '../assets/recycle_background.jpg'
+import business_strategy from '../assets/briefcase.svg'
+import operations from '../assets/operation.svg'
+import management from '../assets/management.svg'
+import factory from '../assets/factory.svg'
+
 const services_data=[
     {
         id:'1',
@@ -25,8 +30,19 @@ const services_data=[
     }
     ,
     {
+     id:'2',
+     icon:business_strategy,
+     title:"Business Strategy",
+     paragraph_1:"Develop strategies that align with evolving market trends.",
+     paragraph_2:"Tailor business approaches to meet customer needs and achieve sustainability targets.",
+     paragraph_3:'Cover all aspect from market entry and competitive positioning to pricing strategies and long-term growth models.',
+     read_more:"We support recycling companies in shaping effective business strategies that align with market trends, customer needs, and sustainability targets. From market entry planning and competitive positioning to pricing strategies and long-term growth models, our experts provide actionable insights to guide strategic decision-making and ensure profitability and resilience in a fast-evolving circular economy landscape."
 
-        id:'2',
+    },
+
+    {
+
+        id:'3',
         title:"Sourcing",
         icon:sourcing,
         paragraph_1:"Prevent raw material scarcity.",
@@ -37,7 +53,27 @@ const services_data=[
 
     },
     {
-        id:'3',
+        id:"4",
+        title:"Sustainability & Responsible Operations",
+        icon:operations,
+        paragraph_1:"Empowering factories to integrate ESG values into their everyday operations.",
+        paragraph_2:"Creating tailored action plans that align with global standards.",
+        paragraph_3:"Ensuring ongoing compliance, clear reporting, and measurable positive change.",
+        read_more:'We support factories in embedding ESG and sustainability principles across their operations. Our approach includes developing tailored sustainability strategies, aligning with global frameworks, monitoring carbon footprint, and enhancing resource efficiency. We help integrate ESG into daily practices, reporting, and stakeholder engagement, ensuring long-term compliance, transparency, and positive environmental and social impact.'
+
+
+    },
+    {
+        id:'5',
+        title:"Sales & Compilance",
+        icon:sales,
+        paragraph_1:"We're your revenue compass, igniting growith with data-driven sales strategies.",
+        paragraph_2:"Navigate complex regulations with ease, boosting margins and minimizing risk.",
+        paragraph_3:"Watch profits soar as you sell smarter and comply effortlessly.",
+        read_more:"We provide an integrated approach to sales, sustainability, and compliance in the recycling industry. Our sales strategy focuses on market demand, optimizing channels, and building long-term buyer partnerships. We align operations with best sustainability practices, reducing carbon emissions and enhancing brand reputation. For compliance, we ensure adherence to local and international regulations, keeping clients informed of industry standards. This holistic approach helps clients achieve financial success while promoting environmental responsibility and regulatory compliance."
+    },
+    {
+        id:'6',
         title:"Technical Design & Operation",
         icon:technical,
         paragraph_1:'Tired of recycling chaos? We engineer efficiency.',
@@ -47,14 +83,24 @@ const services_data=[
         read_more:"We provide end-to-end technical support in selecting and customizing machinery for recycling lines, focusing on capacity, energy efficiency, and operational costs. Our experts help define key operational parameters, while integrating advanced sorting technologies to ensure high material purity. We also evaluate process efficiency, optimizing equipment and operations for cost reduction, increased productivity, and minimal environmental impact. Through Line customization, we tailor machinery configurations to meet specific project needs, ensuring efficient, sustainable and scalable that align with industry standards. and provide highest output with best cost."
     },
     {
-        id:'4',
-        title:"Sales & Compilance",
-        icon:sales,
-        paragraph_1:"We're your revenue compass, igniting growith with data-driven sales strategies.",
-        paragraph_2:"Navigate complex regulations with ease, boosting margins and minimizing risk.",
-        paragraph_3:"Watch profits soar as you sell smarter and comply effortlessly.",
-        read_more:"We provide an integrated approach to sales, sustainability, and compliance in the recycling industry. Our sales strategy focuses on market demand, optimizing channels, and building long-term buyer partnerships. We align operations with best sustainability practices, reducing carbon emissions and enhancing brand reputation. For compliance, we ensure adherence to local and international regulations, keeping clients informed of industry standards. This holistic approach helps clients achieve financial success while promoting environmental responsibility and regulatory compliance."
+        id:7,
+        title:"Management System",
+        icon:management,
+        paragraph_1:"We enable factories to achieve greater control over their processes, ensuring that every step is monitored and managed effectively."
+    ,   paragraph_2:"Streamline operations and embed quality checks tailored to your specific needs.",
+        paragraph_3:"Ensure compliance and ongoing growth",
+        read_more:"We provide tailored support in developing and implementing factory management systems that enhance operational control, traceability, and efficiency. Our services include designing custom workflows, integrating quality assurance protocols, setting up data-driven monitoring tools, and aligning processes with industry best practices. Whether for production, maintenance, or inventory, we help build systems that ensure consistency, compliance, and continuous improvement."
+    },
+    {
+        id:8,
+        title:"Factory Design & Layout Optimization",
+        icon:factory,
+        paragraph_1:"We create efficient layouts that support smooth operations and allow room for future growth, ensuring your facility adapts easily to changing needs.",
+        paragraph_2:"Every design meets relevant environmental and safety regulations while supporting efficient process flow and workplace safety.",
+        read_more:"We offer specialized factory design and layout optimization services tailored for recycling facilities. Our support covers everything from concept development and process flow engineering to equipment layout, utility planning, and compliance with safety and environmental standards. With a focus on operational efficiency, scalability, and integration of future technologies, we deliver practical designs that align with your capacity goals while ensuring smooth material flow and adherence to industry regulations."
     }
+   
+    
     ]
 export const new_projects=[
     {
@@ -105,7 +151,7 @@ export const service_header=[
     },
     {
         id:2,
-        title:"REACHING PEAK PRICEBRAND",
+        title:"GLOBAL MARKETS",
         text:"BRAND OWNERS APPROVALS",
         background_title:"SALES & COMPILANCE",
         image:sale_compilance,
@@ -114,7 +160,7 @@ export const service_header=[
     }
     ,{
         id:3,
-        title:"ALL BUSINESS ASPECTS",
+        title:"INFORMED DECISION",
         text:"FINANCIAL & REGULATIONS",
         background_title:"FEASIBILITY STUDY",
         background_text:"We specialize in comprehensive feasibility studies for the recycling industry, offering data-driven insights on project viability, financial returns, and sustainability across all stages of the recycling value chain."
@@ -123,7 +169,7 @@ export const service_header=[
 
     },{
         id:4,
-        title:"6 TPH PET PLANT",
+        title:"MAXIMUM CAPACITY",
         text:"BOTTLE-2-BOTTLE",
         background_title:"TECHNICAL DESIGN",
         background_text:"We offer comprehensive technical support for selecting and customizing recycling machinery, emphasizing capacity, energy efficiency, and operational costs. Our experts integrate advanced sorting technologies to ensure high material purity and optimal performance."
@@ -133,11 +179,11 @@ export const service_header=[
     },
     {
         id:5,
-        title:"RAW MATERIAL",
+        title:"GLOBAL SOURCING NETWORK",
         text:"SOURCING WORLDWIDE",
         background_title:"SOURCING",
         background_text:"We offer extensive support in sourcing PET waste, ensuring reliable supply chains, evaluating material quality, assessing market dynamics, and securing necessary consumables while promoting sustainability and supplier compliance.",
-        image:waste,
+        image:sourcing_card,
         background:waste_background
 
     }
