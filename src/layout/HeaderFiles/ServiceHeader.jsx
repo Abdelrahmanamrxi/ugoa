@@ -6,10 +6,10 @@ import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa
 import { MdKeyboardArrowLeft,MdKeyboardArrowRight } from "react-icons/md";
 
 
-export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectChange,scrollToServices}) {
+export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectChange,scrollToServices,cardsCache}) {
     const [service_index,set_service]=useState(0)
     const [auto_switch,set_switch]=useState(true)
-  
+      
       const[selected,setSelected]=useState({
         isSelected:true,
         image:service_header[0].background,
@@ -32,7 +32,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
       const ChooseCard=(data)=>{
        const {isSelected,image,id,title,text}=data
        let index=id-1
-       let new_selected={isSelected,image:imageCache[data.id],id,title,text}
+       let new_selected={isSelected,image:cardsCache[data.id],id,title,text}
        setSelected(new_selected)
        OnSelectChange(new_selected)
        set_service(index)
@@ -79,10 +79,10 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
     },[auto_switch,service_index])
     
      useEffect(()=>{
-      if (imageCache[service_header[service_index]?.id]) {
+      if (cardsCache[service_index]) {
         const new_selected = {
             isSelected: true,
-            image: imageCache[service_header[service_index]?.id],
+            image: cardsCache[service_index],
             id: service_header[service_index].id,
             title: service_header[service_index].background_title,
             text: service_header[service_index].background_text
@@ -90,7 +90,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
       setSelected(new_selected)
       OnSelectChange(new_selected)
       
-     }},[service_index,imageCache])
+     }},[service_index,cardsCache])
 
     
 
@@ -236,7 +236,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
     <AnimatePresence>
   {visible_cards.map((card, index) => {
     const isSelected = selected.id === card.id;
-    const selectedIndex = visible_cards.findIndex(c => selected.id === c.id);
+   
     
     // Only apply x movement to selected card
     const targetX = isSelected ? -40 : 0;
