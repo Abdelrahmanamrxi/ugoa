@@ -55,10 +55,14 @@ useEffect(() => {
             viewport={{once:true}}
             transition={{duration:1,ease:"easeInOut",delay:service.id*0.1}}
 
-            whileHover={{scale:1.05,transition:{
-                duration:0.5,
-                ease:"easeInOut"
-            }}}
+            whileHover={{ 
+               
+              boxShadow: "0 4px 20px rgba(0, 128, 0, 0.2)", // soft green glow
+              transition: {
+                duration: 0.4,
+                ease: "easeInOut"
+              }
+              }}
             key={service.id} className="shadow-md cursor-pointer  flex flex-row">
   <img alt={service.title}  className='bg-dark_green w-1/4 lg:w-1/5     object-contain md:h-full p-5 rounded-tl-lg rounded-bl-lg' src={service.icon}/>
     <div className="flex flex-col relative justify-between font-raleway gap-2 m-3">
