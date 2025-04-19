@@ -1,7 +1,7 @@
 import sales from "../assets/sales.svg"
 import search from "../assets/search.svg"
 import sourcing from '../assets/sourcing.svg'
-import technical from '../assets/technical.svg'
+import sustainability from '../assets/sas.svg'
 import operation from '../assets/12.jpg'
 import background_sales from "../assets/consult.jpg";
 import sale_compilance from '../assets/11.jpg'
@@ -13,13 +13,13 @@ import background_tech from '../assets/background_tech.png'
 import sourcing_card from '../assets/15.jpg'
 import waste_background from '../assets/recycle_background.jpg'
 import business_strategy from '../assets/briefcase.svg'
-import operations from '../assets/operation.svg'
-import management from '../assets/management.svg'
+import operations from '../assets/operations.svg'
+import management from '../assets/4.svg'
 import factory from '../assets/factory.svg'
 
 const services_data=[
     {
-        id:'1',
+        id:1,
         icon:search,
         title:"Comprehensive Feasibility Study",
         paragraph_1:"Leveraging up‑to‑date analytics to inform both investment and operational strategies.",
@@ -30,7 +30,7 @@ const services_data=[
     }
     ,
     {
-     id:'2',
+     id:2,
      icon:business_strategy,
      title:"Business Strategy",
      paragraph_1:"Develop strategies that align with evolving market trends.",
@@ -42,7 +42,7 @@ const services_data=[
 
     {
 
-        id:'3',
+        id:3,
         title:"Sourcing",
         icon:sourcing,
         paragraph_1:"End‑to‑end support in acquiring PET waste tailored to your recycling operations.",
@@ -53,9 +53,9 @@ const services_data=[
 
     },
     {
-        id:'4',
+        id:4,
         title:"Operations Efficiency",
-        icon:technical,
+        icon:operations,
         paragraph_1:'Guiding you through every stage of machinery selection and customization for your recycling line.',
         paragraph_2:"Choosing machines specifically suited to your material streams and processing needs.",
         paragraph_3:"Ensuring equipment configurations meet your throughput targets efficiently.",
@@ -64,7 +64,7 @@ const services_data=[
     },
   
     {
-        id:'5',
+        id:5,
         title:"Sales & Compilance",
         icon:sales,
         paragraph_1:"Developing market‑driven sales strategies, optimizing distribution channels, and Establishing long‑term partnerships with buyers.",
@@ -73,7 +73,7 @@ const services_data=[
         read_more:"We provide an integrated approach to sales, sustainability, and compliance in the recycling industry. Our sales strategy focuses on market demand, optimizing channels, and building long-term buyer partnerships. We align operations with best sustainability practices, reducing carbon emissions and enhancing brand reputation. For compliance, we ensure adherence to local and international regulations, keeping clients informed of industry standards. This holistic approach helps clients achieve financial success while promoting environmental responsibility and regulatory compliance."
     },
     {
-        id:'6',
+        id:6,
         title:"Factory Design & Layout Optimization",
         icon:factory,
         paragraph_1:"We create efficient layouts that support smooth operations and allow room for future growth, ensuring your facility adapts easily to changing needs.",
@@ -92,9 +92,9 @@ const services_data=[
     },
   
     {
-        id:"8",
+        id:8,
         title:"Sustainability & Responsible Operations",
-        icon:operations,
+        icon:sustainability,
         paragraph_1:"Empowering factories to integrate ESG values into their everyday operations.",
         paragraph_2:"Creating tailored action plans that align with global standards.",
         paragraph_3:"Ensuring ongoing compliance, clear reporting, and measurable positive change.",

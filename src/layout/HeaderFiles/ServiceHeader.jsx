@@ -1,5 +1,4 @@
-import {useState,useEffect,useRef} from 'react';
-import { useLocation } from 'react-router-dom';
+import {useState,useEffect} from 'react';
 import {motion,AnimatePresence} from "motion/react";
 import { service_header } from '../../data/services_data';
 import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa"
@@ -211,7 +210,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
     <FaRegArrowAltCircleLeft 
       onClick={prevCard} 
       size={35} 
-      className={`text-white cursor-pointer ${service_index <= 0 ? "hidden" : ""}`}  
+      className={`text-white cursor-pointer `}  
     />
     <FaRegArrowAltCircleRight 
       onClick={nextCard} 
@@ -276,7 +275,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
             text: card.background_text
           });
         }}
-        className={`relative xl:w-48 xl:h-52 w-40 h-42 min-h-32 bg-white rounded-lg ${
+        className={`relative xl:w-48 xl:h-52 w-36 h-38 min-h-32 bg-white rounded-lg ${
           isSelected ? 'opacity-100 z-10' : 'opacity-50 z-0'
         } shadow-lg cursor-pointer overflow-hidden`}
         initial={{ scale: 1, x: 0, opacity: 0 }}

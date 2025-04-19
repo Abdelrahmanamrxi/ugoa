@@ -27,7 +27,7 @@ const Layout = ({scrollToServices}) => {
       try {
         setIsImagesLoadedHeader({loading: true, loc: location.pathname});
         
-        // For array input (services page)
+       
         if (Array.isArray(input)) {
           const bgCache = {};
           const cardCache = {};
