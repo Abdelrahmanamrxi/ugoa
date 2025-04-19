@@ -13,7 +13,7 @@ const LazyVideoHeader = () => {
   useEffect(() => {
     // Dynamically import the video file when needed
     const loadVideo = async () => {
-      const video = await import("../assets/home_video.mp4");
+      const video = await import("../assets/vid2.mp4");
       setVid(video.default);  // Set the imported video URL (using .default)
     };
 
