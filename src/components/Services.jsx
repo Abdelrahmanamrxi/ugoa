@@ -48,7 +48,7 @@ useEffect(() => {
   return (
     <div className='relative overflow-hidden'>
     <div className='lg:m-8'>
-    <h1 className=' uppercase font-raleway w-1/12 lg:m-5 m-5 md:m-8  mb-8 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-4xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
+    <h1 className=' uppercase font-raleway w-1/12 lg:m-5 m-5 md:m-8 mb-5 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-4xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
     <div className='flex flex-col m lg:justify-normal md:justify-center md:items-center lg:items-start'>
     <div id="services" ref={refProp} className="lg:grid lg:grid-cols-2 md:w-5/6 lg:w-full lg:grid-rows-2 m-5 flex flex-col gap-6">
         {services_data.map((service)=>{
@@ -128,14 +128,14 @@ useEffect(() => {
         <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>
         <div className='flex flex-row justify-between items-center gap-3'>
         <div className='flex flex-row gap-4 items-center'>
-        <img  src={service.icon} className={`${[8,7,4].includes(service.id)?"md:w-32 sm:w-28 w-14":"md:w-24 p-2 w-12 sm:w-16"}`}/>
-        <h2 className='text-white font-semibold  text-sm sm:text-lg md:text-xl '>{service.title}</h2>
+        <img  src={service.icon} className={`${[8,7,4].includes(service.id)?"md:w-32 sm:w-28 w-16":"md:w-24 p-2 w-14 sm:w-16"}`}/>
+        <h2 className='text-white font-semibold  text-lg sm:text-lg md:text-xl '>{service.title}</h2>
         </div>
     
         <p onClick={()=>{set_service({})} }className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
        
         </div>
-        <p className='text-white text-xs sm:text-lg md:text-xl leading-relaxed mt-4 font-raleway'>{service.read_more}</p>
+        <p className='text-white text-md sm:text-lg md:text-xl leading-relaxed mt-4 font-raleway'>{service.read_more}</p>
             
         </div>
         </div>
