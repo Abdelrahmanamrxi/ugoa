@@ -144,7 +144,7 @@ const Layout = ({scrollToServices}) => {
     animate={{y:-5}}
     transition={{repeat: Infinity, repeatType: "reverse", 
     duration:1, ease:'easeInOut'}}>
-      <PiArrowFatLineUp size={30} className='bg-dark p-1 text-white rounded-full'/>
+      <PiArrowFatLineUp size={35} className='bg-dark p-1 text-white rounded-full'/>
     </motion.a>
   <Footer />
     </>

@@ -39,7 +39,10 @@ const Navbar = ({ loc }) => {
 
   return (
     <nav className='flex relative md:p-8 p-5 items-center justify-between'>
-      <img src={Logo} className='w-16 object-cover ' />
+      <Link to="/" onClick={() => setActiveLink("/")} className="cursor-pointer">
+          <img src={Logo} className='w-16 object-cover ' />
+      </Link>
+      
 
       <IoMdMenu onClick={() => { set_Menu(true); }} className='md:hidden cursor-pointer flex' size={30} />
 
