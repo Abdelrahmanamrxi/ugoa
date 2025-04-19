@@ -6,6 +6,7 @@ import aboutImg from "../assets/about_header_img.jpg";
 import { service_header } from '../data/services_data';
 import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
 import ServiceHeader from './HeaderFiles/ServiceHeader';
+import spareImage from "../assets/vidSpareImg.jpg";
 
 const LazyVideoHeader = () => {
   const [vid, setVid] = useState(null);
@@ -22,7 +23,7 @@ const LazyVideoHeader = () => {
 
   return (
     <div className="w-full h-screen overflow-hidden">
-      {vid && (
+      {vid ? (
         <video
           src={vid}
           autoPlay
@@ -31,7 +32,7 @@ const LazyVideoHeader = () => {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover -z-30"
         />
-      )}
+      ): <img src={spareImage} className='absolute top-0 left-0 w-full h-full object-cover -z-30' /> }
       <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 uppercase text-white text-5xl font-bold z-10">
         Header
       </h1>
