@@ -7,8 +7,9 @@ import aboutImg from "../assets/about_header_img.jpg"
 
 import { PiArrowFatLineUp } from "react-icons/pi";
 import {motion} from "motion/react";
-const Layout = () => {
+const Layout = ({scrollToServices}) => {
   const [imageCache,setImageCache]=useState({})
+  
   const [selectedService, setSelectedService] = useState({
     isSelected: true,
     image: service_header[0].background,
@@ -21,73 +22,100 @@ const Layout = () => {
       loading:location.pathname==="/" || location.pathname==="/contact"? false:true,
       loc:""
     })
-  
-    const preloadAllImagesHeader = useCallback(async (input,name) => {
+    const [cardsCache, setCardsCache] = useState({}); 
+    const preloadAllImagesHeader = useCallback(async (input, name) => {
       try {
-        setIsImagesLoadedHeader({loading:true , loc:location.pathname});
-        const cache = {};
-        const loadImage = (service) =>
-          new Promise((resolve) => {
-            if (imageCache[service.id]) {
-              resolve();
-              return;
-            }
-    
-            const img = new Image();
-            img.src = service.background;
-    
-            img.onload = () => {
-              cache[service.id] = img.src;
-              resolve();
-            };
-    
-            img.onerror = () => {
-              console.warn(`Failed to load image: ${service.background}`);
-              resolve();
-            };
-            
-          });
-    
+        setIsImagesLoadedHeader({loading: true, loc: location.pathname});
+        
+        // For array input (services page)
         if (Array.isArray(input)) {
-          await Promise.all(input.map(service => loadImage(service)));
-          setImageCache((prev) => {
-            const newCache = { ...prev, ...cache };
-            return Object.keys(cache).length > 0 ? newCache : prev;
+          const bgCache = {};
+          const cardCache = {};
+    
+          await Promise.all(input.map(service => 
+            Promise.all([
+              // Background images
+              new Promise(resolve => {
+                if (imageCache[service.id]) {
+                  resolve();
+                  return;
+                }
+                const img = new Image();
+                img.src = service.background;
+                img.onload = () => {
+                  bgCache[service.id] = service.background;
+                  resolve();
+                };
+                img.onerror = () => {
+                  console.warn(`Failed to load bg image: ${service.background}`);
+                  resolve();
+                };
+              }),
+              
+              // Card images
+              new Promise(resolve => {
+                if (cardsCache[service.id]) {
+                  resolve();
+                  return;
+                }
+                const img = new Image();
+                img.src = service.image;
+                img.onload = () => {
+                  cardCache[service.id] = service.image;
+                  resolve();
+                };
+                img.onerror = () => {
+                  console.warn(`Failed to load card image: ${service.image}`);
+                  resolve();
+                };
+              })
+            ])
+          ));
+    
+          // Update caches if we loaded new images
+          if (Object.keys(bgCache).length > 0) {
+            setImageCache(prev => ({...prev, ...bgCache}));
+          }
+          if (Object.keys(cardCache).length > 0) {
+            setCardsCache(prev => ({...prev, ...cardCache}));
+          }
+    
+          // For services page, we need both caches loaded
+          setIsImagesLoadedHeader({
+            loc: location.pathname,
+            loading: !(Object.keys(bgCache).length > 0 || !(Object.keys(cardCache).length > 0))
           });
-        } else {
-          if(!imageCache[name]){
-          await new Promise((resolve) => {
-            const img = new Image();
-            img.src = input;
-    
-            img.onload = () => {
-              cache[name] = img.src;
-              resolve();
-            };
-    
-            img.onerror = () => {
-              console.warn(`Failed to load image: ${input.background}`);
-              resolve();
-            };
+        } 
+        // For single image input (about us page)
+        else {
+          // Skip if already cached
+          if (!imageCache[name]) {
+            await new Promise(resolve => {
+              const img = new Image();
+              img.src = input;
+              img.onload = () => {
+                setImageCache(prev => ({...prev, [name]: input}));
+                resolve();
+              };
+              img.onerror = () => {
+                console.warn(`Failed to load image: ${input}`);
+                resolve();
+              };
+            });
+          }
           
+          // For about page, just check the single image
+          setIsImagesLoadedHeader({
+            loc: location.pathname,
+            loading: !imageCache[name]
           });
-          setImageCache((prev) => {
-            const newCache = { ...prev, ...cache };
-            return Object.keys(cache).length > 0 ? newCache : prev;
-          });
-        }
-        }
-    
-      
-        if(Object.keys(imageCache).length>0){
-          setIsImagesLoadedHeader({loc:location.pathname,loading:false});
         }
       } catch (err) {
         console.error("Image preloading failed:", err);
-        setIsImagesLoadedHeader({loading:true,loc:location.pathname});
+        setIsImagesLoadedHeader({loading: true, loc: location.pathname});
       }
-    }, [imageCache,location.pathname]);
-    
+    }, [imageCache, cardsCache, location.pathname]);
+   
       useEffect(() => {
         let isMounted = true;
         if (location.pathname === "/services" && isMounted) {
@@ -108,7 +136,7 @@ const Layout = () => {
     <>
   {IsImagesLoadedHeader.loading===false ?
   <>
-  <Header setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} setSelectedService={setSelectedService}/>
+  <Header scrollToServices={scrollToServices} setIsImagesLoaded={setIsImagesLoadedHeader} IsImagesLoaded={IsImagesLoadedHeader} selectedService={selectedService} imageCache={imageCache} cardsCache={cardsCache} setSelectedService={setSelectedService}/>
     <Outlet/>
 
     <motion.a href='#header' className='fixed z-40 bottom-5 right-5 md:bottom-6 md:right-6 shadow-md rounded-full shadow-black/40'

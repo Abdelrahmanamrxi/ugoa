@@ -8,7 +8,7 @@ import WhatWeOffer from './WhatWeOffer';
 import { new_projects,old_projects } from '../data/services_data';
 
 
-const Services = () => {
+const Services = ({refProp,scrollToServices}) => {
   const [isMobile, setIsMobile] = useState(false);
 
 useEffect(() => {
@@ -45,7 +45,7 @@ useEffect(() => {
     <div className='relative overflow-hidden'>
     <div className='md:m-8'>
     <h1 className=' uppercase font-raleway w-1/12 m-5 mb-8 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-3xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
-    <div className="md:grid md:grid-cols-2 md:grid-rows-2 m-5 flex flex-col gap-6">
+    <div id="services" ref={refProp} className="md:grid md:grid-cols-2 md:grid-rows-2 m-5 flex flex-col gap-6">
         {services_data.map((service)=>{
             return(
             <motion.div 
@@ -55,12 +55,16 @@ useEffect(() => {
             viewport={{once:true}}
             transition={{duration:1,ease:"easeInOut",delay:service.id*0.1}}
 
-            whileHover={{scale:1.05,transition:{
-                duration:0.5,
-                ease:"easeInOut"
-            }}}
+            whileHover={{ 
+               
+              boxShadow: "0 4px 20px rgba(0, 128, 0, 0.2)", // soft green glow
+              transition: {
+                duration: 0.4,
+                ease: "easeInOut"
+              }
+              }}
             key={service.id} className="shadow-md cursor-pointer  flex flex-row">
-  <img alt={service.title}  className='bg-dark_green w-1/4 lg:w-1/5  object-contain md:h-full p-5 rounded-tl-lg rounded-bl-lg' src={service.icon}/>
+  <img alt={service.title}  className='bg-dark_green w-1/4 lg:w-1/5     object-contain md:h-full p-5 rounded-tl-lg rounded-bl-lg' src={service.icon}/>
     <div className="flex flex-col relative justify-between font-raleway gap-2 m-3">
       <h2 className="text-dark_green text-xl font-semibold">{service.title}</h2>
       <ul className="text-gray-500 tracking-wide  leading-relaxed text-xs md:text-sm">
@@ -84,6 +88,7 @@ useEffect(() => {
       {service.id&& !isMobile &&( 
       <motion.div 
          key="modal"
+         
          initial={{ opacity: 0}} 
          animate={{ opacity: 1} }
          exit={{ opacity: 0, x: window.innerWidth > 768 ? "10%" : 0 }} 
@@ -93,11 +98,14 @@ useEffect(() => {
             <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>
             <div className='flex flex-row justify-between items-center gap-3'>
             <div className='flex flex-row gap-4 items-center'>
-            <img  src={service.icon} className='md:w-24 w-12'/>
+            <img  src={service.icon} className='md:w-24 w-12 h-24 '/>
             <h2 className='text-white font-semibold text-sm md:text-2xl '>{service.title}</h2>
             </div>
         
-            <p onClick={()=>{set_service({})} }className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
+            <p onClick={()=>{
+              set_service({}) 
+              scrollToServices()
+          } }className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
            
             </div>
             <p className='text-white text-md md:text-lg leading-relaxed mt-4 font-raleway'>{service.read_more}</p>

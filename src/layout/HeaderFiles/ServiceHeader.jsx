@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useRef} from 'react';
 import { useLocation } from 'react-router-dom';
 import {motion,AnimatePresence} from "motion/react";
 import { service_header } from '../../data/services_data';
@@ -6,91 +6,105 @@ import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa
 import { MdKeyboardArrowLeft,MdKeyboardArrowRight } from "react-icons/md";
 
 
-export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectChange}) {
+export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectChange,scrollToServices,cardsCache}) {
     const [service_index,set_service]=useState(0)
     const [auto_switch,set_switch]=useState(true)
-     
+      
       const[selected,setSelected]=useState({
         isSelected:true,
         image:service_header[0].background,
         id:1,
         title:service_header[0].background_title,
-        text:service_header[0].background_text
+        text:service_header[0].background_text,
+      
       })
       let VIS_AMOUNT=3
       const [visible_cards, setVisibleCards] = useState(service_header.slice(0, VIS_AMOUNT));
-     
+      const getVisibleCards=(startIndex,amount,list)=>{
+        const cards=[]
+        for(let i=0;i<amount;i++){
+          const index = (startIndex + i) % list.length; // Wrap around
+          cards.push(list[index]);
+        }    
+        return cards
+      
+      }
       const ChooseCard=(data)=>{
        const {isSelected,image,id,title,text}=data
        let index=id-1
-       let new_selected={isSelected,image:imageCache[data.id],id,title,text}
+       let new_selected={isSelected,image:cardsCache[data.id],id,title,text}
        setSelected(new_selected)
        OnSelectChange(new_selected)
        set_service(index)
+       const cards=getVisibleCards(index,VIS_AMOUNT,service_header)
+       setVisibleCards(cards)
        
-       if (index + VIS_AMOUNT > service_header.length) {
-        setVisibleCards(service_header.slice(service_header.length - VIS_AMOUNT));
-      } else if (index > visible_cards[visible_cards.length - 1]?.id) {
-        setVisibleCards(service_header.slice(index, index + VIS_AMOUNT));
-      }
-      else if(index<visible_cards[0]?.id){
-        setVisibleCards(service_header.slice(0,VIS_AMOUNT));
-      }
-      
       }
 
       
     const nextCard = () => {
+      let newIndex;
       if (service_index < service_header.length - 1) {
-        const newIndex = service_index + 1;
-        set_service(newIndex)
-        if (newIndex + VIS_AMOUNT > service_header.length) {
-          setVisibleCards(service_header.slice(service_header.length - VIS_AMOUNT));
-        } else if (newIndex > visible_cards[visible_cards.length - 1]?.id) {
-          setVisibleCards(service_header.slice(newIndex, newIndex + VIS_AMOUNT));
-        }
-        else if (newIndex < visible_cards[0]?.id) {
-          setVisibleCards(service_header.slice(0, VIS_AMOUNT));
-        }  
+        newIndex = service_index + 1;
+      } else {
+        newIndex = 0;
+      }
       
-      }
-    
-    };
-    
-    
+      set_service(newIndex);
+      const cards = getVisibleCards(newIndex, VIS_AMOUNT, service_header);
+      setVisibleCards(cards);
+      
+      // Update selected card when wrapping around
+      const newSelected = {
+        isSelected: true,
+        image: cardsCache[service_header[newIndex].id] || service_header[newIndex].background,
+        id: service_header[newIndex].id,
+        title: service_header[newIndex].background_title,
+        text: service_header[newIndex].background_text
+      };
+      
+      setSelected(newSelected);
+      OnSelectChange(newSelected);
+  }
     const prevCard = () => {
+      let newIndex;
       if (service_index > 0) {
-        const newIndex = service_index - 1;
-        set_service(newIndex);
-        if (newIndex < visible_cards[0]?.id) {
-          setVisibleCards(service_header.slice(0, VIS_AMOUNT));
-        }  if (newIndex < visible_cards[0]?.id) {
-          setVisibleCards(service_header.slice(newIndex, newIndex + VIS_AMOUNT));
-        }
+        newIndex = service_index - 1;
+      } else {
+        newIndex = service_header.length - 1;
       }
+      
+      set_service(newIndex);
+      const cards = getVisibleCards(newIndex, VIS_AMOUNT, service_header);
+      setVisibleCards(cards);
+      
+      const newSelected = {
+        isSelected: true,
+        image: cardsCache[service_header[newIndex].id] || service_header[newIndex].background,
+        id: service_header[newIndex].id,
+        title: service_header[newIndex].background_title,
+        text: service_header[newIndex].background_text
+      };
+      
+      setSelected(newSelected);
+      OnSelectChange(newSelected);
+    
     }
     useEffect(()=>{
        let interval;
        if(auto_switch){
         interval=setInterval(()=>{
             nextCard()
-
         },5000)
-        }
-        if(auto_switch && service_index+1===service_header.length){
-           interval=setInterval(()=>{
-            set_service(0)
-            setVisibleCards(service_header.slice(0,VIS_AMOUNT))
-           },5000)
         }
         return ()=>clearInterval(interval)
     },[auto_switch,service_index])
     
      useEffect(()=>{
-      if (imageCache[service_header[service_index]?.id]) {
+      if (cardsCache[service_index]) {
         const new_selected = {
             isSelected: true,
-            image: imageCache[service_header[service_index]?.id],
+            image: cardsCache[service_index],
             id: service_header[service_index].id,
             title: service_header[service_index].background_title,
             text: service_header[service_index].background_text
@@ -98,8 +112,9 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
       setSelected(new_selected)
       OnSelectChange(new_selected)
       
-     }},[service_index,imageCache])
+     }},[service_index,cardsCache])
 
+    
 
    return (
          <div 
@@ -186,7 +201,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
         }}
         className="will-change-transform"
       >
-        <button className="bg-dark_green font-semibold font-raleway hover:bg-opacity-80 px-5 py-2">
+        <button onClick={scrollToServices} className="bg-dark_green font-semibold font-raleway hover:bg-opacity-80 px-5 py-2">
           Explore
         </button>
       </motion.div>
@@ -201,7 +216,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
     <FaRegArrowAltCircleRight 
       onClick={nextCard} 
       size={35} 
-      className={`text-white cursor-pointer ${service_index === service_header.length-1 ? "hidden" : ""}`} 
+      className={`text-white cursor-pointer `} 
     />
   </div>
   
@@ -225,38 +240,84 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
  
      {/* CARD CONTAINER */}
      
+     <motion.div className="relative  flex flex-row gap-6"
+     initial={{opacity:0,translateX:-20}}
+       animate={{
+       translateX:0,
+       opacity:1
+      }}
+      transition={{
+        type: "spring", 
+        stiffness: 300, 
+        damping: 30,
+        duration:1,
+        ease: [0.33, 1, 0.68, 1]
+      }}
      
-     <div className="relative  flex flex-row gap-6">
-       {visible_cards.map((card) => (
-         <motion.div
-          
-           key={card.id}
-           onClick={() => ChooseCard( {isSelected: true, image: card.background, id: card.id, title: card.background_title, text: card.background_text }) }
-          
-           className="relative xl:w-48 xl:h-52 w-40 h-42 min-h-32  bg-white rounded-lg shadow-lg cursor-pointer overflow-hidden"
-           initial={{ scale: 1 }}
-           animate={{
-             scale: selected.id === card.id ? 1.1 : 1,
-             y: selected.id === card.id ? -20 : 0,
-             opacity: selected.id === card.id ? 1 : 0.8,
-             height: selected.id === card.id ? "20rem" : "16rem",
-             zIndex: selected.id === card.id ? 10 : 1,
-           }}
-           
-           transition={{ duration: 0.5 }}
-         >
-           {/* Card Background Image */}
-           <motion.div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${card.image})` }} />
- 
-           {/* Card Content */}
-           <motion.div className="absolute bottom-0 w-full p-4 text-white">
-             <h3 className="text-xl  font-raleway font-bold">{card.title}</h3>
-             <p className="text-sm font-raleway ">{card.text}</p>
-           </motion.div>
-         </motion.div>
-       ))}
-     </div>
- 
+     >
+    <AnimatePresence>
+  {visible_cards.map((card, index) => {
+    const isSelected = selected.id === card.id;
+   
+    
+    // Only apply x movement to selected card
+    const targetX = isSelected ? -40 : 0;
+    
+    // Remove marginRight animation that was causing jumps
+    return (
+      <motion.div
+        key={card.id}
+        onClick={() => {
+          ChooseCard({
+            isSelected: true,
+            image: card.background,
+            id: card.id,
+            title: card.background_title,
+            text: card.background_text
+          });
+        }}
+        className={`relative xl:w-48 xl:h-52 w-40 h-42 min-h-32 bg-white rounded-lg ${
+          isSelected ? 'opacity-100 z-10' : 'opacity-50 z-0'
+        } shadow-lg cursor-pointer overflow-hidden`}
+        initial={{ scale: 1, x: 0, opacity: 0 }}
+        animate={{
+          scale: isSelected ? 1.2 : 1,
+          y: isSelected ? -20 : 0,
+          opacity: isSelected ? 1 : 0.8,
+          height: isSelected ? "20rem" : "16rem",
+          zIndex: isSelected ? 10 : 1,
+          x: targetX
+        }}
+        exit={{
+          opacity: 0,
+          x: 60,
+          scale: 0.8,
+          transition: { duration: 0.6 }
+        }}
+        transition={{
+          duration: 0.7, // Faster transition
+          ease: [0.2, 0, 0, 1] // Smoother easing
+        }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        layout="position" // Only animate position, not size
+      >
+        {/* Card Background Image */}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${card.image})` }}
+        />
+        
+        {/* Card Content */}
+        <motion.div className="absolute bottom-0 w-full p-4 text-white">
+          <h3 className="text-xl font-raleway font-bold">{card.title}</h3>
+        </motion.div>
+      </motion.div>
+    );
+  })}
+</AnimatePresence>
+     </motion.div>
+    
      {/* Arrow Below Cards */}
      
  
@@ -367,7 +428,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
             opacity: 0 
           }}
         >
-          <button className="bg-dark_green font-raleway font-medium px-5 py-2 rounded-md min-w-[120px]">
+          <button onClick={scrollToServices} className="bg-dark_green font-raleway font-medium px-5 py-2 rounded-md min-w-[120px]">
             Explore
           </button>
         </motion.div>
