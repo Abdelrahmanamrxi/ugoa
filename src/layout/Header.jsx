@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Navbar from '../components/Navbar';
-import { useLocation } from 'react-router-dom';
-import { motion } from "framer-motion";
-import aboutImg from "../assets/about_header_img.jpg";
+import { useLocation, } from 'react-router-dom';
+import { easeIn, motion, AnimatePresence } from "framer-motion";
+import aboutImg from "../assets/about_header_img2.jpg";
 import { service_header } from '../data/services_data';
 import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
 import ServiceHeader from './HeaderFiles/ServiceHeader';
 import spareImage from "../assets/vidSpareImg.jpg";
-import Loading from '../components/Loading';
+
+
+
+
+
 
 const LazyVideoHeader = () => {
   const [vid, setVid] = useState(null);
@@ -47,10 +51,7 @@ const LazyVideoHeader = () => {
       )}
 
       {/* Header text */}
-      <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 uppercase text-white text-5xl font-bold z-10">
-        Header
-      </h1>
-    </div>
+    </div> 
   );
 };
 
@@ -63,6 +64,21 @@ const Header = ({
   scrollToServices,
   cardsCache
 }) => {
+
+const aboutHeaderWords = ["Sustainability", "Innovation", "Recycling"];
+const [aboutWord, setAboutWord] = useState(aboutHeaderWords[0]);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setAboutWord(prev => {
+      const currentIndex = aboutHeaderWords.indexOf(prev);
+      const nextIndex = (currentIndex + 1) % aboutHeaderWords.length;
+      return aboutHeaderWords[nextIndex];
+    });
+  }, 2000); // change word every 2 seconds
+
+  return () => clearInterval(interval); // cleanup
+}, [aboutWord]);
   const location = useLocation();
 
   const PageHeaderLoad = () => {
@@ -134,7 +150,7 @@ const Header = ({
       return (
         <div className="h-full flex flex-col justify-center items-center">
           <motion.div
-            className="w-full"
+            className="w-full px-6 md:px-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: -40 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
@@ -143,15 +159,28 @@ const Header = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.8, ease: "easeOut", delay: 0.2 }}
-              className="font-raleway font-bold text-white text-center md:text-4xl text-2xl"
+              className="font-raleway uppercase font-bold text-white text-left md:text-4xl text-2xl"
             >
-              About Us
+              UGOA
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={aboutWord} // Important for triggering remount
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut", delay:0.3 }}
+                    className="text-orange-400 inline-block ml-4"
+                  >
+                    {aboutWord}
+                  </motion.span>
+              </AnimatePresence> 
+              <h2>experience</h2>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 2, ease: "easeOut", delay: 1 }}
-              className="w-full mt-5 text-center font-light text-white font-raleway text-xs md:text-md"
+              transition={{ duration: 1.5, ease: "easeOut", delay: 1.5 }}
+              className="w-full mt-5 text-left font-light text-white font-raleway text-sm md:text-lg"
             >
               Guiding Your Success Journey Through Expertise and Innovation
             </motion.p>
@@ -176,6 +205,36 @@ const Header = ({
       return (
         <div className="w-full h-screen overflow-hidden">
           <LazyVideoHeader />
+          <motion.div 
+          initial={{ opacity: 0}}
+          animate={{ opacity: 1}}
+          transition={{ duration: 2, ease: "easeInOut"}}
+          className='flex flex-col px-6 w-full gap-4 md:gap-6 justify-center font-raleway items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
+            <h1 className="font-bold text-xl w-full md:text-3xl text-center">
+                First-Class Business Consultant
+            </h1>
+            <p className='text-center font-light text-xs md:text-sm w-4/5 md:w-1/4'>
+              We know how large objects will act, but things on a small scale just do not act that way.
+            </p>
+            <div className='flex gap-4 h-auto mt-2 py-2'>
+              <motion.button 
+              initial={{scale:1}}
+              whileHover={{scale:1.1}}
+              whileTap={{scale:0.9}}
+              transition={{duration:0.3, ease:"easeInOut"}}
+              className='bg-primary rounded-full px-2 py-1 text-xs md:text-sm md:px-4 md:py-2 hover:bg-white hover:text-primary'>
+                Get Consult Now
+              </motion.button>
+              <motion.button 
+              initial={{scale:1}}
+              whileHover={{scale:1.1}}
+              whileTap={{scale:0.9}}
+              transition={{duration:0.3, ease:"easeInOut"}}
+              className='border-primary px-2 py-1 text-xs md:text-sm hover:text-primary hover:border-transparent hover:bg-white border-2 rounded-full md:px-4 md:py-2'>
+                Learn More
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
       );
     }
@@ -229,7 +288,7 @@ const Header = ({
           <Navbar loc={location.pathname} />
           <div
             className={`${
-              location.pathname === "/services" ? "h-screen" : "h-[24vh] md:h-[40vh]"
+              location.pathname === "/services" ? "h-screen" : "h-[40vh] md:h-[50vh]"
             }`}
           >
             {renderContent()}

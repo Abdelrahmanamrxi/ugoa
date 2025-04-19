@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Outlet, useLocation } from 'react-router-dom';
 import { service_header } from '../data/services_data';
-import aboutImg from "../assets/about_header_img.jpg";
+import aboutImg from "../assets/about_header_SVG.svg";
 
 import { PiArrowFatLineUp } from "react-icons/pi";
 import { motion } from "framer-motion";
