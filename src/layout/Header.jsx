@@ -22,7 +22,7 @@ const LazyVideoHeader = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="w-full h-screen overflow-hidden">
       {/* Show spare image until video is ready */}
       {!isVideoReady && (
         <img
