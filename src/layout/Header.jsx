@@ -7,6 +7,7 @@ import { service_header } from '../data/services_data';
 import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
 import ServiceHeader from './HeaderFiles/ServiceHeader';
 import spareImage from "../assets/vidSpareImg.jpg";
+import Loading from '../components/Loading';
 
 const LazyVideoHeader = () => {
   const [vid, setVid] = useState(null);
