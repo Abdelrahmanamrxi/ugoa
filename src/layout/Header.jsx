@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo, useCallback, lazy } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import { useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "framer-motion";
 import aboutImg from "../assets/about_header_img.jpg";
 import { service_header } from '../data/services_data';
 import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
@@ -10,20 +10,30 @@ import spareImage from "../assets/vidSpareImg.jpg";
 
 const LazyVideoHeader = () => {
   const [vid, setVid] = useState(null);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
-    // Dynamically import the video file when needed
     const loadVideo = async () => {
       const video = await import("../assets/vid2.mp4");
-      setVid(video.default);  // Set the imported video URL (using .default)
+      setVid(video.default);
     };
 
     loadVideo();
   }, []);
 
   return (
-    <div className="w-full h-screen overflow-hidden">
-      {vid ? (
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Show spare image until video is ready */}
+      {!isVideoReady && (
+        <img
+          src={spareImage}
+          className="absolute top-0 left-0 w-full h-full object-cover -z-20"
+          alt="Fallback"
+        />
+      )}
+
+      {/* Video with readiness check */}
+      {vid && (
         <video
           src={vid}
           autoPlay
@@ -31,8 +41,11 @@ const LazyVideoHeader = () => {
           muted
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover -z-30"
+          onCanPlayThrough={() => setIsVideoReady(true)}
         />
-      ): <img src={spareImage} className='absolute top-0 left-0 w-full h-full object-cover -z-30' /> }
+      )}
+
+      {/* Header text */}
       <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 uppercase text-white text-5xl font-bold z-10">
         Header
       </h1>
@@ -40,14 +53,22 @@ const LazyVideoHeader = () => {
   );
 };
 
-const Header = ({ IsImagesLoaded, setIsImagesLoaded, selectedService, imageCache, setSelectedService, scrollToServices, cardsCache }) => {
+const Header = ({
+  IsImagesLoaded,
+  setIsImagesLoaded,
+  selectedService,
+  imageCache,
+  setSelectedService,
+  scrollToServices,
+  cardsCache
+}) => {
   const location = useLocation();
 
   const PageHeaderLoad = () => {
     if (location.pathname === "/services" && IsImagesLoaded) {
       return (
-        <SmoothBackground 
-          image={imageCache[selectedService.id]} 
+        <SmoothBackground
+          image={imageCache[selectedService.id]}
           prevImage={service_header[0].background}
           blur
         />
@@ -99,7 +120,7 @@ const Header = ({ IsImagesLoaded, setIsImagesLoaded, selectedService, imageCache
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              duration={{ duration: 2, ease: "easeOut", delay: 1 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 1 }}
               className="lg:w-1/3 md:w-1/2 mt-5 text-offwhite text-opacity-90 font-raleway text-md md:text-lg"
             >
               Read our Global Annual Review, meet our Global Leadership Team, discover our approach to corporate sustainability, our commitment to diversity, inclusion, and more.
@@ -128,7 +149,7 @@ const Header = ({ IsImagesLoaded, setIsImagesLoaded, selectedService, imageCache
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              duration={{ duration: 2, ease: "easeOut", delay: 1 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 1 }}
               className="w-full mt-5 text-center font-light text-white font-raleway text-xs md:text-md"
             >
               Guiding Your Success Journey Through Expertise and Innovation
@@ -161,7 +182,6 @@ const Header = ({ IsImagesLoaded, setIsImagesLoaded, selectedService, imageCache
 
   const SmoothBackground = ({ image, prevImage, blur }) => (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
-      {/* Permanent fallback */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -171,7 +191,6 @@ const Header = ({ IsImagesLoaded, setIsImagesLoaded, selectedService, imageCache
           filter: blur ? "blur(4px)" : "none",
         }}
       />
-      {/* Animated foreground */}
       <motion.div
         key={image}
         className="absolute inset-0 bg-cover bg-center"
@@ -191,7 +210,6 @@ const Header = ({ IsImagesLoaded, setIsImagesLoaded, selectedService, imageCache
   return (
     <div id="header" className="relative w-full">
       {PageHeaderLoad()}
-      {/* UNDER IS THE HEADER OF THE OTHER PAGES */}
       {location.pathname !== "/services" ? (
         <motion.div
           key="background-image"
