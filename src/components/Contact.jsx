@@ -72,7 +72,7 @@ const Contact = () => {
       }
     };
     
-    console.log(error)
+   
   return (
     <div className="h-full relative overflow-hidden flex">
 

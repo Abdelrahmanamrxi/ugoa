@@ -14,7 +14,7 @@ export default function ServiceHeader({scrollToServices}) {
       isImagesLoadedHeader:IsImagesLoaded,
      }=useSelector((state)=>state.Header)
     const [service_index,set_service]=useState(0)
-    const [auto_switch,set_switch]=useState(true)
+    const [auto_switch]=useState(true)
       
       const[selected,setSelected]=useState({
         isSelected:true,
