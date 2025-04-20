@@ -3,7 +3,7 @@ import Loading from './Loading.jsx'
 export default function Home() {
   return (
     <div >     
-      <Loading />
+      {/* <Loading /> */}
     </div>
   )
 }
