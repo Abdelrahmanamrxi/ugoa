@@ -169,7 +169,7 @@ useEffect(() => {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.4, ease: "easeInOut", delay:0.3 }}
-                    className="text-orange-400 inline-block ml-4"
+                    className="text-primary inline-block ml-4"
                   >
                     {aboutWord}
                   </motion.span>
