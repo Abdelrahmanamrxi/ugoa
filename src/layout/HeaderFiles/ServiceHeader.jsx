@@ -3,9 +3,16 @@ import {motion,AnimatePresence} from "motion/react";
 import { service_header } from '../../data/services_data';
 import { FaRegArrowAltCircleRight,FaRegArrowAltCircleLeft } from "react-icons/fa"
 import { MdKeyboardArrowLeft,MdKeyboardArrowRight } from "react-icons/md";
+import { useDispatch,useSelector } from 'react-redux';
+import { setSelectedService } from '../../store/HeaderSlice';
 
 
-export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectChange,scrollToServices,cardsCache}) {
+export default function ServiceHeader({scrollToServices}) {
+   const dispatch=useDispatch()
+    const {
+      cardsCache,
+      isImagesLoadedHeader:IsImagesLoaded,
+     }=useSelector((state)=>state.Header)
     const [service_index,set_service]=useState(0)
     const [auto_switch,set_switch]=useState(true)
       
@@ -33,7 +40,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
        let index=id-1
        let new_selected={isSelected,image:cardsCache[data.id],id,title,text}
        setSelected(new_selected)
-       OnSelectChange(new_selected)
+       dispatch(setSelectedService(new_selected))
        set_service(index)
        const cards=getVisibleCards(index,VIS_AMOUNT,service_header)
        setVisibleCards(cards)
@@ -63,7 +70,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
       };
       
       setSelected(newSelected);
-      OnSelectChange(newSelected);
+      dispatch(setSelectedService(newSelected))
   }
     const prevCard = () => {
       let newIndex;
@@ -86,7 +93,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
       };
       
       setSelected(newSelected);
-      OnSelectChange(newSelected);
+      dispatch(setSelectedService(newSelected));
     
     }
     useEffect(()=>{
@@ -109,7 +116,7 @@ export default function ServiceHeader({imageCache,setIsImagesLoaded ,OnSelectCha
             text: service_header[service_index].background_text
           };
       setSelected(new_selected)
-      OnSelectChange(new_selected)
+      dispatch(setSelectedService(new_selected))
       
      }},[service_index,cardsCache])
 

@@ -6,7 +6,7 @@ export default function Loading({ onFinish }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onFinish();
-    }, 2000); // Keep for 2 seconds
+    }, 1000); // Keep for 2 seconds
 
     return () => clearTimeout(timer); // Clean up if unmounted
   }, [onFinish]);

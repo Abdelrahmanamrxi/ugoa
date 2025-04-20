@@ -8,6 +8,7 @@ import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/f
 import ServiceHeader from './HeaderFiles/ServiceHeader';
 import spareImage from "../assets/vidSpareImg.jpg";
 import Loading from '../components/Loading';
+import { useSelector,useDispatch } from 'react-redux';
 
 const LazyVideoHeader = () => {
   const [vid, setVid] = useState(null);
@@ -55,18 +56,16 @@ const LazyVideoHeader = () => {
 };
 
 const Header = ({
-  IsImagesLoaded,
-  setIsImagesLoaded,
-  selectedService,
-  imageCache,
-  setSelectedService,
   scrollToServices,
-  cardsCache
 }) => {
+  const {isImagesLoadedHeader,imageCache,selectedService}=useSelector((state)=>state.Header)
   const location = useLocation();
+  let loading=isImagesLoadedHeader.loading
+ 
 
   const PageHeaderLoad = () => {
-    if (location.pathname === "/services" && IsImagesLoaded) {
+    if (location.pathname === "/services" && !isImagesLoadedHeader.loading) {
+      
       return (
         <SmoothBackground
           image={imageCache[selectedService.id]}
@@ -93,12 +92,12 @@ const Header = ({
   }, [location.pathname]);
 
   const backgroundImageCheck = useMemo(() => {
-    if (location.pathname === "/about_us" && !IsImagesLoaded.loading)
+    if (location.pathname === "/about_us" && !isImagesLoadedHeader.loading)
       return `url(${imageCache["about_img"]})`;
-    if (location.pathname === "/services" && !IsImagesLoaded.loading)
+    if (location.pathname === "/services" && !isImagesLoadedHeader.loading)
       return `url(${imageCache[selectedService.id]})`;
     return "";
-  }, [location.pathname, imageCache, IsImagesLoaded]);
+  }, [location.pathname, imageCache,loading]);
 
   function renderContent() {
     if (location.pathname === "/contact") {
@@ -130,7 +129,7 @@ const Header = ({
         </div>
       );
     }
-    if (location.pathname === "/about_us" && !IsImagesLoaded.loading) {
+    if (location.pathname === "/about_us" && !isImagesLoadedHeader.loading) {
       return (
         <div className="h-full flex flex-col justify-center items-center">
           <motion.div
@@ -159,20 +158,16 @@ const Header = ({
         </div>
       );
     }
-    if (location.pathname === "/services" && !IsImagesLoaded.loading) {
+    if (location.pathname === "/services" && !isImagesLoadedHeader.loading) {
       return (
         <div>
           <ServiceHeader
-            cardsCache={cardsCache}
-            scrollToServices={scrollToServices}
-            imageCache={imageCache}
-            IsImagesLoaded={IsImagesLoaded}
-            OnSelectChange={setSelectedService}
+            scrollToServices={scrollToServices}   
           />
         </div>
       );
     }
-    if (location.pathname === "/" && !IsImagesLoaded.loading) {
+    if (location.pathname === "/" && !isImagesLoadedHeader.loading) {
       return (
         <div className="w-full h-screen overflow-hidden">
           <LazyVideoHeader />
@@ -224,7 +219,7 @@ const Header = ({
         ""
       )}
 
-      {IsImagesLoaded.loading === false ? (
+      {isImagesLoadedHeader.loading === false ? (
         <div className="text-white z-10">
           <Navbar loc={location.pathname} />
           <div
