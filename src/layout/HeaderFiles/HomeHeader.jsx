@@ -9,8 +9,8 @@ export default function HomeHeader() {
     initial={{ opacity: 0}}
     animate={{ opacity: 1}}
     transition={{ duration: 2, ease: "easeInOut"}}
-    className='flex flex-col px-6 w-full gap-4 md:gap-6 justify-start font-raleway items-start absolute top-1/2 left-6 transform -translate-y-1/2 z-10'>
-      <h1 className="font-bold w-full md:text-4xl text-2xl text-left">
+    className='flex flex-col px-6 w-full gap-4 md:gap-6 justify-start font-raleway items-start absolute top-1/2 md:left-6 transform -translate-y-6 z-10'>
+      <h1 className="font-bold w-full md:text-3xl text-left">
           First-Class Business Consultant
       </h1>
       <p className='text-left font-light text-sm md:text-lg w-4/5 md:w-1/4'>
