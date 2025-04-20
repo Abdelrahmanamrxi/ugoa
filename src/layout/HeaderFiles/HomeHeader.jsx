@@ -9,11 +9,11 @@ export default function HomeHeader() {
     initial={{ opacity: 0}}
     animate={{ opacity: 1}}
     transition={{ duration: 2, ease: "easeInOut"}}
-    className='flex flex-col px-6 w-full gap-4 md:gap-6 justify-center font-raleway items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
-      <h1 className="font-bold text-xl w-full md:text-3xl text-center">
+    className='flex flex-col px-6 w-full gap-4 md:gap-6 justify-start font-raleway items-start absolute top-1/2 left-6 transform -translate-y-1/2 z-10'>
+      <h1 className="font-bold w-full md:text-4xl text-2xl text-left">
           First-Class Business Consultant
       </h1>
-      <p className='text-center font-light text-xs md:text-sm w-4/5 md:w-1/4'>
+      <p className='text-left font-light text-sm md:text-lg w-4/5 md:w-1/4'>
         We know how large objects will act, but things on a small scale just do not act that way.
       </p>
       <div className='flex gap-4 h-auto mt-2 py-2'>
