@@ -9,7 +9,7 @@ export default function HomeHeader() {
     initial={{ opacity: 0}}
     animate={{ opacity: 1}}
     transition={{ duration: 2, ease: "easeInOut"}}
-    className='flex flex-col px-6 w-full gap-4 md:gap-6 justify-start font-raleway items-start absolute top-1/2 md:left-6 transform -translate-y-6 z-10'>
+    className='flex flex-col px-6 w-full gap-4 md:gap-6 justify-start font-raleway items-start absolute top-1/2 md:left-6 transform -translate-y-20 z-10'>
       <h1 className="font-bold w-full md:text-3xl text-left">
         Enabling Growth in Recycling & Sustainability
       </h1>
