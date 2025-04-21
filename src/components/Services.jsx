@@ -11,7 +11,7 @@ import { new_projects,old_projects } from '../data/services_data';
 const Services = ({refProp,scrollToServices}) => {
   const [isMobile, setIsMobile] = useState(false);
  const CheckPadding=(id)=>{
-   if(id===8 || id===7 || id==4)
+   if(id===8 || id===7 || id==4 )
     return ' '
    else
    return 'p-5'

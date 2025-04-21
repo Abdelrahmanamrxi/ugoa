@@ -1,8 +1,8 @@
-import {useState,useRef,Suspense,lazy} from 'react'
+import {useState,useRef,Suspense,lazy, useEffect} from 'react'
 import Background from '../assets/background.png'
 import { GoArrowDownRight } from "react-icons/go";
 import location_data from '../data/location';
-import {easeInOut, motion} from "motion/react"
+import {easeInOut, motion, time} from "motion/react"
 import { MdOutlineEmail } from "react-icons/md";
 import { MdArrowUpward,MdOutlineErrorOutline } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
@@ -14,11 +14,18 @@ import emailjs from "@emailjs/browser"
 const  EGMAP=lazy(()=>import('../utility/EGMap.jsx'))
 const UAEMAP=lazy(()=>import('../utility/UAEMap.jsx'))
 import { input_variable,currently_selected,not_selected } from '../utility/ContactFunc.jsx';
+import { ImSpinner8 } from "react-icons/im";
+import { MdCheckCircle } from 'react-icons/md';
 const Contact = () => {
     const[current,set_current]=useState(1)
+    const [debouncing,set_debouncing]=useState(localStorage.getItem('debouncing') == "true")
+    const[LastTime,set_time]=useState(localStorage.getItem('last_time')?parseInt(localStorage.getItem('last_time')):null)
+    const [timeRemaining, setTimeRemaining] = useState(null);
     const[data,set_data]=useState({first_name:"",last_name:"",company_name:"",phone_number:"",user_email:"",subject_title:"",message:""})
+    const [Loading,set_loading]=useState(false)
     const [error,set_error]=useState({})
     const[OnHoverPhone,set_phone]=useState(false)
+    const [Success,set_success]=useState(false)
     const form=useRef()
     const handleChange=(e)=>{
       const{name,value}=e.target
@@ -27,7 +34,6 @@ const Contact = () => {
       })
 
     }
- 
     const sendEmail = async (e) => {
       e.preventDefault();
       let now = new Date();
@@ -48,6 +54,9 @@ const Contact = () => {
         else if(!validateEmail.test(value) && key==="user_email"){
           new_errors[key]="Invalid Email."
         }
+        if(key==="message" && value.length<15){
+          new_errors[key]="Please enter a valid message."
+        }
         
       });
       set_error(new_errors);
@@ -57,6 +66,8 @@ const Contact = () => {
       }
     
       try {
+        if(!debouncing && !timeRemaining){
+        set_loading(true)
         const response = await emailjs.sendForm(
           "service_b5wn7kd",
           "template_qp7079s",
@@ -66,12 +77,48 @@ const Contact = () => {
         console.log("Email has been Sent:", response.text);
         form.current.reset();
         set_data({ first_name: "", last_name: "", company_name: "", phone_number: "", user_email: "", subject_title:"",message: "" });
+        set_debouncing(true)
+        localStorage.setItem('debouncing',true)
+        const now = new Date().getTime();
+        set_time(now)
+        localStorage.setItem('last_time',now)
+        set_loading(false)
+        set_success(true)
+        setTimeout(()=>{
+          set_success(false)
+        },2000)
+        
         set_error({});
+      }
       } catch (err) {
         console.log(err);
       }
     };
+useEffect(()=>{
+  let IntervalID;
+  const updateTimeSpam=()=>{
+    const last_time=parseInt(localStorage.getItem('last_time')) || 0
+    const currentTime = new Date().getTime();
+    const timeDifference = currentTime - last_time;
     
+    if (!debouncing || timeDifference >= 60000) {
+         set_debouncing(false)
+         set_time(null)
+         localStorage.setItem('debouncing',false)
+         localStorage.setItem('last_time',null)
+         setTimeRemaining(null)
+         clearInterval(IntervalID)
+         
+    } else {
+      const remainingSeconds = Math.ceil((60000 - timeDifference) / 1000); 
+      setTimeRemaining(remainingSeconds);
+    }
+  }
+   IntervalID = setInterval(updateTimeSpam, 1000);
+  return () => clearInterval(IntervalID);
+  
+},[debouncing])
+
    
   return (
     <div className="h-full relative overflow-hidden flex">
@@ -163,18 +210,41 @@ const Contact = () => {
       />
       {error.message&&<p className='text-red-800 flex flex-row items-center gap-1 text-sm mt-2 font-raleway'><MdOutlineErrorOutline/>{error.message}</p>}
       </div>
+      
       <input type="hidden" name="time" id="time"></input>
-       <div className='flex w-full  md:justify-end justify-center mt-7 text-right '>
+       <div className='flex w-full  md:justify-end justify-center  mt-7 text-right '>
+    
     <motion.button 
     initial={{scale:1}}
-    whileHover={{scale:1.1}}
+    whileHover={{opacity:0.8}}
     whileTap={{scale:0.9}}
-    className='uppercase text-xs sm:text-sm md:text-md lg:text-md xl:text-md font-semibold bg-primary text-white font-raleway rounded-full w-full md:w-1/3 py-3'>Send A Message</motion.button>
+    className='uppercase text-xs sm:text-sm md:text-md lg:text-md xl:text-md font-semibold bg-primary text-white font-raleway rounded-full w-full md:w-1/3 py-3'>{
+      Loading?(<div className='flex flex-row items-center justify-center gap-3'><p>Sending..</p><ImSpinner8 className='animate-spin'/></div>)
+      :Success?
+      (
+        <motion.div
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{duration:0.8,ease:"easeInOut"}} 
+        className='flex flex-row justify-center items-center gap-3'>
+          <p>Sent</p>
+          <MdCheckCircle size={20}/>
+        </motion.div>
+      )
+      :
+      <motion.p
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      transition={{duration:0.8,ease:"easeInOut"}} 
+      >Send A Message</motion.p>
+    
+    }</motion.button>
 
    
   </div>
-    
+  {timeRemaining&&<p className='text-red-800 font-raleway text-sm '>Please wait {timeRemaining} seconds to try submit a new form.</p>}
   </div>
+  
  
 </form>
 <div className='flex gap-5 justify-center md:justify-start sm:justify-center m-5  flex-row'>
