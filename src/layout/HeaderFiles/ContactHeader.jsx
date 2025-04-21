@@ -2,7 +2,7 @@ import React from 'react'
 import {motion} from 'framer-motion'
 export default function ContactHeader() {
   return (
-    <div className=''>
+    <div className='m-2'>
     <motion.div
       className="mt-16 p-1 sm:mt-0 md:ml-8 ml-3 flex flex-col"
       initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ export default function ContactHeader() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 2, ease: "easeOut", delay: 1 }}
-        className=" md:w-full tracking-normal mt-5  text-offwhite   text-opacity-90 font-raleway text-sm md:text-md md:text-lg"
+        className=" md:w-full tracking-normal mt-5  text-offwhite text-justify   text-opacity-90 font-raleway text-sm md:text-md md:text-lg"
       >
        We welcome your inquiries and collaboration opportunities.
       Whether you're seeking strategic support, looking to invest,
