@@ -2,9 +2,9 @@ import React from 'react'
 import {motion} from 'framer-motion'
 export default function ContactHeader() {
   return (
-    <div>
+    <div className='flex flex-col md:justify-center   md:items-center min-h-full'>
     <motion.div
-      className="mt-16 md:ml-8 ml-3"
+      className="mt-16 p-1 sm:mt-0 md:ml-8 ml-3 flex flex-col"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: -40 }}
       transition={{ duration: 1.2, ease: "easeInOut" }}
@@ -21,12 +21,12 @@ export default function ContactHeader() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 2, ease: "easeOut", delay: 1 }}
-        className="lg:w-1/3 md:w-1/2 mt-5 text-offwhite text-justify text-opacity-90 font-raleway text-md md:text-lg"
+        className=" md:w-full tracking-normal mt-5  text-offwhite  text-opacity-90 font-raleway text-sm md:text-md md:text-lg"
       >
        We welcome your inquiries and collaboration opportunities.
       Whether you're seeking strategic support, looking to invest,
        or exploring partnerships within the recycling and sustainability sectors,
-        our team is ready to assist. Get in touch to start the conversation.
+        our team is ready to assist. Get in touch to start the conversation.
       </motion.p>
     </motion.div>
   </div>
