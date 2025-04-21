@@ -2,7 +2,7 @@ import React from 'react'
 import {motion} from 'framer-motion'
 export default function ContactHeader() {
   return (
-    <div className='flex flex-col md:justify-center   md:items-center min-h-full'>
+    <div className=''>
     <motion.div
       className="mt-16 p-1 sm:mt-0 md:ml-8 ml-3 flex flex-col"
       initial={{ opacity: 0, y: 20 }}
