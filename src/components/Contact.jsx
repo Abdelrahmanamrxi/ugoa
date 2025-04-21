@@ -121,7 +121,7 @@ useEffect(()=>{
 
    
   return (
-    <div className="h-full relative overflow-hidden flex">
+    <div className="h-full  relative overflow-hidden flex">
 
     <div
       className="w-1/12 mt-10 min-h-screen "
