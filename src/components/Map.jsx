@@ -53,19 +53,19 @@ function Map() {
 
   return (
     <div className="bg-dark_green gap-8 px-2 md:px-10 py-5 w-full h-full flex flex-col justify-center lg:justify-start items-center lg:items-start rounded-xl md:rounded-3xl relative">
-      <h1 className="text-white pt-10 lg:ml-10 xl:ml-14 text-2xl md:text-4xl xl:text-5xl uppercase font-raleway font-bold">
+      <h1 className="text-white pt-10 md:px-4 text-2xl md:text-4xl xl:text-5xl uppercase font-raleway font-bold">
         Our Presence
       </h1>
       
 
-      <div className="flex flex-col justify-center itemes-center py-6 gap-6 lg:flex-row relative">
+      <div className="flex flex-col justify-center itemes-center px-2 md:px-4 py-6 gap-6 lg:flex-row relative">
         <div className="flex flex-col w-full lg:w-2/5 justify-center items-center gap-4">
           <motion.div
             initial="hidden"
             whileInView="visible"
             transition={{ duration: 0.8, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.5 }}
-            className="flex flex-col w-3/4 items-center"
+            className="flex flex-col w-full items-center"
           >
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -94,12 +94,18 @@ function Map() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-justify font-raleway md:text-base font-light w-3/4 text-sm xl:text-2xl"
+            className="text-white text-justify font-raleway md:text-base font-light w-full text-sm xl:text-2xl"
           >
-            We offer a range of services including Customized Strategy
-            Development, Operational Efficiency Optimization, Market Analysis
-            and Insights, and Leadership and Team Building programs. Each
-            service is tailored to meet the specific needs of your business.
+            We take pride in the wealth of
+            experience we have accumulated over the years,
+            working in various geographical regions. 
+            This diverse exposure has provided us with valuable
+            insights to assist our customers, regardless of their location.
+            Our team has operated in Europe, Southeast Asia, the
+            Middle East, North America, and South America.
+            At present, we are actively involved in four projects
+            located in Egypt, Saudi Arabia, Oman, UAE, Morocco,
+            Nigeria, Ghana and Mozambique.
           </motion.p>
         </div>
 

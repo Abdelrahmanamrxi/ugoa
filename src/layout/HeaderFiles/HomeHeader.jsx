@@ -11,10 +11,11 @@ export default function HomeHeader() {
     transition={{ duration: 2, ease: "easeInOut"}}
     className='flex flex-col px-6 w-full gap-4 md:gap-6 justify-start font-raleway items-start absolute top-1/2 md:left-6 transform -translate-y-6 z-10'>
       <h1 className="font-bold w-full md:text-3xl text-left">
-          First-Class Business Consultant
+        Enabling Growth in Recycling & Sustainability
       </h1>
-      <p className='text-left font-light text-sm md:text-lg w-4/5 md:w-1/4'>
-        We know how large objects will act, but things on a small scale just do not act that way.
+      <p className='font-light text-justify text-sm md:text-lg w-4/5 md:w-1/4'>
+        UGOA empowers recyclers and investors with expert guidance, deep market insight, 
+        and turnkey solutions to build sustainable, high-impact operations.
       </p>
       <div className='flex gap-4 h-auto mt-2 py-2'>
         <motion.button 
