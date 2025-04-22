@@ -11,6 +11,7 @@ import { RiArrowRightUpLine } from "react-icons/ri";
 import { MdOutlinePhone } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import emailjs from "@emailjs/browser"
+import {LanguageCheck} from '../utility/utility.jsx'
 const  EGMAP=lazy(()=>import('../utility/EGMap.jsx'))
 const UAEMAP=lazy(()=>import('../utility/UAEMap.jsx'))
 import { input_variable,currently_selected,not_selected } from '../utility/ContactFunc.jsx';
@@ -23,9 +24,14 @@ const Contact = () => {
     const [timeRemaining, setTimeRemaining] = useState(null);
     const[data,set_data]=useState({first_name:"",last_name:"",company_name:"",phone_number:"",user_email:"",subject_title:"",message:""})
     const [Loading,set_loading]=useState(false)
+    const [clicks,set_click]=useState(0)
     const [error,set_error]=useState({})
     const[OnHoverPhone,set_phone]=useState(false)
     const [Success,set_success]=useState(false)
+    const[Disabled,set_disabled]=useState(false)
+    const TrackClicks=useRef(clicks)
+    
+    
     const form=useRef()
     const handleChange=(e)=>{
       const{name,value}=e.target
@@ -34,10 +40,12 @@ const Contact = () => {
       })
 
     }
+   
     const sendEmail = async (e) => {
       e.preventDefault();
       let now = new Date();
-    
+      if(Disabled) return;
+      set_click((prev)=>prev+1)
       const formattedTime = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} at ${
         now.getHours() % 12 || 12
       }:${now.getMinutes().toString().padStart(2, "0")} ${now.getHours() >= 12 ? "PM" : "AM"}`;
@@ -45,7 +53,7 @@ const Contact = () => {
       document.getElementById("time").value = formattedTime;
 
       let new_errors = {};
-      
+      const validateMessage= /([a-zA-Z])\1{4,}|[!@#$%^&*()_+=]{5,}/;
       let validateEmail= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       Object.entries(data).forEach(([key, value]) => {
         if (value.trim() === "" && key!="phone_number") {
@@ -54,9 +62,10 @@ const Contact = () => {
         else if(!validateEmail.test(value) && key==="user_email"){
           new_errors[key]="Invalid Email."
         }
-        if(key==="message" && value.length<15){
+        if(key==="message" && value.length<15 && LanguageCheck(value)!="und" && validateMessage.test(value)){
           new_errors[key]="Please enter a valid message."
         }
+        
         
       });
       set_error(new_errors);
@@ -72,7 +81,7 @@ const Contact = () => {
           "service_b5wn7kd",
           "template_qp7079s",
           form.current,
-          "6kiY5fp0FtdJRFVzu"
+          "15yh83s6ohhngZ2Zc"
         );
         console.log("Email has been Sent:", response.text);
         form.current.reset();
@@ -87,13 +96,16 @@ const Contact = () => {
         setTimeout(()=>{
           set_success(false)
         },2000)
-        
         set_error({});
+        set_click(0)
       }
       } catch (err) {
         console.log(err);
       }
     };
+    useEffect(() => {
+      TrackClicks.current = clicks;
+    }, [clicks]);
 useEffect(()=>{
   let IntervalID;
   const updateTimeSpam=()=>{
@@ -108,10 +120,16 @@ useEffect(()=>{
          localStorage.setItem('last_time',null)
          setTimeRemaining(null)
          clearInterval(IntervalID)
+         set_click(0)
+         set_disabled(false)
          
     } else {
       const remainingSeconds = Math.ceil((60000 - timeDifference) / 1000); 
-      setTimeRemaining(remainingSeconds);
+      if(TrackClicks.current>1){
+        setTimeRemaining(remainingSeconds)
+        set_disabled(true)
+      }
+      
     }
   }
    IntervalID = setInterval(updateTimeSpam, 1000);
@@ -119,7 +137,6 @@ useEffect(()=>{
   
 },[debouncing])
 
-   
   return (
     <div className="h-full  relative overflow-hidden flex">
 
@@ -215,6 +232,7 @@ useEffect(()=>{
        <div className='flex w-full  md:justify-end justify-center  mt-7 text-right '>
     
     <motion.button 
+    disabled={Disabled}
     initial={{scale:1}}
     whileHover={{opacity:0.8}}
     whileTap={{scale:0.9}}
@@ -242,7 +260,7 @@ useEffect(()=>{
 
    
   </div>
-  {timeRemaining&&<p className='text-red-800 font-raleway text-sm '>Please wait {timeRemaining} seconds to try submit a new form.</p>}
+  {timeRemaining&&<p className='text-red-800 font-raleway text-sm '>Please wait {timeRemaining} seconds before trying to submit the form again.</p>}
   </div>
   
  

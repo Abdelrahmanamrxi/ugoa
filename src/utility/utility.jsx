@@ -1,4 +1,5 @@
 import {motion} from "framer-motion"
+import {franc} from "franc-min";
 
 const backgroundImageCheck=(location,imageCache,isImagesLoadedHeader,selectedService)=>{
     if (location === "/about_us" && !isImagesLoadedHeader.loading)
@@ -48,4 +49,15 @@ const SmoothBackground = ({ image, prevImage, blur }) => (
       />
     </div>
   );
-export {backgroundImageCheck,backgroundCheck,SmoothBackground}
+  const LanguageCheck=(text)=>{
+    const trimmedText=text.trim()
+    if(trimmedText.length<10){
+      return "Please provide a message."
+    }
+    const detected=franc(trimmedText)
+    if(detected==="und")
+      return 'Please provide a message.'
+    else
+    return detected
+  }
+export {backgroundImageCheck,backgroundCheck,SmoothBackground,LanguageCheck}
