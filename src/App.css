@@ -33,7 +33,7 @@ body{
     border-radius: 100%;
 } */
 .footerIcon{
-    @apply bg-white p-3 flex items-center rounded-full justify-center
+    @apply bg-white w-8 h-8 shrink-0 flex items-center rounded-full justify-center
 }
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
