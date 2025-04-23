@@ -17,30 +17,25 @@ const UAEMAP=lazy(()=>import('../utility/UAEMap.jsx'))
 import { input_variable,currently_selected,not_selected } from '../utility/ContactFunc.jsx';
 import { ImSpinner8 } from "react-icons/im";
 import { MdCheckCircle } from 'react-icons/md';
+import {useDispatch,useSelector} from "react-redux"
+import { setData,setDebounce,setTime,setTimeRemaining } from '../store/FormSlice.js';
 const Contact = () => {
     const[current,set_current]=useState(1)
-    const [debouncing,set_debouncing]=useState(localStorage.getItem('debouncing') == "true")
-    const[LastTime,set_time]=useState(localStorage.getItem('last_time')?parseInt(localStorage.getItem('last_time')):null)
-    const [timeRemaining, setTimeRemaining] = useState(null);
-    const[data,set_data]=useState({first_name:"",last_name:"",company_name:"",phone_number:"",user_email:"",subject_title:"",message:""})
+    const dispatch=useDispatch()
     const [Loading,set_loading]=useState(false)
     const [clicks,set_click]=useState(0)
     const [error,set_error]=useState({})
     const[OnHoverPhone,set_phone]=useState(false)
     const [Success,set_success]=useState(false)
     const[Disabled,set_disabled]=useState(false)
-    const TrackClicks=useRef(clicks)
-    
-    
+    const TrackClicks=useRef(clicks)  
     const form=useRef()
     const handleChange=(e)=>{
       const{name,value}=e.target
-      set_data((dt)=>{
-        return {...dt,[name]:value}
-      })
-
+       dispatch(setData({[name]:value}))
     }
-   
+    const formData=useSelector((state)=>state.formData)
+    
     const sendEmail = async (e) => {
       e.preventDefault();
       let now = new Date();
@@ -53,16 +48,16 @@ const Contact = () => {
       document.getElementById("time").value = formattedTime;
 
       let new_errors = {};
-      const validateMessage= /([a-zA-Z])\1{4,}|[!@#$%^&*()_+=]{5,}/;
+     
       let validateEmail= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      Object.entries(data).forEach(([key, value]) => {
+      Object.entries(formData.form).forEach(([key, value]) => {
         if (value.trim() === "" && key!="phone_number") {
           new_errors[key] = "This is a required field.";
         }
         else if(!validateEmail.test(value) && key==="user_email"){
           new_errors[key]="Invalid Email."
         }
-        if(key==="message" && value.length<15 && LanguageCheck(value)!="und" && validateMessage.test(value)){
+        if(key==="message" && value.length<15 && LanguageCheck(value)!="und"){
           new_errors[key]="Please enter a valid message."
         }
         
@@ -75,7 +70,7 @@ const Contact = () => {
       }
     
       try {
-        if(!debouncing && !timeRemaining){
+        if(!formData.debouncing && !formData.TimeRemaining){
         set_loading(true)
         const response = await emailjs.sendForm(
           "service_b5wn7kd",
@@ -85,11 +80,11 @@ const Contact = () => {
         );
         console.log("Email has been Sent:", response.text);
         form.current.reset();
-        set_data({ first_name: "", last_name: "", company_name: "", phone_number: "", user_email: "", subject_title:"",message: "" });
-        set_debouncing(true)
+        dispatch(setData({ first_name: "", last_name: "", company_name: "", phone_number: "", user_email: "", subject_title:"",message: "" }));
+        dispatch(setDebounce(true))
         localStorage.setItem('debouncing',true)
         const now = new Date().getTime();
-        set_time(now)
+        dispatch(setTime(now))
         localStorage.setItem('last_time',now)
         set_loading(false)
         set_success(true)
@@ -113,12 +108,12 @@ useEffect(()=>{
     const currentTime = new Date().getTime();
     const timeDifference = currentTime - last_time;
     
-    if (!debouncing || timeDifference >= 60000) {
-         set_debouncing(false)
-         set_time(null)
+    if (!formData.debouncing || timeDifference >= 60000) {
+         dispatch(setDebounce(false))
+         dispatch(setTime(null))
          localStorage.setItem('debouncing',false)
          localStorage.setItem('last_time',null)
-         setTimeRemaining(null)
+         dispatch(setTimeRemaining(null))
          clearInterval(IntervalID)
          set_click(0)
          set_disabled(false)
@@ -126,7 +121,7 @@ useEffect(()=>{
     } else {
       const remainingSeconds = Math.ceil((60000 - timeDifference) / 1000); 
       if(TrackClicks.current>1){
-        setTimeRemaining(remainingSeconds)
+        dispatch(setTimeRemaining(remainingSeconds))
         set_disabled(true)
       }
       
@@ -135,7 +130,7 @@ useEffect(()=>{
    IntervalID = setInterval(updateTimeSpam, 1000);
   return () => clearInterval(IntervalID);
   
-},[debouncing])
+},[formData.debouncing])
 
   return (
     <div className="h-full  relative overflow-hidden flex">
@@ -260,7 +255,7 @@ useEffect(()=>{
 
    
   </div>
-  {timeRemaining&&<p className='text-red-800 font-raleway text-sm '>Please wait {timeRemaining} seconds before trying to submit the form again.</p>}
+  {formData.TimeRemaining&&<p className='text-red-800 font-raleway text-sm '>Please wait {formData.TimeRemaining} seconds before trying to submit the form again.</p>}
   </div>
   
  

@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState,useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
@@ -7,21 +7,30 @@ import whiteLogo from "../assets/Vertical_White_Comp_2.png";
 import locationIcon from "../assets/locationIcon.svg";
 import { GoArrowDownRight } from "react-icons/go";
 import { IoMdMail } from "react-icons/io";
+import { useDispatch,useSelector } from "react-redux";
+import { setDebounce,setTime,setTimeRemaining } from "../store/FormSlice";
+import { MdLocationOn } from "react-icons/md";
 
 function Footer() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const dispatch=useDispatch()
+  const {debouncing,TimeRemaining}=useSelector((state)=>state.formData)
   const sendEmail = (e) => {
     e.preventDefault();
     setLoading(true);
+    const serviceID = "service_b5wn7kd"; // Your EmailJS service ID
+    const templateID = "template_osbcbda"; // Replace with your EmailJS template ID
+    const publicKey = "15yh83s6ohhngZ2Zc"; // Replace with your EmailJS public key
+    let now=new Date()
+    const formattedTime = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} at ${
+      now.getHours() % 12 || 12
+    }:${now.getMinutes().toString().padStart(2, "0")} ${now.getHours() >= 12 ? "PM" : "AM"}`;
 
-    const serviceID = "service_4d3bt0l"; // Your EmailJS service ID
-    const templateID = "template_gmfru5h"; // Replace with your EmailJS template ID
-    const publicKey = "yYI_SrlAbAIO3BQdH"; // Replace with your EmailJS public key
-
+    if(!debouncing){
     const templateParams = {
       user_email: email,
+      time:formattedTime,
       message: `Dear UGOA Team,
 
 I hope this email finds you well. I am reaching out to explore potential collaboration opportunities and discuss how your expertise in business consulting can align with our goals.
@@ -32,7 +41,8 @@ Looking forward to your response.
 
 Best regards,  
 ${email}`,
-    };
+    }
+    ;
 
     emailjs
       .send(serviceID, templateID, templateParams, publicKey)
@@ -42,11 +52,41 @@ ${email}`,
       .catch((error) => {
         console.error("Failed to send email", error);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        const now = new Date().getTime();
+        dispatch(setDebounce(true))
+        localStorage.setItem('debouncing',true)
+        setLoading(false)
+        dispatch(setTime(now))
+        localStorage.setItem('last_time',now)
+       
+      });
 
-    setEmail(""); // Clear the input field
+    setEmail(""); 
+    }
   };
-
+  useEffect(()=>{
+    let IntervalID;
+    const updateTimeSpam=()=>{
+      const last_time=parseInt(localStorage.getItem('last_time')) || 0
+      const currentTime = new Date().getTime();
+      const timeDifference = currentTime - last_time;
+      
+      if (!debouncing || timeDifference >= 60000) {
+           dispatch(setDebounce(false))
+           dispatch(setTime(null))
+           localStorage.setItem('debouncing',false)
+           localStorage.setItem('last_time',null)
+           clearInterval(IntervalID)
+           dispatch(setTimeRemaining(null))
+           
+      }
+    
+    }
+     IntervalID = setInterval(updateTimeSpam, 1000);
+    return () => clearInterval(IntervalID);
+    
+  },[debouncing])
   return (
     <footer className="w-full font-raleway mt-24 grid grid-cols-1 divide-y items-start justify-center gap-4 bg-secondary px-4 py-2
       xl:gap-12 xl:px-12 xl:py-10
@@ -112,7 +152,7 @@ ${email}`,
             />
           </div>
 
-          <button type="submit" disabled={loading} 
+          <button type="submit" disabled={debouncing} 
             className="bg-dark_green hover:bg-dark_green/80 transition text-white font-medium px-3 py-2 h-10 
             rounded-full flex items-center justify-center gap-2 shrink-0">
             <span className="text-xs uppercase hidden lg:block">{loading ? "Sending..." : "Get Started"}</span>
@@ -120,23 +160,24 @@ ${email}`,
               <MdArrowUpward size={16} className="rotate-45" />
             </div>
           </button>
+         
         </form>
 
         {/* Contact Details */}
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-3 items-center">
+        <div className="flex flex-col  gap-4">
+          <div className="flex gap-3  items-center">
             <div className="footerIcon"><FaPhoneAlt size={15} /></div>
-            <p className="text-white text-sm xl:text-lg font-light">+971545423530</p>
+            <p className="text-white text-xs xl:text-lg font-light">+971545423530</p>
           </div>
 
           <div className="flex gap-3 items-center">
             <div className="footerIcon"><IoMail size={15} /></div>
-            <p className="text-white text-sm xl:text-lg font-light">ahmed_elmizayen@ugoa.me</p>
+            <p className="text-white text-xs xl:text-lg font-light">ahmed_elmizayen@ugoa.me</p>
           </div>
 
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><img src={locationIcon} className="w-3 h-3" alt="" /></div>
-            <p className="text-white text-sm xl:text-lg font-light">
+            <div className="footerIcon"><MdLocationOn/></div>
+            <p className="text-white text-xs xl:text-lg font-light">
               Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>
           </div>
