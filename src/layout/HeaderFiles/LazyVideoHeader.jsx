@@ -15,7 +15,7 @@ export default function LazyVideoHeader() {
    }, []);
  
    return (
-     <div className="w-full h-screen overflow-hidden">
+     <div className="w-full h-full overflow-hidden">
        {/* Show spare image until video is ready */}
        {!isVideoReady && (
          <img

@@ -43,7 +43,8 @@ export default function WhyUGOA() {
                 exit={{ rotate: -180 }}
                 transition={{ duration: 1.2, ease: "easeInOut" }}
                 src={reuse}
-                className="absolute max-w-[80px] max-h-[80px] md:min-w-[128px] md:min-h-[128px]"
+                alt="reusability"
+                className="absolute min-w-20 md:min-w-[128px]"
               />
             </AnimatePresence>
 
@@ -56,7 +57,7 @@ export default function WhyUGOA() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 src={reason.icon}
-                alt=""
+                alt={reason.title}
                 className="absolute max-w-[32px] max-h-[32px] md:min-w-[64px] md:min-h-[64px]"
               />
             </AnimatePresence>

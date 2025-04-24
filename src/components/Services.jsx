@@ -8,6 +8,7 @@ import WhatWeOffer from './WhatWeOffer';
 import { new_projects,old_projects } from '../data/services_data';
 import { useLocation } from 'react-router-dom';
 import { useRef } from 'react';
+import {Helmet} from 'react-helmet'
 
 
 const Services = ({refProp,scrollToServices}) => {
@@ -71,7 +72,8 @@ useEffect(() => {
       };
     }, [service]);
   return (
-    <div  className='relative overflow-hidden'>
+    <div className='relative overflow-hidden'>
+        
     <div className='lg:m-8'>
     <h1 className=' uppercase font-raleway w-1/12 lg:m-5 m-5 md:m-8 mb-5 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-4xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
     <div className='flex flex-col m lg:justify-normal md:justify-center md:items-center lg:items-start'>

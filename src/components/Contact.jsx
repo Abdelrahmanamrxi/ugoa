@@ -149,9 +149,9 @@ useEffect(()=>{
   
 
     <div className=" flex flex-col w-3/4 m-8 mt-10 md:pl-10  "> 
-      <h1 className="uppercase mb-5 font-bold text-dark_green flex flex-row items-center text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-3xl   font-raleway">
+      <h2 className="uppercase mb-5 font-bold text-dark_green flex flex-row items-center text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-3xl   font-raleway">
         Get in touch <span><GoArrowDownRight /></span>
-      </h1>
+      </h2>
       
       <form onSubmit={sendEmail} onChange={handleChange} ref={form} className="flex flex-col justify-center  w-full border-2 border-dark">
   <div className="p-8 flex flex-col gap-10 w-full">
@@ -276,18 +276,18 @@ useEffect(()=>{
             transition={{duration:1,ease:easeInOut}}
             key={current} className='w-full flex flex-col justify-center md:flex-row gap-5'>
                 <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/3 lg:w-1/4'>
-                    <h5><MdOutlinePhone className="text-dark_green " size={30}/></h5>
-                    <h6 className="text-dark_navy font-semibold">Phone</h6>
+                    <h3><MdOutlinePhone className="text-dark_green " size={30}/></h3>
+                    <h4 className="text-dark_navy font-semibold">Phone</h4>
                     <p className='text-gray-600  text-xs sm:text-sm md:text-md lg:text-lg xl:text-lg'>{data.phone}</p>
                 </div>
                 <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md  border-2 p-8 w-full md:w-1/3 lg:w-1/4'>
-                    <h5><MdOutlineEmail className="text-dark_green " size={30}/></h5>
-                    <h6 className="text-dark_navy font-semibold">Email</h6>
+                    <h3><MdOutlineEmail className="text-dark_green " size={30}/></h3>
+                    <h4 className="text-dark_navy font-semibold">Email</h4>
                     <p className='text-gray-600 text-xs sm:text-sm md:text-md lg:text-md xl:text-md break-words'>{data.email}</p>
                 </div>
                 <div className='flex font-raleway flex-col hover:scale-none bg-dark_green gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/3 lg:w-1/4'>
-                    <h5><CiLocationOn  className="text-white " size={30}/></h5>
-                    <h6 className="text-white font-semibold">Address</h6>
+                    <h3><CiLocationOn  className="text-white " size={30}/></h3>
+                    <h4 className="text-white font-semibold">Address</h4>
                     <p className='text-white text-xs sm:text-sm md:text-md lg:text-md xl:text-md'>{data.location}</p>
                 </div>
             </motion.div>

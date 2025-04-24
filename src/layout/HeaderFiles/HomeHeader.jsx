@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 export default function HomeHeader() {
   return (
-    <div className="w-full h-screen overflow-hidden">
+    <div className="w-full h-[64vh] overflow-hidden">
     <LazyVideoHeader />
     <motion.div 
     initial={{ opacity: 0}}

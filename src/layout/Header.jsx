@@ -29,19 +29,30 @@ const {isImagesLoadedHeader,imageCache,selectedService}=useSelector((state)=>sta
   function renderContent() {
     if (location.pathname === "/contact") {
       return (
-        
+        <>
+        <title>UGOA-Contact</title>
+        <meta name="description" content="Contact us for strategic support, partnerships, and sustainability solutions. Reach out via phone, email, or visit us in Egypt or UAE for more details."/>
+        <link rel='canonical' href='https://ugoa.vercel.app/contact'/>
         <ContactHeader/>
-
+        </>
       );
     }
     if (location.pathname === "/about_us" && !isImagesLoadedHeader.loading) {
       return (
+        <>
+        <title>UGOA-About us</title>
+        <meta name="description" content="UGOA offers end-to-end recycling consultancy—facility design, supply chain optimization & ESG compliance—helping businesses build profitable, sustainable operations." />
+        <link rel="canonical" href="https://ugoa.vercel.app/about_us" />
        <AboutHeader/>
+       </>
       );
     }
     if (location.pathname === "/services" && !isImagesLoadedHeader.loading) {
       return (
         <div>
+          <title>UGOA-Services</title>
+          <meta name="description" content="Discover our range of services designed to meet your needs. From new projects to existing ones, we offer tailored solutions for every stage." />
+          <link rel="canonical" href="https://ugoa.vercel.app/services" />
           <ServiceHeader
             scrollToServices={scrollToServices}   
           />
@@ -50,7 +61,12 @@ const {isImagesLoadedHeader,imageCache,selectedService}=useSelector((state)=>sta
     }
     if (location.pathname === "/" && !isImagesLoadedHeader.loading) {
       return (
+        <>
+        <title>UGOA</title>
+        <meta name="description" content="UGOA Consultation drives recycling growth with expert guidance, market insights & sustainable solutions. We empower recyclers & investors to build efficient operations." />
+        <link rel="canonical" href="https://ugoa.vercel.app/" />
         <HomeHeader/>
+        </>
       );
     }
   }
