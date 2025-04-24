@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import maze from "../assets/background_80.jpg";
 
 export default function WhyUGOA() {
-    
+
     const [reason, setReason] = useState(whyUGOA[0]);
       useEffect(() => {
         const interval = setInterval(() => {
@@ -32,7 +32,7 @@ export default function WhyUGOA() {
       </h2>
 
       <div className="w-full mt-6">
-        <div className="bg-dark_green px-8 md:px-10 w-full h-64 rounded-t-3xl flex">
+        <div className="bg-dark_green px-4 md:px-10 w-full h-64 rounded-t-3xl flex justify-center items-center gap-2">
           <div className="relative flex w-1/3 h-full p-10 items-center justify-center rounded-tl-3xl">
             {/* Rotating background image */}
             <AnimatePresence mode="wait">
@@ -43,7 +43,7 @@ export default function WhyUGOA() {
                 exit={{ rotate: -180 }}
                 transition={{ duration: 1.2, ease: "easeInOut" }}
                 src={reuse}
-                className="absolute min-w-20 md:min-w-[128px]"
+                className="absolute max-w-[80px] max-h-[80px] md:min-w-[128px] md:min-h-[128px]"
               />
             </AnimatePresence>
 
@@ -57,19 +57,19 @@ export default function WhyUGOA() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 src={reason.icon}
                 alt=""
-                className="absolute min-w-[28px] min-h-[28px] md:min-w-[64px] md:min-h-[64px]"
+                className="absolute max-w-[32px] max-h-[32px] md:min-w-[64px] md:min-h-[64px]"
               />
             </AnimatePresence>
           </div>
 
-          <div className="flex flex-col flex-grow px-4 md:px-8 gap-4 md:gap-8 justify-center relative">
+          <div className="flex flex-col flex-grow px-2 md:px-8 gap-2 md:gap-4 justify-center relative">
             <AnimatePresence mode="wait">
               <motion.h2
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -10, opacity: 0 }}
                 transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
-                className="text-white uppercase font-bold text-base md:text-3xl pb-2" // Added pb-2 for spacing
+                className="text-white uppercase font-bold text-sm md:text-xl pb-2" // Added pb-2 for spacing
                 key={reason.title}
               >
                 {reason.title}
@@ -77,7 +77,7 @@ export default function WhyUGOA() {
             </AnimatePresence>
 
             <div
-              className="relative bottom-7 left-0 h-0.5 bg-white w-full" // The underline
+              className="relative bottom-2 md:bottom-4 left-0 h-[1px] bg-white w-full" // The underline
             />
 
             <AnimatePresence mode="wait">
@@ -86,7 +86,7 @@ export default function WhyUGOA() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 30 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
-                className="text-white font-light text-xs xl:text-xl text-justify"
+                className="text-white font-light text-xs md:text-lg text-justify"
                 key={reason.description}
               >
                 {reason.description}
@@ -95,7 +95,8 @@ export default function WhyUGOA() {
           </div>
         </div>
 
-        <div
+        <motion.div
+        whileHover={{y:-10}}
           className="w-full flex flex-col gap-4 p-6 justify-center items-center rounded-b-3xl"
           style={{
             backgroundImage: `url(${maze})`,
@@ -108,7 +109,7 @@ export default function WhyUGOA() {
           <h3 className="text-dark_green text-center w-full uppercase font-bold text-base md:text-2xl">
             Years of recycling experience
           </h3>
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );
