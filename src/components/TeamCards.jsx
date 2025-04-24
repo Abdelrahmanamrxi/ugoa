@@ -9,12 +9,13 @@ export default function TeamCard({ name, role, image, email, linkedin }) {
     return (
         <div 
             onMouseEnter={() => setVisible(true)}  // Show icons on hover
-            onMouseLeave={() => setVisible(false)} // Hide icons when not hovering
+            onMouseLeave={() => setVisible(false)} 
+            // Hide icons when not hovering
             className="flex relative team gap-8 w-[280px] h-[300px] lg:w-[300px] lg:h-[310px] xl:w-[400px] xl:h-[410px] flex-col shadow-lg
                        justify-between items-center rounded-2xl transition-all duration-500"
         >
             {/* Profile Image */}
-            <img loading="lazy" src={image} alt={name}  className="rounded-t-2xl" />
+            <img loading="lazy" src={image} alt={name}      className="rounded-t-2xl" />
 
             {/* Name & Role */}
             <div className="flex absolute flex-col bottom-6 py-4 justify-center items-center">

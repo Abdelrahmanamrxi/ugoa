@@ -15,7 +15,7 @@ export default function ContactHeader() {
         transition={{ duration: 1.8, ease: "easeOut", delay: 0.2 }}
         className="font-raleway font-bold text-opacity-90 text-offwhite md:text-4xl text-2xl"
       >
-        Contact Us
+        Contact Us for Expert Consultation
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 30 }}
