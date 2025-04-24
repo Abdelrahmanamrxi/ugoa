@@ -17,9 +17,7 @@ const Layout = ({ scrollToServices }) => {
   const {isImagesLoadedHeader}=useSelector((state)=>state.Header)
   const location=useLocation()
 
-   useEffect(()=>{
-    window.scrollTo(0,0)
-   },[location.pathname])
+
  
   useEffect(() => {
     let isMounted = true;

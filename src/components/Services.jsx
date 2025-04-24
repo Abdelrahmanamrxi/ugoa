@@ -6,16 +6,46 @@ import { IoMdClose } from "react-icons/io";
 import {AnimatePresence, motion} from "motion/react"
 import WhatWeOffer from './WhatWeOffer';
 import { new_projects,old_projects } from '../data/services_data';
+import { useLocation } from 'react-router-dom';
+import { useRef } from 'react';
 
 
 const Services = ({refProp,scrollToServices}) => {
   const [isMobile, setIsMobile] = useState(false);
+  const[service,set_service]=useState({
+    id:null,
+    title:"",
+    icon:"",
+    read_more:""
+})
+  const {state}=useLocation()
+  const scrollRef=useRef(null)
  const CheckPadding=(id)=>{
    if(id===8 || id===7 || id==4 )
     return ' '
    else
    return 'p-5'
  }
+ const paragraphRef = useRef(null);
+
+useEffect(()=>{
+  if(state?.scrollTo && scrollRef.current){
+    const element=document.getElementById(state?.scrollTo)
+    
+    if(element){
+     services_data.forEach((service)=>{
+        if(service.id===state?.scrollTo){
+          set_service({id:service.id,title:service.title,icon:service.icon,read_more:service.read_more})
+        }
+      })
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 50; 
+      window.scrollTo({top:offsetPosition,behavior:"smooth"})
+    }
+    
+  }
+},[state?.scrollTo])
+ console.log(service)
 useEffect(() => {
   const checkMobile = () => {
     setIsMobile(window.innerWidth <= 768); 
@@ -28,12 +58,7 @@ useEffect(() => {
     window.removeEventListener('resize', checkMobile);  
   };
 }, []);
-    const[service,set_service]=useState({
-        id:null,
-        title:"",
-        icon:"",
-        read_more:""
-    })
+
     useEffect(() => {
       if (service.id) {
         document.body.style.overflow = 'hidden';
@@ -46,14 +71,16 @@ useEffect(() => {
       };
     }, [service]);
   return (
-    <div className='relative overflow-hidden'>
+    <div  className='relative overflow-hidden'>
     <div className='lg:m-8'>
     <h1 className=' uppercase font-raleway w-1/12 lg:m-5 m-5 md:m-8 mb-5 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-4xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
     <div className='flex flex-col m lg:justify-normal md:justify-center md:items-center lg:items-start'>
     <div id="services" ref={refProp} className="lg:grid lg:grid-cols-2 md:w-5/6 lg:w-full lg:grid-rows-2 m-5 flex flex-col gap-6">
         {services_data.map((service)=>{
             return(
-            <motion.div 
+            <motion.div
+            ref={scrollRef}
+            id={service.id}
             onClick={()=>{set_service({ id:service.id,title:service.title,icon:service.icon,read_more:service.read_more})}}
             initial={{opacity:0,y:30}}
             whileInView={{opacity:1,y:0}}
@@ -79,7 +106,7 @@ useEffect(() => {
         <li>{service.paragraph_3}</li>
         {service.paragraph_4 && <li>{service.paragraph_4}</li>}
       </ul>
-      <p onClick={()=>{set_service({
+      <p ref={paragraphRef} onClick={()=>{set_service({
         id:service.id,title:service.title,icon:service.icon,read_more:service.read_more})}} className="flex flex-row  text-sm hover:underline cursor-pointer  items-center gap-2">
         Read More<span><FaArrowRight /></span>
       </p>

@@ -56,7 +56,7 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between"
           >
             {homeServices1.map((data, index) => (
-              <Link to="/services" key={index}> {/* Added key here as well */}
+              <Link to="/services" state={{scrollTo:data.id}}  key={index}> {/* Added key here as well */}
                 <li
                   className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-center items-center p-4 h-full"
                 >
@@ -78,7 +78,7 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between"
           >
             {homeServices2.map((data, index) => (
-              <Link to="/services" key={index}> {/* Added key here as well */}
+              <Link state={{scrollTo:data.id}} to="/services" key={index}> {/* Added key here as well */}
                 <li
                   className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-center items-center p-4 h-full"
                 >

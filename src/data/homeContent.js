@@ -12,14 +12,17 @@ import solutions from "../assets/solutions.svg";
 
 export const homeServices1=[
     {
+      id:1,
       icon: search,
       title: "Comprehensive Feasibility Study",
     },
     {
+      id:3,
       icon: sourcingIcon,
       title: "Sourcing",
     },
     {
+      id:7,
       icon: management,
       title: "Management System",
     },]
@@ -28,14 +31,17 @@ export const homeServices1=[
 
     export const homeServices2=[
     {
+      id:2,
       icon: business_strategy,
       title: "Business Strategy",
     },
     {
+      id:4,
       icon: operations,
       title: "Operation Effciency",
     },
     {
+      id:8,
       icon: sustainability,
       title: "Sustainability & Responsible Operations",
     },
