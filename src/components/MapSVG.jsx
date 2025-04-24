@@ -4,7 +4,7 @@ export default function Map({onHover}){
     
     return(
         <svg
-        className="w-full h-auto sm:w-[95vw] md:w-[90vw] lg:w-[85vw] max-w-full"
+        className="w-full h-auto sm:w-[95vw] md:w-[90vw] lg:w-[85vw] max-h-full max-w-full"
         onMouseOver={onHover}
         viewBox="0 0 1400 800"  // Try adjusting these numbers
         preserveAspectRatio="xMidYMid meet"

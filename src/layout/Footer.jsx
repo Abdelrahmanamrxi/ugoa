@@ -1,6 +1,6 @@
 import React, { memo, useState,useEffect } from "react";
 import emailjs from "@emailjs/browser";
-import { FaFacebook, FaInstagram, FaYoutube, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
+import { FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { MdArrowUpward } from "react-icons/md";
 import whiteLogo from "../assets/Vertical_White_Comp_2.png";
@@ -10,8 +10,10 @@ import { IoMdMail } from "react-icons/io";
 import { useDispatch,useSelector } from "react-redux";
 import { setDebounce,setTime,setTimeRemaining } from "../store/FormSlice";
 import { MdLocationOn } from "react-icons/md";
+import { motion } from "framer-motion";
 
 function Footer() {
+  const [iconHover, setIconHover]=useState(false);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const dispatch=useDispatch()
@@ -96,7 +98,7 @@ ${email}`,
       
       {/* === SECTION 1: LOGO === */}
       <div className="flex justify-center">
-        <img src={whiteLogo} alt="Company Logo" loading="lazy" className="min-w-xs object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm" />
+        <img src={whiteLogo} alt="Company Logo" loading="lazy" className="min-w-full object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm" />
       </div>
 
       {/* === SECTION 2: CONTACT INFO === */}
@@ -108,22 +110,27 @@ ${email}`,
 
         <div className="flex w-full gap-3 items-center">
           <GoArrowDownRight size={25} className="text-white" />
-          <h3 className="uppercase w-full text-white font-semibold text-lg sm:text-xl lg:text-2xl xl:text-3xl">
-            Contact Us Today
+          <h3 className="uppercase w-full text-white font-semibold text-base sm:text-lg lg:text-xl xl:text-2xl">
+            Contact Us
           </h3>
         </div>
 
         <div className="flex flex-col gap-2 xl:gap-10 lg:gap-8 md:gap-6 sm:gap-4">
-          <p className="text-white text-sm font-light w-3/4 sm:text-md lg:text-lg xl:text-2xl">
+          <p className="text-white text-justify  font-light w-3/4 text-xs sm:text-sm lg:text-base xl:text-lg">
             Contact us today to schedule a consultation and discover how we can help your business thrive.
           </p>
 
-          <div className="flex gap-3">
-            <a className="socialIcon-footer"><FaFacebook className="text-white" /></a>
-            <a className="socialIcon-footer"><FaInstagram className="text-white" /></a>
-            <a className="socialIcon-footer"><FaLinkedinIn className="text-white" /></a>
-            <a className="socialIcon-footer"><FaYoutube className="text-white" /></a>
-          </div>
+            <motion.a href="#" 
+            whileHover={{scale:1.1}}
+            whileTap={{scale:0.95}}
+            transition={{duration:0.5, ease:"easeInOut"}}
+            onMouseOver={()=>setIconHover(true)}
+            onMouseLeave={()=> setIconHover(false)}
+            className="md:py-2 py-1 bg-dark_green hover:bg-white hover:text-dark_green w-1/4 md:w-1/2
+             flex justify-center items-center rounded-full">
+              <FaLinkedinIn size={15} className={`${iconHover ? 'text-dark_green' : 'text-white'}`} />
+            </motion.a>
+
         </div>
       </div>
 
@@ -134,7 +141,7 @@ ${email}`,
         md:gap-6 md:px-6 md:py-9
         sm:justify-start sm:items-start sm:px-4 sm:py-6">
 
-        <h2 className="uppercase w-full text-white font-semibold text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl">
+        <h2 className="uppercase w-full text-white font-semibold text-base sm:text-lg lg:text-xl xl:text-2xl">
           Get a Free Consultation
         </h2>
 
@@ -167,17 +174,17 @@ ${email}`,
         <div className="flex flex-col  gap-4">
           <div className="flex gap-3  items-center">
             <div className="footerIcon"><FaPhoneAlt size={15} /></div>
-            <p className="text-white text-xs xl:text-lg font-light">+971545423530</p>
+            <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">+971545423530</p>
           </div>
 
           <div className="flex gap-3 items-center">
             <div className="footerIcon"><IoMail size={15} /></div>
-            <p className="text-white text-xs xl:text-lg font-light">ahmed_elmizayen@ugoa.me</p>
+            <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">ahmed_elmizayen@ugoa.me</p>
           </div>
 
           <div className="flex gap-3 items-center">
             <div className="footerIcon"><MdLocationOn/></div>
-            <p className="text-white text-xs xl:text-lg font-light">
+            <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">
               Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>
           </div>

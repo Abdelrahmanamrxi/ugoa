@@ -110,7 +110,7 @@ function Map() {
         </div>
 
         {/* Map Container */}
-        <div className="w-full h-full p-1 flex justify-center items-center">
+        <div className="w-full h-auto p-1 flex justify-center items-center">
           <MapSVG onHover={handleMouseOver} />
         </div>
 
