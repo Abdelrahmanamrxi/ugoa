@@ -1,13 +1,15 @@
 
 import './App.css'
 import Layout from './layout/Layout'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
+
 import Home from './components/Home'
 import Contact from './components/Contact'
 import Services from './components/Services'
 import About from './components/About'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 function App() {
+
    const serviceRef=useRef(null)
    const scrollToServices = () => {
     if (serviceRef.current) {

@@ -19,6 +19,7 @@ import { ImSpinner8 } from "react-icons/im";
 import { MdCheckCircle } from 'react-icons/md';
 import {useDispatch,useSelector} from "react-redux"
 import { setData,setDebounce,setTime,setTimeRemaining } from '../store/FormSlice.js';
+import { ImSpinner2 } from "react-icons/im";
 const Contact = () => {
     const[current,set_current]=useState(1)
     const dispatch=useDispatch()
@@ -195,7 +196,7 @@ useEffect(()=>{
         onMouseLeave={()=>{set_phone(false)}}
       />
      
-      {OnHoverPhone&& <p className="text-gray-500 text-xs mt-1 flex flex-row items-center gap-1"><MdOutlineErrorOutline/> Phone number is optional.</p>}
+      {OnHoverPhone&& <p className="text-gray-500 text-xs mt-2 font-raleway flex flex-row items-center gap-1"><MdOutlineErrorOutline/> Phone number is optional.</p>}
       </div>
       </div>
        <div className='flex-col gap-10 flex md:gap-10 g md:flex-row w-full'>
@@ -275,17 +276,17 @@ useEffect(()=>{
             transition={{duration:1,ease:easeInOut}}
             key={current} className='w-full flex flex-col justify-center md:flex-row gap-5'>
                 <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/3 lg:w-1/4'>
-                    <h5><MdOutlinePhone className="text-dark_green" size={30}/></h5>
+                    <h5><MdOutlinePhone className="text-dark_green " size={30}/></h5>
                     <h6 className="text-dark_navy font-semibold">Phone</h6>
-                    <p className='text-gray-600 text-xs sm:text-sm md:text-md lg:text-lg xl:text-lg'>{data.phone}</p>
+                    <p className='text-gray-600  text-xs sm:text-sm md:text-md lg:text-lg xl:text-lg'>{data.phone}</p>
                 </div>
-                <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/3 lg:w-1/4'>
-                    <h5><MdOutlineEmail className="text-dark_green" size={30}/></h5>
+                <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md  border-2 p-8 w-full md:w-1/3 lg:w-1/4'>
+                    <h5><MdOutlineEmail className="text-dark_green " size={30}/></h5>
                     <h6 className="text-dark_navy font-semibold">Email</h6>
                     <p className='text-gray-600 text-xs sm:text-sm md:text-md lg:text-md xl:text-md break-words'>{data.email}</p>
                 </div>
-                <div className='flex font-raleway flex-col bg-dark_green gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/3 lg:w-1/4'>
-                    <h5><CiLocationOn className="text-white " size={30}/></h5>
+                <div className='flex font-raleway flex-col hover:scale-none bg-dark_green gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/3 lg:w-1/4'>
+                    <h5><CiLocationOn  className="text-white " size={30}/></h5>
                     <h6 className="text-white font-semibold">Address</h6>
                     <p className='text-white text-xs sm:text-sm md:text-md lg:text-md xl:text-md'>{data.location}</p>
                 </div>
@@ -295,7 +296,7 @@ useEffect(()=>{
     }
 
 })}
-<Suspense fallback={<p className='flex items-center justify-center text-secondary font-semibold text-lg'>Loading..</p>}>
+<Suspense fallback={<p className='flex items-center flex-col justify-center gap-2 text-secondary font-semibold  text-sm md:text-md'><ImSpinner2 className='animate-spin'/>Loading...</p>}>
 {current===1 && <EGMAP/>}
 {current===2 && <UAEMAP/>}
 </Suspense>
