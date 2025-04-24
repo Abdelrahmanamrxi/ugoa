@@ -1,5 +1,6 @@
 import {motion} from "framer-motion"
 import LazyVideoHeader from './LazyVideoHeader'
+import { Link } from "react-router-dom"
 
 export default function HomeHeader() {
   return (
@@ -18,22 +19,27 @@ export default function HomeHeader() {
         and turnkey solutions to build sustainable, high-impact operations.
       </p>
       <div className='flex gap-4 h-auto mt-2 py-2'>
-        <motion.button 
-        initial={{scale:1}}
-        whileHover={{scale:1.1}}
-        whileTap={{scale:0.9}}
-        transition={{duration:0.3, ease:"easeInOut"}}
-        className='bg-primary rounded-full px-2 py-1 text-xs md:text-sm md:px-4 md:py-2 hover:bg-white hover:text-primary'>
-          Get Consult Now
-        </motion.button>
-        <motion.button 
-        initial={{scale:1}}
-        whileHover={{scale:1.1}}
-        whileTap={{scale:0.9}}
-        transition={{duration:0.3, ease:"easeInOut"}}
-        className='border-primary px-2 py-1 text-xs md:text-sm hover:text-primary hover:border-transparent hover:bg-white border-2 rounded-full md:px-4 md:py-2'>
-          Learn More
-        </motion.button>
+        <Link to="/contact">
+          <motion.button 
+          initial={{scale:1}}
+          whileHover={{scale:1.1}}
+          whileTap={{scale:0.9}}
+          transition={{duration:0.3, ease:"easeInOut"}}
+          className='bg-primary rounded-full px-2 py-1 text-xs md:text-sm md:px-4 md:py-2 hover:bg-white hover:text-primary'>
+            Get Consult Now
+          </motion.button>
+        </Link>
+        <Link to='/about_us'>
+          <motion.button 
+          initial={{scale:1}}
+          whileHover={{scale:1.1}}
+          whileTap={{scale:0.9}}
+          transition={{duration:0.3, ease:"easeInOut"}}
+          className='border-primary px-2 py-1 text-xs md:text-sm hover:text-primary hover:border-transparent hover:bg-white border-2 rounded-full md:px-4 md:py-2'>
+            Learn More
+          </motion.button>
+        </Link>
+        
       </div>
     </motion.div>
   </div>
