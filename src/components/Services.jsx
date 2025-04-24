@@ -28,24 +28,46 @@ const Services = ({refProp,scrollToServices}) => {
    return 'p-5'
  }
  const paragraphRef = useRef(null);
+ useEffect(() => {
+  if (state?.scrollTo) {
+    // Wait briefly for any layout changes to complete
+    requestAnimationFrame(() => {
+      const element = document.getElementById(state.scrollTo);
+      
+      if (element) {
+        // Calculate precise position
+        const headerOffset = 50; // Adjust based on your fixed header height
+        const elementRect = element.getBoundingClientRect();
+        const offsetPosition = elementRect.top + window.pageYOffset - headerOffset;
 
-useEffect(()=>{
-  if(state?.scrollTo && scrollRef.current){
-    const element=document.getElementById(state?.scrollTo)
-    
-    if(element){
-     services_data.forEach((service)=>{
-        if(service.id===state?.scrollTo){
-          set_service({id:service.id,title:service.title,icon:service.icon,read_more:service.read_more})
-        }
-      })
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - 50; 
-      window.scrollTo({top:offsetPosition,behavior:"smooth"})
-    }
-    
+        // First scroll instantly to approximate position
+        window.scrollTo({
+          top: offsetPosition - 100, // Scroll slightly above target
+          behavior: 'instant'
+        });
+
+        // Then smooth scroll to exact position
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          // Update service state after scroll starts
+          const targetService = services_data.find(service => service.id === state.scrollTo);
+          if (targetService) {
+            set_service({
+              id: targetService.id,
+              title: targetService.title,
+              icon: targetService.icon,
+              read_more: targetService.read_more
+            });
+          }
+        });
+      }
+    });
   }
-},[state?.scrollTo])
+}, [state?.scrollTo]);
  console.log(service)
 useEffect(() => {
   const checkMobile = () => {
