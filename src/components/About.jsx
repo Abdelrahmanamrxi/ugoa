@@ -29,8 +29,9 @@ export default function About() {
       <div className="flex flex-col bg-darkWhite sm:flex-row gap-6 px-4 py-10 justify-center items-center shadow-xl">
         <motion.img
           className="w-1/2 max-w-[250px]"
+        
           src={vLogo}
-          alt=""
+          alt="UGOA Logo"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 2, ease: "easeOut", delay: 1 }}
@@ -82,7 +83,7 @@ export default function About() {
           className="md:w-1/2 flex flex-col gap-4 p-4 md:p-4"
         >
           <div className="flex justify-start gap-2 md:gap-6 items-center">
-            <img src={visionIcon} className="w-[40px] md:min-w-[64px]" />
+            <img alt="Vision" src={visionIcon} className="w-[40px] md:min-w-[64px]" />
             <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">
               Vision
             </h2>
@@ -132,9 +133,9 @@ export default function About() {
           viewport={{ once: true, amount: 1 }}
           className="flex items-center gap-4"
         >
-          <h1 className="font-raleway text-xl md:text-4xl font-bold text-dark_green">
+          <h2 className="font-raleway text-xl md:text-4xl font-bold text-dark_green">
             Who we are
-          </h1>
+          </h2>
           <GoArrowDownRight size={30} className=" text-dark_green " />
         </motion.div>
 
@@ -198,6 +199,7 @@ export default function About() {
       src={vLogo}
       className="w-64 relative bottom-6 md:max-w-[500px] object-cover"
       alt="Background"
+    
     />
   </motion.div>
 
@@ -209,9 +211,9 @@ export default function About() {
             viewport={{ once: true, amount: 0.5 }}
             className="flex items-center gap-4"
           >
-            <h1 className="font-raleway text-2xl md:text-4xl font-bold text-dark_green uppercase">
+            <h2 className="font-raleway text-2xl md:text-4xl font-bold text-dark_green uppercase">
               What we do
-            </h1>
+            </h2>
             <GoArrowDownRight size={30} className=" text-dark_green " />
           </motion.div>
           <motion.div

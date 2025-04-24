@@ -53,9 +53,9 @@ function Map() {
 
   return (
     <div className="bg-dark_green gap-8 px-2 md:px-10 py-5 w-full h-full flex flex-col justify-center lg:justify-start items-center lg:items-start rounded-xl md:rounded-3xl relative">
-      <h1 className="text-white pt-10 md:px-4 text-2xl md:text-4xl xl:text-5xl uppercase font-raleway font-bold">
+      <h2 className="text-white pt-10 md:px-4 text-2xl md:text-4xl xl:text-5xl uppercase font-raleway font-bold">
         Our Presence
-      </h1>
+      </h2>
       
 
       <div className="flex flex-col justify-center itemes-center px-2 md:px-4 py-6 gap-6 lg:flex-row relative">
@@ -74,9 +74,9 @@ function Map() {
               viewport={{ once: true, amount: 0.5 }}
               className="flex justify-between items-center w-full"
             >
-              <h2 className="md:text-xl xl:text-3xl text-lg font-medium font-raleway text-white">
+              <h3 className="md:text-xl xl:text-3xl text-lg font-medium font-raleway text-white">
                 What services does Conscellence offer?
-              </h2>
+              </h3>
               <GoArrowDownRight size={25} className="text-white" />
             </motion.div>
 

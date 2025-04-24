@@ -85,6 +85,7 @@ export default function Home() {
                   exit={{ rotate: -180 }}
                   transition={{ duration: 1.2, ease: "easeInOut" }}
                   src={reuse}
+                  alt="reusability"
                   className="absolute min-w-20 md:min-w-[128px]"
                 />
               </AnimatePresence>
@@ -98,7 +99,7 @@ export default function Home() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   src={reason.icon}
-                  alt=""
+                  alt="Icon"
                   className="absolute min-w-[28px] min-h-[28px] md:min-w-[64px] md:min-h-[64px]"
                 />
               </AnimatePresence>
