@@ -179,7 +179,7 @@ useEffect(() => {
         <div className=' m-10 rounded-lg max-h-[90vh] overflow-y-auto  p-8 bg-dark_green'>
         <div className='flex flex-row justify-between items-center gap-3'>
         <div className='flex flex-row gap-4 items-center'>
-        <img  src={service.icon} className={`${[8,7,4].includes(service.id)?"md:w-32 sm:w-28 w-11":"md:w-24 p-2 w-14 sm:w-16"}`}/>
+        <img  src={service.icon} className={`${[8,7,4].includes(service.id)?"md:w-32 sm:w-28 w-16":"md:w-24 p-2 w-12 sm:w-16"}`}/>
         <h2 className='text-white font-semibold  text-lg sm:text-lg md:text-xl '>{service.title}</h2>
         </div>
     

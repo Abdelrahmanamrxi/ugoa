@@ -22,9 +22,10 @@ export default function WhyUGOA() {
 
   return (
     <motion.section
-      initial={{ opacity: 0, scale: 0.95 }}
+      initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
+      viewport={{once:true}}
       className="w-full px-6 mt-40 flex flex-col items-center"
     >
       <h2 className="text-dark_green text-center w-2/3 uppercase font-bold text-lg md:text-3xl">

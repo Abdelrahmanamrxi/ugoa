@@ -98,7 +98,8 @@ ${email}`,
       
       {/* === SECTION 1: LOGO === */}
       <div className="flex justify-center">
-        <img src={whiteLogo} alt="Company Logo" loading="lazy" className="min-w-full object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm" />
+        <img src={whiteLogo} alt="Company Logo" loading="lazy" 
+        className="min-w-full object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm" />
       </div>
 
       {/* === SECTION 2: CONTACT INFO === */}
@@ -162,7 +163,7 @@ ${email}`,
           <button type="submit" disabled={debouncing} 
             className="bg-dark_green hover:bg-dark_green/80 transition text-white font-medium px-3 py-2 h-10 
             rounded-full flex items-center justify-center gap-2 shrink-0">
-            <span className="text-xs uppercase hidden lg:block">{loading ? "Sending..." : "Get Started"}</span>
+            <span className="text-xs uppercase hidden xl:block">{loading ? "Sending..." : "Get Started"}</span>
             <div className="bg-white text-black rounded-full p-1">
               <MdArrowUpward size={16} className="rotate-45" />
             </div>

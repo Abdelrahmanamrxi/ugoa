@@ -55,7 +55,9 @@ const Navbar = ({ loc }) => {
             animate={{ x: "0%" }} // Menu moves to 0% position when open
             exit={{ x: "100%" }} // Exit animation for closing the menu
             transition={{ duration: 0.3, ease: "easeInOut" }} // Smooth transition for both opening and closing
-            className="fixed top-0 right-0 transform w-2/3 h-full sm:flex-row-reverse sm:justify-center sm:items-center bg-dark_navy/40 backdrop-blur-md z-50 flex flex-col transition-transform ease-in-out duration-800 overflow-y-auto"
+            className="fixed top-0 right-0 transform w-2/3 h-full lg:flex-row-reverse 
+            lg:justify-center lg:items-center bg-dark_navy/40 backdrop-blur-md z-50
+            flex flex-col transition-transform ease-in-out duration-800 overflow-y-auto"
           >
             {/* Fixed Close Button */}
             <motion.div
@@ -76,7 +78,7 @@ const Navbar = ({ loc }) => {
             <div className="h-auto"></div>
 
             {/* Navigation Links */}
-            <ul className="text-xl font-raleway mt-20 sm:mt-0 flex flex-col gap-6 w-full sm:w-1/2 items-end text-right">
+            <ul className="text-xl font-raleway mt-20 lg:mt-0 flex flex-col gap-6 w-full lg:w-1/2 items-center text-right">
               <Link
                 to="/"
                 onClick={handleLinkClick}
@@ -108,8 +110,8 @@ const Navbar = ({ loc }) => {
             </ul>
 
             {/* Bottom Logo */}
-            <div className="flex flex-col sm:w-1/2 items-center justify-center mt-auto sm:mt-0">
-              <img className="w-full sm:max-w-[300px] md:w-full " src={MenuLogo} />
+            <div className="flex flex-col lg:w-1/2 items-center justify-center mt-auto lg:mt-0">
+              <img className="w-full md:max-w-[300px] lg:w-full " src={MenuLogo} />
             </div>
           </motion.div>
         )}

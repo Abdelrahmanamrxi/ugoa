@@ -22,7 +22,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           viewport={{ once: true }}
           className="flex md:w-1/4 justify-start md:justify-center items-center gap-4"
         >
