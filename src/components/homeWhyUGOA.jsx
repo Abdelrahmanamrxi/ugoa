@@ -43,6 +43,7 @@ export default function WhyUGOA() {
                 exit={{ rotate: -180 }}
                 transition={{ duration: 1.2, ease: "easeInOut" }}
                 src={reuse}
+                alt="reusability"
                 className="absolute min-w-20 md:min-w-[128px]"
               />
             </AnimatePresence>
