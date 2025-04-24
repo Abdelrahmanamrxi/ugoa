@@ -61,14 +61,14 @@ export default function About() {
 
       {/* Section 2 */}
       <motion.div
-        className="mt-24 flex flex-col md:gap-16 md:flex-row md:mx-8 mx-4 gap-10 divide-gray-300 divide-y-2 md:divide-y-0 
-            md:divide-x-[1px] rounded-2xl shadow-lg  md:shadow-xl shadow-dark_green
-            justify-center items-start px-4 py-16 md:px-8 md:py-16"
+        className="mt-24 flex flex-col lg:gap-10 lg:flex-row lg:mx-8 mx-4 gap-8 divide-gray-300 divide-y-2 lg:divide-y-0 
+            lg:divide-x-[1px] rounded-2xl shadow-lg  lg:shadow-xl shadow-dark_green
+            justify-center items-start px-4 py-16 lg:px-8 lg:py-16"
         initial={{ boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)" }}
         animate={{
           boxShadow: [
             "0px 0px 10px rgba(13, 92, 99, 0.3)",
-            "0px 0px 20px rgba(13, 92, 99, 0.5)",
+            "0px 0px 20px rgba(13, 92, 99, 0.6)",
             "0px 0px 10px rgba(13, 92, 99, 0.3)",
           ],
         }}
@@ -79,15 +79,15 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true, amount: 0.5 }}
-          className="md:w-1/2 flex flex-col gap-4 p-4 md:p-4"
+          className="lg:w-1/2 flex flex-col gap-4 p-4 lg:p-6"
         >
-          <div className="flex justify-start gap-2 md:gap-6 items-center">
+          <div className="flex justify-start gap-2 lg:gap-6 items-center">
             <img alt="Vision" src={visionIcon} className="w-[40px] md:min-w-[64px]" />
             <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">
               Vision
             </h2>
           </div>
-          <p className="font-raleway font-light text-justify xl:text-xl w-full md:w-3/4">
+          <p className="font-raleway font-light text-justify xl:text-xl w-full">
             To lead the transformation of the global recycling industry by
             providing strategic solutions that drive circular economies,
             sustainability, and operational excellence.
@@ -99,9 +99,9 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true, amount: 0.5 }}
-          className="md:w-1/2 flex flex-col  gap-4 p-4 md:p-4"
+          className="lg:w-1/2 flex flex-col  gap-4 p-4 lg:p-6"
         >
-          <div className="flex justify-start gap-2 md:gap-6 items-center">
+          <div className="flex justify-start gap-2 lg:gap-6 items-center">
             <PiTargetLight
               size={64}
               src={visionIcon}
@@ -111,7 +111,7 @@ export default function About() {
               Mission
             </h2>
           </div>
-          <p className="font-raleway font-light xl:text-xl text-justify w-full md:w-3/4">
+          <p className="font-raleway font-light xl:text-xl text-justify w-full">
             We empower recyclers, brand owners, and governments with expert
             consultancy, innovative strategies, and supply chain solutions to
             optimize recycling operations, enhance sustainability, and achieve
@@ -147,7 +147,7 @@ export default function About() {
                 viewport={{ once: true, amount: 0.5 }}
                 variants={fadeInVariants}
                 key={data.id}
-                className={`flex h-auto relative items-center px-8 py-4 md:px-14 md:py-8 text-justify
+                className={`flex h-[45vh] lg:h-[25vh] relative items-center px-8 py-4 md:px-14 md:py-8 text-justify
                                 ${data.role ? "bg-dark_green" : "bg-primary"}
                                 ${data.border} w-full h-64`}
               >
@@ -181,7 +181,7 @@ export default function About() {
 
       {/* Section 4 */}
 
-      <div className="mt-32 flex h-full flex-col md:flex-row gap-6 justify-center items-center">
+      <div className="mt-32 flex h-full flex-col lg:flex-row gap-6 justify-center items-center">
         {/* Image Container */}
         <motion.div
     style={{
@@ -192,17 +192,17 @@ export default function About() {
     whileInView={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5, delay: 0.3 }}
     viewport={{ once: true, amount: 0.5 }}
-    className="w-full md:w-1/2 md:h-[70vh] flex justify-center items-center overflow-hidden"
+    className="w-full  lg:h-[70vh] flex justify-center items-center overflow-hidden"
   >
     <img
       src={vLogo}
-      className="w-64 relative bottom-6 md:max-w-[500px] object-cover"
+      className="w-64 relative bottom-6 lg:max-w-[500px] object-cover"
       alt="Background"
     
     />
   </motion.div>
 
-        <div className="w-full md:w-1/2 px-6 flex flex-col gap-8">
+        <div className="w-full lg:w-1/2 px-6 flex flex-col gap-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
