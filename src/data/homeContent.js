@@ -22,7 +22,7 @@ export const homeServices1=[
       title: "Sourcing",
     },
     {
-      id:7,
+      id:2,
       icon: management,
       title: "Management System",
     },]
@@ -31,7 +31,7 @@ export const homeServices1=[
 
     export const homeServices2=[
     {
-      id:2,
+      id:1,
       icon: business_strategy,
       title: "Business Strategy",
     },
@@ -41,7 +41,7 @@ export const homeServices1=[
       title: "Operation Effciency",
     },
     {
-      id:8,
+      id:6,
       icon: sustainability,
       title: "Sustainability & Responsible Operations",
     },

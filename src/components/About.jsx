@@ -147,7 +147,7 @@ export default function About() {
                 viewport={{ once: true, amount: 0.5 }}
                 variants={fadeInVariants}
                 key={data.id}
-                className={`flex h-[45vh] lg:h-[25vh] relative items-center px-8 py-4 md:px-14 md:py-8 text-justify
+                className={`flex max-h-[220px] lg:h-[30vh] relative items-center px-4 py-10 lg:px-14 lg:py-8 text-justify over
                                 ${data.role ? "bg-dark_green" : "bg-primary"}
                                 ${data.border} w-full h-64`}
               >
@@ -156,7 +156,7 @@ export default function About() {
                   <p
                     className={`${
                       data.role ? "font-bold" : "font-light"
-                    } text-xs sm:text-sm md:text-lg xl:text-2xl`}
+                    } text-xs md:text-sm lg:text-lg xl:text-2xl`}
                   >
                     {data.content}
                   </p>
@@ -181,19 +181,24 @@ export default function About() {
 
       {/* Section 4 */}
 
-      <div className="mt-32 flex h-full flex-col lg:flex-row gap-6 justify-center items-center">
+      <motion.div 
+      initial={{opacity:0}}
+      whileInView={{opacity:1}}
+      transition={{duration:1, ease:"easeInOut"}}
+      viewport={{once:true}}
+       style={{
+        backgroundImage: `url(${maze})`,
+        objectFit:"cover",
+      }}
+      className="mt-32 flex h-full flex-col lg:flex-row gap-6 justify-center items-center">
         {/* Image Container */}
         <motion.div
-    style={{
-      backgroundImage: `url(${maze})`,
-      objectFit:"cover",
-    }}
-    initial={{ opacity: 0, x: -50 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5, delay: 0.3 }}
-    viewport={{ once: true, amount: 0.5 }}
-    className="w-full  lg:h-[70vh] flex justify-center items-center overflow-hidden"
-  >
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true, amount: 0.5 }}
+        className="w-full h-auto flex justify-center items-center overflow-hidden"
+      >
     <img
       src={vLogo}
       className="w-64 relative bottom-6 lg:max-w-[500px] object-cover"
@@ -202,7 +207,7 @@ export default function About() {
     />
   </motion.div>
 
-        <div className="w-full lg:w-1/2 px-6 flex flex-col gap-8">
+        <div className="w-full bg-white lg:w-3/4 px-6 py-4 flex flex-col gap-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -291,7 +296,7 @@ export default function About() {
             </motion.p>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Section 5 */}
       <TeamSection />

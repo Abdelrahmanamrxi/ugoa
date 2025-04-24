@@ -14,7 +14,7 @@ export default function HomeHeader() {
       <h1 className="font-bold w-full md:text-3xl text-left">
         Enabling Growth in Recycling & Sustainability
       </h1>
-      <p className='font-light text-justify text-sm md:text-lg w-4/5 md:w-1/4'>
+      <p className='font-light text-justify text-sm md:text-lg w-4/5 lg:w-1/4'>
         UGOA empowers recyclers and investors with expert guidance, deep market insight, 
         and turnkey solutions to build sustainable, high-impact operations.
       </p>
