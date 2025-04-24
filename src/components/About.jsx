@@ -181,15 +181,18 @@ export default function About() {
 
       {/* Section 4 */}
 
-      <div className="mt-32 flex h-auto flex-col md:flex-row gap-6 justify-center items-center">
+      <div className="mt-32 flex h-full flex-col md:flex-row gap-6 justify-center items-center">
         {/* Image Container */}
         <motion.div
-        style={{ backgroundImage: `url(${maze})`, objectFit: "cover",backgroundRepeat:"none" }}
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        viewport={{ once: true, amount: 0.5 }}
-        className="w-full md:w-1/2 flex justify-center items-center overflow-hidden"
+    style={{
+      backgroundImage: `url(${maze})`,
+      objectFit:"cover",
+    }}
+    initial={{ opacity: 0, x: -50 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.5, delay: 0.3 }}
+    viewport={{ once: true, amount: 0.5 }}
+    className="w-full md:w-1/2 md:h-[70vh] flex justify-center items-center overflow-hidden"
   >
     <img
       src={vLogo}

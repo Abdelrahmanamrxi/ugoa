@@ -9,7 +9,6 @@ import HomeServices from "./homeServices";
 import { Link } from "react-router-dom";
 import TeamSection from "./TeamSection";
 import Map from "./Map";
-import HBD from "./MonHBD";
 
 export default function Home() {
   const [reason, setReason] = useState(whyUGOA[0]);
@@ -28,7 +27,6 @@ export default function Home() {
   return (
     <>
       {/* Section 1 - Our Approach */}
-      <HBD />
       <section
         style={{ backgroundImage: `url(${maze})`, objectFit: "cover" }}
         className="bg-darkWhite gap-6 px-6 py-10 flex flex-col md:flex-row justify-center shadow-xl w-full h-auto"
