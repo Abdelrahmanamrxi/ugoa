@@ -6,7 +6,6 @@ import visionIcon from "../assets/vision_icon.svg";
 import { PiTargetLight } from "react-icons/pi";
 import { whoWeAre } from "../data/content";
 import { TiArrowForward } from "react-icons/ti";
-import horizontalImg from "../assets/horizontalImg.svg";
 import Map from "./Map.jsx";
 import TeamSection from "./TeamSection.jsx";
 import maze from "../assets/background_80.jpg";
@@ -148,7 +147,7 @@ export default function About() {
                 viewport={{ once: true, amount: 0.5 }}
                 variants={fadeInVariants}
                 key={data.id}
-                className={`flex relative items-center px-8 py-4 md:px-14 md:py-8 text-justify
+                className={`flex h-auto relative items-center px-8 py-4 md:px-14 md:py-8 text-justify
                                 ${data.role ? "bg-dark_green" : "bg-primary"}
                                 ${data.border} w-full h-64`}
               >
