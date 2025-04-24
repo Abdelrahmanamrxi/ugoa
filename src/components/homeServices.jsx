@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 
 export default function HomeServices() {
   const [displayservices, setDisplayServices] = useState(true);
+  const CheckIcon=()=>{
 
+  }
   return (
     <section className="relative px-6 mt-20">
       <motion.div
@@ -56,7 +58,7 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between items-center"
           >
             {homeServices1.map((data, index) => (
-              <Link to="/services" state={{scrollTo:data.id}}  key={index}> {/* Added key here as well */}
+              <Link to="/services" state={{scrollTo:data.serviceID}}  key={index}> {/* Added key here as well */}
                 <li
                   className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
                 >
@@ -81,7 +83,7 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between"
           >
             {homeServices2.map((data, index) => (
-              <Link state={{scrollTo:data.id}} to="/services" key={index}> {/* Added key here as well */}
+              <Link state={{scrollTo:data.serviceID}} to="/services" key={index}> {/* Added key here as well */}
                 <li
                   className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-start items-center p-4 h-full"
                 >

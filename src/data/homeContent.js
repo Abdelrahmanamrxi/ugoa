@@ -13,16 +13,19 @@ import solutions from "../assets/solutions.svg";
 export const homeServices1=[
     {
       id:1,
+      serviceID:1,
       icon: search,
       title: "Comprehensive Feasibility Study",
     },
     {
       id:3,
+      serviceID:3,
       icon: sourcingIcon,
       title: "Sourcing",
     },
     {
       id:2,
+      serviceID:7,
       icon: management,
       title: "Management System",
     },]
@@ -32,16 +35,19 @@ export const homeServices1=[
     export const homeServices2=[
     {
       id:1,
+      serviceID:2,
       icon: business_strategy,
       title: "Business Strategy",
     },
     {
       id:4,
+      serviceID:4,
       icon: operations,
       title: "Operation Effciency",
     },
     {
       id:6,
+      serviceID:8,
       icon: sustainability,
       title: "Sustainability & Responsible Operations",
     },
