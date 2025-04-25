@@ -59,9 +59,8 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between items-center"
           >
             {homeServices1.map((data, index) => (
-              <ul>
               <Link aria-label="View First 3 Services in Service Page" to="/services" state={{scrollTo:data.serviceID}}  key={index}> {/* Added key here as well */}
-                
+                <ul>
                 <li
                   className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
                 >
@@ -75,9 +74,8 @@ export default function HomeServices() {
                     {data.title}
                   </h3>
                 </li>
-              
+                </ul>
               </Link>
-              </ul>
             ))}
           </motion.ul>
         ) : (
@@ -90,10 +88,8 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between"
           >
             {homeServices2.map((data, index) => (
-
-              <ul>
               <Link aria-label="View Last 3 Services in Services Page" state={{scrollTo:data.serviceID}} to="/services" key={index}> {/* Added key here as well */}
-             
+              <ul>
                 <li
                   className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-start items-center p-4 h-full"
                 >
@@ -107,9 +103,8 @@ export default function HomeServices() {
                     {data.title}
                   </h4>
                 </li>
-                
+                </ul>
               </Link>
-              </ul>
             ))}
           </motion.ul>
         )}
