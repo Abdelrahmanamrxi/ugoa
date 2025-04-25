@@ -205,7 +205,7 @@ export default function About() {
       width={500}
       height={250}
       className="w-64 relative bottom-6 lg:max-w-[500px] object-cover"
-      alt="Background"
+      alt="UGOA Maze Logo Background Identity"
     
     />
   </motion.div>

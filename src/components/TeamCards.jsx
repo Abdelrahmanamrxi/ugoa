@@ -15,7 +15,7 @@ export default function TeamCard({ name, role, image, email, linkedin }) {
                        justify-between items-center rounded-2xl transition-all duration-500"
         >
             {/* Profile Image */}
-            <img loading="lazy" src={image} alt={name} width={400} height={410}     className="rounded-t-2xl" />
+            <img loading="lazy" src={image} alt={`${name}-Photo`} width={400} height={410}     className="rounded-t-2xl" />
 
             {/* Name & Role */}
             <div className="flex absolute flex-col bottom-6 py-4 justify-center items-center">

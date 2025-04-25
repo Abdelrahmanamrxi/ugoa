@@ -19,7 +19,7 @@ export default function HomeHeader() {
         and turnkey solutions to build sustainable, high-impact operations.
       </p>
       <div className='flex items-center gap-4 h-auto mt-2 py-2'>
-        <Link to="/contact">
+        <Link aria-label="Consultation Contact Form" to="/contact">
           <motion.button 
           aria-label="Get Consult Now"
           initial={{scale:1}}
@@ -30,7 +30,7 @@ export default function HomeHeader() {
             Get Consult Now
           </motion.button>
         </Link>
-        <Link to='/about_us'>
+        <Link aria-label="About Us Link" to='/about_us'>
           <motion.button 
           aria-label="Learn More"
           initial={{scale:1}}

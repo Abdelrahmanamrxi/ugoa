@@ -82,6 +82,7 @@ const Navbar = ({ loc }) => {
               <Link
                 to="/"
                 onClick={handleLinkClick}
+                aria-label="Home UGOA Logo Navbar Link"
                 className={`${loc === "/" ? "bg-secondary" : ""} hover:bg-secondary w-full text-base sm:text-lg transition-all duration-200 py-2 px-4`}
               >
                 Home
@@ -89,18 +90,21 @@ const Navbar = ({ loc }) => {
               <Link
                 to="/about_us"
                 onClick={handleLinkClick}
+                aria-label="About Us Navbar Link"
                 className={`${loc === "/about_us" ? "bg-secondary" : ""} hover:bg-secondary text-base sm:text-lg transition-all duration-200 w-full py-2 px-4`}
               >
                 About Us
               </Link>
               <Link
                 to="/services"
+                aria-label="Services Navbar Link"
                 onClick={handleLinkClick}
                 className={`${loc === "/services" ? "bg-secondary" : ""} hover:bg-secondary text-base sm:text-lg transition-all duration-200 w-full py-2 px-4`}
               >
                 Services
               </Link>
               <Link
+                aria-label="Contact Us Navbar Link"
                 to="/contact"
                 onClick={handleLinkClick}
                 className={`${loc === "/contact" ? "bg-secondary" : ""} hover:bg-secondary text-base sm:text-lg transition-all duration-200 w-full py-2 px-4`}
@@ -111,16 +115,16 @@ const Navbar = ({ loc }) => {
 
             {/* Bottom Logo */}
             <div className="flex flex-col lg:w-1/2 items-center justify-center mt-auto lg:mt-0">
-              <img className="w-full md:max-w-[300px] lg:w-full " src={MenuLogo} />
+              <img className="w-full md:max-w-[300px] lg:w-full " src={MenuLogo} alt="UGOA Header Navbar Logo " />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <ul className='uppercase hidden m-auto  md:flex justify-around md:gap-10 gap-5 text-md font-raleway items-center'>
-        <Link to="/services" onClick={() => setActiveLink("services")} className={` ${loc === "/services" ? "font-bold" : ''} hover:font-bold ${activeLink === "services" ? 'font-bold' : ""} transition-all duration-200 `}>Services</Link>
-        <Link to="/about_us" onClick={() => setActiveLink("about")} className={`${loc === "/about_us" ? "font-bold " : ''} hover:font-bold ${activeLink === "about" ? 'font-bold' : ""} transition-all duration-200`}>About Us</Link>
-        <Link to="/contact" onClick={() => setActiveLink("contact")} className={` ${loc === "/contact" ? "font-bold" : ""} hover:font-bold ${activeLink === "contact" ? 'font-bold' : ""} transition-all duration-200`}>Contact Us</Link>
+        <Link aria-label="Services on Desktop Navbar Link" to="/services" onClick={() => setActiveLink("services")} className={` ${loc === "/services" ? "font-bold" : ''} hover:font-bold ${activeLink === "services" ? 'font-bold' : ""} transition-all duration-200 `}>Services</Link>
+        <Link aria-label="About on Desktop Navbar Link" to="/about_us" onClick={() => setActiveLink("about")} className={`${loc === "/about_us" ? "font-bold " : ''} hover:font-bold ${activeLink === "about" ? 'font-bold' : ""} transition-all duration-200`}>About Us</Link>
+        <Link aria-label="Contact on Desktop Navbar Link" to="/contact" onClick={() => setActiveLink("contact")} className={` ${loc === "/contact" ? "font-bold" : ""} hover:font-bold ${activeLink === "contact" ? 'font-bold' : ""} transition-all duration-200`}>Contact Us</Link>
       </ul>
       <div className='hidden md:flex'>
         <p className='border-2 p-2 text-sm rounded-full'>010-2589-6653</p>

@@ -46,8 +46,7 @@ export default function WhyUGOA() {
                 height={64}
                 transition={{ duration: 1.2, ease: "easeInOut" }}
                 src={reuse}
-                
-                alt="reusability"
+                alt="UGOA Provides Reusability and Recycling"
                 className="absolute min-w-20 md:min-w-[128px]"
               />
             </AnimatePresence>
@@ -61,7 +60,7 @@ export default function WhyUGOA() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 src={reason.icon}
-                alt={reason.title}
+                alt={`${reason.title} with UGOA `}
                 width={64}
                 height={64}
                 className="absolute max-w-[32px] max-h-[32px] md:min-w-[64px] md:min-h-[64px]"

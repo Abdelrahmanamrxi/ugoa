@@ -70,7 +70,7 @@ export default function Loading({ onFinish }) {
       {/* Logo image on top */}
       <motion.img
         src={logo}
-        alt="UGOA Horizontal Logo"
+        alt="UGOA Horizontal Logo for Our Smooth Loading Screen"
         initial={{ scale: 1 }}
         animate={{
           scale: 1,

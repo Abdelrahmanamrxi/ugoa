@@ -15,7 +15,7 @@ export default function(){
                 <div className="card px-6 grid grid-cols-1 justify-center items-center lg:grid-cols-3 gap-8">
                     {team.map((card)=>{
                         return(
-                           <Link to="/about_us">
+                           <Link aria-label="About Us Team Card Link" to="/about_us">
                             <TeamCard key={card.mail}
                                 name={card.name}
                                 image={card.photo}

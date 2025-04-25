@@ -5,7 +5,6 @@ import { GoArrowDownRight } from "react-icons/go";
 import maze from "../assets/background_80.jpg";
 import WhyUGOA from "./homeWhyUGOA";
 import HomeServices from "./homeServices";
-import { Link } from "react-router-dom";
 import TeamSection from "./TeamSection";
 import Map from "./Map";
 

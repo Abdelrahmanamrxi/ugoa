@@ -59,7 +59,7 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between items-center"
           >
             {homeServices1.map((data, index) => (
-              <Link to="/services" state={{scrollTo:data.serviceID}}  key={index}> {/* Added key here as well */}
+              <Link aria-label="View First 3 Services in Service Page" to="/services" state={{scrollTo:data.serviceID}}  key={index}> {/* Added key here as well */}
                 <ul>
                 <li
                   className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
@@ -67,8 +67,8 @@ export default function HomeServices() {
                   <img src={data.icon} 
                   className={ `${data.id % 2===0 ? 'w-25 ':'w-10'} h-20 ` }
                   width={data.id % 2 === 0 ? 100 : 40}  
-                   height={80} 
-                  alt={data.title} /> {/* Added alt */}
+                  height={80} 
+                  alt={`${data.title}-For UGOA`} /> {/* Added alt */}
    
                   <h3 className="text-white text-center font-semibold text-sm md:text-lg">
                     {data.title}
@@ -88,7 +88,7 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between"
           >
             {homeServices2.map((data, index) => (
-              <Link state={{scrollTo:data.serviceID}} to="/services" key={index}> {/* Added key here as well */}
+              <Link aria-label="View Last 3 Services in Services Page" state={{scrollTo:data.serviceID}} to="/services" key={index}> {/* Added key here as well */}
               <ul>
                 <li
                   className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-start items-center p-4 h-full"
@@ -97,7 +97,7 @@ export default function HomeServices() {
                    width={data.id % 2 === 0 ? 100 : 40}  // Intrinsic width
                    height={80}  // Intrinsic height
                    className={ `${data.id % 2 === 0 ? 'w-25 ':'w-10'} h-20 ` } 
-                   alt={data.title} /> {/* Added alt */}
+                   alt={`${data.title}-For UGOA`} /> {/* Added alt */}
 
                   <h4 className="text-white text-center font-semibold text-sm lg:text-lg">
                     {data.title}
