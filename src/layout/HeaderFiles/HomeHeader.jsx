@@ -32,7 +32,7 @@ export default function HomeHeader() {
         </Link>
         <Link aria-label="Learn More About UGOA" to='/about_us'>
           <motion.button 
-          aria-label="Learn More"
+          aria-label="learn more"
           initial={{scale:1}}
           whileHover={{scale:1.1}}
           whileTap={{scale:0.9}}

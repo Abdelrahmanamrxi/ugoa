@@ -97,7 +97,7 @@ export default function HomeServices() {
             <ul>
             <li
               key={index}
-              className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-start items-center p-4 h-full"
+              className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
             >
               <Link
                 to="/services"
