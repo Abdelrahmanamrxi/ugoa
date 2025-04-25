@@ -121,7 +121,8 @@ ${email}`,
             Contact us today to schedule a consultation and discover how we can help your business thrive.
           </p>
 
-            <motion.a href="#" 
+            <motion.a href="https://www.linkedin.com/in/mohamed-loay/" 
+            aria-label="Goes to the Company Linkedin Profile"
             whileHover={{scale:1.1}}
             whileTap={{scale:0.95}}
             transition={{duration:0.5, ease:"easeInOut"}}

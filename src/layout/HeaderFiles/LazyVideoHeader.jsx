@@ -28,6 +28,7 @@ export default function LazyVideoHeader() {
        {/* Video with readiness check */}
        {vid && (
          <video
+           aria-hidden="true"
            src={vid}
            autoPlay
            loop

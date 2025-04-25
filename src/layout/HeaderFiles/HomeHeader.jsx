@@ -26,7 +26,7 @@ export default function HomeHeader() {
           whileHover={{scale:1.1}}
           whileTap={{scale:0.9}}
           transition={{duration:0.3, ease:"easeInOut"}}
-          className='bg-primary rounded-full px-3 py-2 text-sm md:text-md md:px-4 md:py-2 hover:bg-white hover:text-primary'>
+          className='bg-primary font-semibold rounded-full px-3 py-2 text-sm md:text-md md:px-4 md:py-2 hover:bg-white hover:text-dark_green'>
             Get Consult Now
           </motion.button>
         </Link>
@@ -37,7 +37,7 @@ export default function HomeHeader() {
           whileHover={{scale:1.1}}
           whileTap={{scale:0.9}}
           transition={{duration:0.3, ease:"easeInOut"}}
-          className='border-primary px-3 py-2 text-sm md:text-md hover:text-primary hover:border-transparent hover:bg-white border-2 rounded-full md:px-4 md:py-2'>
+          className='border-primary font-semibold px-3 py-2 text-sm md:text-md hover:text-dark_green hover:border-transparent hover:bg-white border-2 rounded-full md:px-4 md:py-2'>
             Learn More
           </motion.button>
         </Link>
