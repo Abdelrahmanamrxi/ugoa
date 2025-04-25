@@ -40,7 +40,7 @@ const Navbar = ({ loc }) => {
   return (
     <nav className='flex relative md:p-8 p-5 items-center justify-between'>
       <Link to="/" onClick={() => setActiveLink("/")} className="cursor-pointer">
-          <img src={Logo} alt="UGOA-Logo"  className='w-16 md:w-20 h-auto object-cover ' />
+          <img src={Logo} alt="UGOA-Logo"  width={200} height={200} className='w-16 md:w-20 h-auto object-cover ' />
       </Link>
       
 

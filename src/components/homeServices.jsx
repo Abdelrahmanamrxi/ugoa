@@ -17,7 +17,7 @@ export default function HomeServices() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 2, ease: "easeInOut" }}
         viewport={{ once: true }}
-        className="flex w-full justify-start items-center gap-4"
+        className="flex w-full sm:w-1/2 justify-start items-center gap-4"
       >
         <h2 className="text-dark_green w-2/3 uppercase font-bold text-lg md:text-3xl">
           What we can do for you?
@@ -64,8 +64,10 @@ export default function HomeServices() {
                 >
                   <img src={data.icon} 
                   className={ `${data.id % 2===0 ? 'w-25 ':'w-10'} h-20 ` }
+                  width={data.id % 2 === 0 ? 100 : 40}  
+                   height={80} 
                   alt={data.title} /> {/* Added alt */}
-
+   
                   <h4 className="text-white text-center font-semibold text-sm md:text-lg">
                     {data.title}
                   </h4>
@@ -88,6 +90,8 @@ export default function HomeServices() {
                   className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-start items-center p-4 h-full"
                 >
                   <img src={data.icon} 
+                   width={data.id % 2 === 0 ? 100 : 40}  // Intrinsic width
+                   height={80}  // Intrinsic height
                   className={ `${data.id % 2 === 0 ? 'w-25 ':'w-10'} h-20 ` } 
                   alt={data.title} /> {/* Added alt */}
 

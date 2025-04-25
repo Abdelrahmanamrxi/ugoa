@@ -98,7 +98,7 @@ ${email}`,
       
       {/* === SECTION 1: LOGO === */}
       <div className="flex justify-center">
-        <img src={whiteLogo} alt="Company Logo" loading="lazy" 
+        <img src={whiteLogo}      width={600}  height={200} alt="Company Logo" loading="lazy" 
         className="min-w-full object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm" />
       </div>
 

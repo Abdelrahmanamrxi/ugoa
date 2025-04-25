@@ -28,7 +28,8 @@ export default function About() {
       <div className="flex flex-col bg-darkWhite sm:flex-row gap-6 px-4 py-10 justify-center items-center shadow-xl">
         <motion.img
           className="w-1/2 max-w-[250px]"
-        
+          width={500}
+          height={250}
           src={vLogo}
           alt="UGOA Logo"
           initial={{ opacity: 0, x: -30 }}
@@ -82,7 +83,7 @@ export default function About() {
           className="lg:w-1/2 flex flex-col gap-4 p-4 lg:p-6"
         >
           <div className="flex justify-start gap-2 lg:gap-6 items-center">
-            <img alt="Vision" src={visionIcon} className="w-[40px] md:min-w-[64px]" />
+            <img alt="Vision" width={64} height={64} src={visionIcon} className="w-[40px] md:min-w-[64px]" />
             <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">
               Vision
             </h2>
@@ -201,6 +202,8 @@ export default function About() {
       >
     <img
       src={vLogo}
+      width={500}
+      height={250}
       className="w-64 relative bottom-6 lg:max-w-[500px] object-cover"
       alt="Background"
     
