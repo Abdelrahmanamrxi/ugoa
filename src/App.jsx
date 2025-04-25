@@ -1,14 +1,14 @@
 
 import './App.css'
 import Layout from './layout/Layout'
-import { useEffect, useRef } from 'react'
-
-import Home from './components/Home'
-import Contact from './components/Contact'
-import Services from './components/Services'
-import About from './components/About'
+import { useEffect, useRef,Suspense } from 'react'
+import React from 'react'
+import Loading from './components/Loading'
+const Home =React.lazy(() => import('./components/Home'))
+const Contact =React.lazy(()=>import('./components/Contact')) 
+const Services =React.lazy(()=>import('./components/Services')) 
+const About=React.lazy(()=>import('./components/About'))
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 function App() {
 
    const serviceRef=useRef(null)
@@ -24,14 +24,28 @@ function App() {
     <Route element={<Layout
      scrollToServices={scrollToServices}
     />}>
-    <Route path="/" element={<Home/>}/>
-    <Route path="/contact" element={<Contact/>}/>
+    <Route path="/" element={
+      <Suspense fallback={<Loading/>}>
+      <Home/>
+      </Suspense>
+      }/>
+    <Route path="/contact" element={
+      <Suspense fallback={<Loading/>}>
+      <Contact/>
+      </Suspense>
+      }/>
     <Route path="/services" element={
+      <Suspense fallback={<Loading/>}>
     <Services
     refProp={serviceRef}
-    scrollToServices={scrollToServices}
-    />}/>
-    <Route path="/about_us" element={<About/>}/>
+    scrollToServices={scrollToServices}/>
+    </Suspense>
+    }/>
+    <Route path="/about_us" element={
+      <Suspense fallback={<Loading/>}>
+      <About/>
+      </Suspense>
+      }/>
 
      </Route>
     
