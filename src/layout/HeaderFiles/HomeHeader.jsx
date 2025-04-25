@@ -21,6 +21,7 @@ export default function HomeHeader() {
       <div className='flex items-center gap-4 h-auto mt-2 py-2'>
         <Link to="/contact">
           <motion.button 
+          aria-label="Get Consult Now"
           initial={{scale:1}}
           whileHover={{scale:1.1}}
           whileTap={{scale:0.9}}
@@ -31,6 +32,7 @@ export default function HomeHeader() {
         </Link>
         <Link to='/about_us'>
           <motion.button 
+          aria-label="Learn More"
           initial={{scale:1}}
           whileHover={{scale:1.1}}
           whileTap={{scale:0.9}}

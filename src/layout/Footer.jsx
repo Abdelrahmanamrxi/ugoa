@@ -110,7 +110,7 @@ ${email}`,
         sm:justify-start sm:items-start sm:px-4 sm:py-6">
 
         <div className="flex w-full gap-3 items-center">
-          <GoArrowDownRight size={25} className="text-white" />
+          <GoArrowDownRight aria-hidden="true" size={25} className="text-white" />
           <h3 className="uppercase w-full text-white font-semibold text-base sm:text-lg lg:text-xl xl:text-2xl">
             Contact Us
           </h3>
@@ -129,7 +129,7 @@ ${email}`,
             onMouseLeave={()=> setIconHover(false)}
             className="md:py-2 py-1 bg-dark_green hover:bg-white hover:text-dark_green w-1/4 md:w-1/2
              flex justify-center items-center rounded-full">
-              <FaLinkedinIn size={15} className={`${iconHover ? 'text-dark_green' : 'text-white'}`} />
+              <FaLinkedinIn aria-hidden="true" size={15} className={`${iconHover ? 'text-dark_green' : 'text-white'}`} />
             </motion.a>
 
         </div>
@@ -149,7 +149,7 @@ ${email}`,
         {/* Email Input & Button */}
         <form onSubmit={sendEmail} className="flex items-center gap-3 py-4 w-full">
           <div className="bg-white flex items-center rounded-full px-4 py-2 gap-2 w-[250px] h-10">
-            <IoMdMail size={18} className="text-gray-500" />
+            <IoMdMail aria-hidden="true" size={18} className="text-gray-500" />
             <input
               type="email"
               className="bg-transparent w-full outline-none font-medium placeholder-gray-400 text-base"
@@ -160,12 +160,12 @@ ${email}`,
             />
           </div>
 
-          <button type="submit" disabled={debouncing} 
+          <button aria-label="Submit" type="submit" disabled={debouncing} 
             className="bg-dark_green hover:bg-dark_green/80 transition text-white font-medium px-3 py-2 h-10 
             rounded-full flex items-center justify-center gap-2 shrink-0">
             <span className="text-xs uppercase hidden xl:block">{loading ? "Sending..." : "Get Started"}</span>
             <div className="bg-white text-black rounded-full p-1">
-              <MdArrowUpward size={16} className="rotate-45" />
+              <MdArrowUpward aria-hidden="true" size={16} className="rotate-45" />
             </div>
           </button>
          
@@ -174,17 +174,17 @@ ${email}`,
         {/* Contact Details */}
         <div className="flex flex-col  gap-4">
           <div className="flex gap-3  items-center">
-            <div className="footerIcon"><FaPhoneAlt size={15} /></div>
+            <div className="footerIcon"><FaPhoneAlt aria-hidden="true" size={15} /></div>
             <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">+971545423530</p>
           </div>
 
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><IoMail size={15} /></div>
+            <div className="footerIcon"><IoMail aria-hidden="true" size={15} /></div>
             <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">ahmed_elmizayen@ugoa.me</p>
           </div>
 
           <div className="flex gap-3 items-center">
-            <div className="footerIcon"><MdLocationOn/></div>
+            <div className="footerIcon"><MdLocationOn aria-hidden="true" /></div>
             <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">
               Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>

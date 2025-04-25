@@ -22,7 +22,7 @@ export default function HomeServices() {
         <h2 className="text-dark_green w-2/3 uppercase font-bold text-lg md:text-3xl">
           What we can do for you?
         </h2>
-        <GoArrowDownRight size={25} className=" text-dark_green" />
+        <GoArrowDownRight aria-hidden="true" size={25} className=" text-dark_green" />
       </motion.div>
 
       <motion.div
@@ -43,6 +43,7 @@ export default function HomeServices() {
         <FaCircleArrowRight
           onClick={() => setDisplayServices((prev) => !prev)}
           size={30}
+          aria-hidden="true"
           className="text-dark_green cursor-pointer"
         />
       </motion.div>
@@ -59,6 +60,7 @@ export default function HomeServices() {
           >
             {homeServices1.map((data, index) => (
               <Link to="/services" state={{scrollTo:data.serviceID}}  key={index}> {/* Added key here as well */}
+                <ul>
                 <li
                   className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
                 >
@@ -68,10 +70,11 @@ export default function HomeServices() {
                    height={80} 
                   alt={data.title} /> {/* Added alt */}
    
-                  <h4 className="text-white text-center font-semibold text-sm md:text-lg">
+                  <h3 className="text-white text-center font-semibold text-sm md:text-lg">
                     {data.title}
-                  </h4>
+                  </h3>
                 </li>
+                </ul>
               </Link>
             ))}
           </motion.ul>
@@ -86,19 +89,21 @@ export default function HomeServices() {
           >
             {homeServices2.map((data, index) => (
               <Link state={{scrollTo:data.serviceID}} to="/services" key={index}> {/* Added key here as well */}
+              <ul>
                 <li
                   className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-start items-center p-4 h-full"
                 >
                   <img src={data.icon} 
                    width={data.id % 2 === 0 ? 100 : 40}  // Intrinsic width
                    height={80}  // Intrinsic height
-                  className={ `${data.id % 2 === 0 ? 'w-25 ':'w-10'} h-20 ` } 
-                  alt={data.title} /> {/* Added alt */}
+                   className={ `${data.id % 2 === 0 ? 'w-25 ':'w-10'} h-20 ` } 
+                   alt={data.title} /> {/* Added alt */}
 
                   <h4 className="text-white text-center font-semibold text-sm lg:text-lg">
                     {data.title}
                   </h4>
                 </li>
+                </ul>
               </Link>
             ))}
           </motion.ul>

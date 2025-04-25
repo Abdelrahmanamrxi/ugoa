@@ -35,7 +35,7 @@ export default function TeamCard({ name, role, image, email, linkedin }) {
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()} // Prevents unwanted flickers
                 >
-                    <MdEmail size={30} className="text-white cursor-pointer" />
+                    <MdEmail aria-label="true" size={30} className="text-white cursor-pointer" />
                 </a>
 
                 <a 
@@ -44,7 +44,7 @@ export default function TeamCard({ name, role, image, email, linkedin }) {
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()} // Prevents unwanted flickers
                 >
-                    <FaLinkedin size={30} className="text-white cursor-pointer" />
+                    <FaLinkedin aria-label="true" size={30} className="text-white cursor-pointer" />
                 </a>
             </motion.div>
         </div>

@@ -150,7 +150,7 @@ useEffect(()=>{
 
     <div className=" flex flex-col w-3/4 m-8 mt-10 md:pl-10  "> 
       <h2 className="uppercase mb-5 font-bold text-dark_green flex flex-row items-center text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-3xl   font-raleway">
-        Get in touch <span><GoArrowDownRight /></span>
+        Get in touch <span><GoArrowDownRight aria-hidden="true" /></span>
       </h2>
       
       <form onSubmit={sendEmail} onChange={handleChange} ref={form} className="flex flex-col justify-center  w-full border-2 border-dark">
@@ -227,7 +227,8 @@ useEffect(()=>{
       <input type="hidden" name="time" id="time"></input>
        <div className='flex w-full  md:justify-end justify-center  mt-7 text-right '>
     
-    <motion.button 
+    <motion.button
+    aria-label='Submit-Button' 
     disabled={Disabled}
     initial={{scale:1}}
     whileHover={{opacity:0.8}}
@@ -242,7 +243,7 @@ useEffect(()=>{
         transition={{duration:0.8,ease:"easeInOut"}} 
         className='flex flex-row justify-center items-center gap-3'>
           <p>Sent</p>
-          <MdCheckCircle size={20}/>
+          <MdCheckCircle aria-hidden="true" size={20}/>
         </motion.div>
       )
       :
@@ -262,8 +263,8 @@ useEffect(()=>{
  
 </form>
 <div className='flex gap-5 justify-center md:justify-start sm:justify-center m-5  flex-row'>
-<button onClick={()=>{set_current(1)}}  className={`${current===1?currently_selected:not_selected}`}>Egypt<span className={`${current===1?"bg-white transition-all duration-300 rounded-full p-2 text-black":'bg-dark_green transition-all duration-300 rounded-full text-white p-2'}`}>{current===1?(<RiArrowRightUpLine size={20}/>):<GoArrowDownRight className='font-bold' size={20} />}</span></button>
-<button onClick={()=>{set_current(2)}}  className={`${current===2?currently_selected:not_selected}`}>UAE<span className={`${current===2?"bg-white rounded-full p-2 transition-all duration-300 text-black":"bg-dark_green rounded-full transition-all duration-300 text-white p-2"}`}>{current===2?(<RiArrowRightUpLine size={20}/>):<GoArrowDownRight className='font-bold' size={20} />}</span></button>
+<button aria-label='Egypt-Button' onClick={()=>{set_current(1)}}  className={`${current===1?currently_selected:not_selected}`}>Egypt<span className={`${current===1?"bg-white transition-all duration-300 rounded-full p-2 text-black":'bg-dark_green transition-all duration-300 rounded-full text-white p-2'}`}>{current===1?(<RiArrowRightUpLine aria-hidden="true" size={20}/>):<GoArrowDownRight aria-hidden="true" className='font-bold' size={20} />}</span></button>
+<button aria-label="UAE-Button" onClick={()=>{set_current(2)}}  className={`${current===2?currently_selected:not_selected}`}>UAE<span className={`${current===2?"bg-white rounded-full p-2 transition-all duration-300 text-black":"bg-dark_green rounded-full transition-all duration-300 text-white p-2"}`}>{current===2?(<RiArrowRightUpLine aria-hidden="true" size={20}/>):<GoArrowDownRight aria-hidden="true" className='font-bold' size={20} />}</span></button>
 </div>
 {location_data.map((data)=>{
     

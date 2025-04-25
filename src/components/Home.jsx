@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { GoArrowDownRight } from "react-icons/go";
 import maze from "../assets/background_80.jpg";
@@ -30,6 +30,7 @@ export default function Home() {
             Our Approach
           </h2>
           <GoArrowDownRight
+            aria-hidden="true"
             size={25}
             className="text-white bg-dark_green p-1 rounded-full"
           />

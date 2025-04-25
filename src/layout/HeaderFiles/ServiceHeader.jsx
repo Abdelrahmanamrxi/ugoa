@@ -127,7 +127,7 @@ export default function ServiceHeader({scrollToServices}) {
          
          className='flex flex-row items-center justify-between xl:m-8 lg:m-4'>
   
-   <div className="relative hidden z-10 xl:w-1/4 lg:w-1/3    lg:ml-8 lg:flex flex-col gap-6 text-white max-w-lg">
+   <div className="relative hidden  z-10 xl:w-1/4 lg:w-1/3    lg:ml-8 lg:flex flex-col gap-6 text-white max-w-lg">
    
    <div className="relative h-24 overflow-hidden">
      <AnimatePresence mode="wait">
@@ -208,7 +208,7 @@ export default function ServiceHeader({scrollToServices}) {
         }}
         className="will-change-transform"
       >
-        <button onClick={scrollToServices} className="bg-dark_green font-semibold font-raleway hover:bg-opacity-80 px-5 py-2">
+        <button onClick={scrollToServices} aria-label='Explore' className="bg-dark_green font-semibold font-raleway hover:bg-opacity-80 px-5 py-2">
           Explore
         </button>
       </motion.div>
@@ -352,6 +352,7 @@ export default function ServiceHeader({scrollToServices}) {
       <div className="w-10 h-10 flex items-center justify-center">
         {service_index > 0 && (
           <button 
+            aria-label='prevCard'
             onClick={prevCard}
             className="p-2"
           >
@@ -387,6 +388,7 @@ export default function ServiceHeader({scrollToServices}) {
       <div className="w-10 h-10 flex items-center justify-center">
         {service_index < service_header.length - 1 && (
           <button 
+            aria-label='nextCard'
             onClick={nextCard}
             className="p-2"
           >
@@ -435,7 +437,7 @@ export default function ServiceHeader({scrollToServices}) {
             opacity: 0 
           }}
         >
-          <button onClick={scrollToServices} className="bg-dark_green font-raleway font-medium px-5 py-2 rounded-md min-w-[120px]">
+          <button onClick={scrollToServices} aria-label="scrollToServices" className="bg-dark_green font-raleway font-medium px-5 py-2 rounded-md min-w-[120px]">
             Explore
           </button>
         </motion.div>

@@ -44,6 +44,7 @@ const Layout = ({ scrollToServices }) => {
           />
           <Outlet />
           <motion.button
+          aria-label='scroll to top'
           onClick={() => {
             const header = document.getElementById("header");
             if (header) {

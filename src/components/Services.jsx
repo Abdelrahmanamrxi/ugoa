@@ -132,7 +132,7 @@ useEffect(() => {
       </ul>
       <p ref={paragraphRef} onClick={()=>{set_service({
         id:service.id,title:service.title,icon:service.icon,read_more:service.read_more})}} className="flex flex-row  text-sm hover:underline cursor-pointer  items-center gap-2">
-        Read More<span><FaArrowRight /></span>
+        Read More<span><FaArrowRight aria-hidden='true' /></span>
       </p>
     </div>
   </motion.div>
@@ -158,7 +158,6 @@ useEffect(() => {
             <img  src={service.icon} className={`${[8,7,4].includes(service.id)?"md:w-32 w-24 h-32":"md:w-24 w-12 h-24 p-2 "} `}/>
             <h2 className='text-white font-semibold text-sm md:text-2xl '>{service.title}</h2>
             </div>
-        
             <p onClick={()=>{
               set_service({}) 
               scrollToServices()
