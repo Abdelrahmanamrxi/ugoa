@@ -30,7 +30,7 @@ export default function HomeHeader() {
             Get Consult Now
           </motion.button>
         </Link>
-        <Link aria-label="About Us Link" to='/about_us'>
+        <Link aria-label="Learn More About UGOA" to='/about_us'>
           <motion.button 
           aria-label="Learn More"
           initial={{scale:1}}

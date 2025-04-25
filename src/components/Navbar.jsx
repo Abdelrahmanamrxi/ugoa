@@ -79,6 +79,7 @@ const Navbar = ({ loc }) => {
 
             {/* Navigation Links */}
             <ul className="text-xl font-raleway mt-20 lg:mt-0 flex flex-col gap-6 w-full lg:w-1/2 items-center text-right">
+            
               <Link
                 to="/"
                 onClick={handleLinkClick}
