@@ -59,23 +59,29 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between items-center"
           >
             {homeServices1.map((data, index) => (
-              <Link aria-label="View First 3 Services in Service Page" to="/services" state={{scrollTo:data.serviceID}}  key={index}> {/* Added key here as well */}
-                <ul>
-                <li
-                  className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
+              <ul>
+              <li className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4">
+                <Link
+                  to="/services"
+                  state={{ scrollTo: data.serviceID }}
+                  key={index}
+                  aria-label="View First 3 Services in Service Page"
+                  className="w-full h-full flex flex-col items-center justify-start"
                 >
-                  <img src={data.icon} 
-                  className={ `${data.id % 2===0 ? 'w-25 ':'w-10'} h-20 ` }
-                  width={data.id % 2 === 0 ? 100 : 40}  
-                  height={80} 
-                  alt={`${data.title}-For UGOA`} /> {/* Added alt */}
-   
+                  <img
+                    src={data.icon}
+                    className={`${data.id % 2 === 0 ? 'w-25' : 'w-10'} h-20`}
+                    width={data.id % 2 === 0 ? 100 : 40}
+                    height={80}
+                    alt={`${data.title} - For UGOA`}
+                  />
                   <h3 className="text-white text-center font-semibold text-sm md:text-lg">
                     {data.title}
                   </h3>
-                </li>
-                </ul>
-              </Link>
+                </Link>
+              </li>
+            </ul>
+            
             ))}
           </motion.ul>
         ) : (
@@ -88,23 +94,30 @@ export default function HomeServices() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between"
           >
             {homeServices2.map((data, index) => (
-              <Link aria-label="View Last 3 Services in Services Page" state={{scrollTo:data.serviceID}} to="/services" key={index}> {/* Added key here as well */}
-              <ul>
-                <li
-                  className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-start items-center p-4 h-full"
-                >
-                  <img src={data.icon} 
-                   width={data.id % 2 === 0 ? 100 : 40}  // Intrinsic width
-                   height={80}  // Intrinsic height
-                   className={ `${data.id % 2 === 0 ? 'w-25 ':'w-10'} h-20 ` } 
-                   alt={`${data.title}-For UGOA`} /> {/* Added alt */}
-
-                  <h4 className="text-white text-center font-semibold text-sm lg:text-lg">
-                    {data.title}
-                  </h4>
-                </li>
-                </ul>
+            <ul>
+            <li
+              key={index}
+              className="bg-dark_green gap-4 rounded-3xl flex flex-col justify-start items-center p-4 h-full"
+            >
+              <Link
+                to="/services"
+                state={{ scrollTo: data.serviceID }}
+                aria-label="View Last 3 Services in Services Page"
+                className="w-full h-full flex flex-col items-center"
+              >
+                <img
+                  src={data.icon}
+                  width={data.id % 2 === 0 ? 100 : 40}
+                  height={80}
+                  className={`${data.id % 2 === 0 ? 'w-25' : 'w-10'} h-20`}
+                  alt={`${data.title} - For UGOA`}
+                />
+                <h4 className="text-white text-center font-semibold text-sm lg:text-lg">
+                  {data.title}
+                </h4>
               </Link>
+            </li>
+          </ul>
             ))}
           </motion.ul>
         )}
