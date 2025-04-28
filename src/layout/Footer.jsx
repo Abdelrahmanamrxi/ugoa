@@ -121,7 +121,7 @@ ${email}`,
             Contact us today to schedule a consultation and discover how we can help your business thrive.
           </p>
 
-            <motion.a href="https://www.linkedin.com/in/mohamed-loay/" 
+            <motion.a target="_blank" href="https://www.linkedin.com/company/ugoa-consulting/" 
             aria-label="Goes to the Company Linkedin Profile"
             whileHover={{scale:1.1}}
             whileTap={{scale:0.95}}
