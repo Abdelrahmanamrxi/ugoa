@@ -123,8 +123,8 @@ useEffect(() => {
               
   <img alt={service.title}  className={`${CheckPadding(service.id)} bg-dark_green lg:w-1/5 md:w-32 w-1/5 lg:h-full     object-contain   rounded-tl-lg rounded-bl-lg`} src={service.icon}/>
     <div className="flex flex-col relative md:justify-center justify-between font-raleway gap-2 m-3">
-      <h2 className="text-dark_green  text-lg md:text-2xl font-semibold">{service.title}</h2>
-      <ul className="text-gray-500 sm:tracking-wide text-xs leading-normal  sm:leading-relaxed md:text-sm ">
+      <h2 className="text-dark_green  text-lg sm:text-xl md:text-2xl font-semibold">{service.title}</h2>
+      <ul className="text-gray-500 sm:tracking-wide text-xs leading-normal  sm:leading-relaxed sm:text-sm ">
         <li>{service.paragraph_1}</li>
         <li>{service.paragraph_2}</li>
         <li>{service.paragraph_3}</li>
@@ -156,7 +156,7 @@ useEffect(() => {
             <div className='flex flex-row justify-between items-center gap-3'>
             <div className='flex flex-row gap-4 items-center'>
             <img  src={service.icon} className={`${[8,7,4].includes(service.id)?"md:w-32 w-24 h-32":"md:w-24 w-12 h-24 p-2 "} `}/>
-            <h2 className='text-white font-semibold text-sm md:text-2xl '>{service.title}</h2>
+            <h2 className='text-white font-semibold text-lg md:text-2xl '>{service.title}</h2>
             </div>
             <p onClick={()=>{
               set_service({}) 
@@ -164,7 +164,7 @@ useEffect(() => {
           } }className='text-white cursor-pointer  font-semibold'><IoMdClose className='hover:opacity-80' size={30}/></p>
            
             </div>
-            <p className='text-white text-md md:text-lg leading-relaxed mt-4 font-raleway'>{service.read_more}</p>
+            <p className='text-white text-base md:text-lg leading-relaxed tracking-wider mt-4 font-raleway'>{service.read_more}</p>
                 
             </div>
             </motion.div>

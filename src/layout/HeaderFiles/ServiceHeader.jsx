@@ -148,7 +148,7 @@ export default function ServiceHeader({scrollToServices}) {
              ease: [0.32, 0, 0.67, 0]
            } 
          }}
-         className="text-5xl font-raleway  font-bold absolute w-full will-change-transform"
+         className="lg:text-4xl xl:text-5xl font-raleway  font-bold absolute w-full will-change-transform"
        >
          {selected.title}
        </motion.h1>
@@ -350,7 +350,7 @@ export default function ServiceHeader({scrollToServices}) {
     <div className="relative flex items-center justify-between h-20 mb-4">
       {/* Left arrow - maintain space even when hidden */}
       <div className="w-10 h-10 flex items-center justify-center">
-        {service_index > 0 && (
+        
           <button 
             aria-label='prevCard'
             onClick={prevCard}
@@ -358,7 +358,7 @@ export default function ServiceHeader({scrollToServices}) {
           >
             <MdKeyboardArrowLeft size={36} />
           </button>
-        )}
+        
       </div>
 
       {/* Title - centered with flex-1 */}
@@ -377,7 +377,7 @@ export default function ServiceHeader({scrollToServices}) {
               opacity: 0,
               transition: { duration: 0.3 }
             }}
-            className="text-xl sm:text-2xl font-raleway font-bold text-center line-clamp-2"
+            className="text-2xl sm:text-3xl font-raleway font-bold text-center line-clamp-2"
           >
             {selected.title}
           </motion.h1>
@@ -386,7 +386,7 @@ export default function ServiceHeader({scrollToServices}) {
 
       {/* Right arrow - maintain space even when hidden */}
       <div className="w-10 h-10 flex items-center justify-center">
-        {service_index < service_header.length - 1 && (
+        
           <button 
             aria-label='nextCard'
             onClick={nextCard}
@@ -394,7 +394,7 @@ export default function ServiceHeader({scrollToServices}) {
           >
             <MdKeyboardArrowRight size={36} />
           </button>
-        )}
+        
       </div>
     </div>
 
@@ -414,7 +414,7 @@ export default function ServiceHeader({scrollToServices}) {
             opacity: 0,
             transition: { duration: 0.2 }
           }}
-          className="text-lg sm:text-base font-raleway leading-normal text-center"
+          className="text-xl sm:text-2xl text-center font-raleway leading-normal "
         >
           {selected.text}
         </motion.div>

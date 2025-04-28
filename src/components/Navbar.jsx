@@ -92,7 +92,7 @@ const Navbar = ({ loc }) => {
                 to="/about_us"
                 onClick={handleLinkClick}
                 aria-label="About Us Navbar Link"
-                className={`${loc === "/about_us" ? "bg-secondary" : ""} hover:bg-secondary text-base sm:text-lg transition-all duration-200 w-full py-2 px-4`}
+                className={`${loc === "/about_us" ? "bg-secondary" : ""} hover:bg-secondary text-base sm:text-lg  transition-all duration-200 w-full py-2 px-4`}
               >
                 About Us
               </Link>
@@ -122,7 +122,7 @@ const Navbar = ({ loc }) => {
         )}
       </AnimatePresence>
 
-      <ul className='uppercase hidden m-auto  md:flex justify-around md:gap-10 gap-5 text-md font-raleway items-center'>
+      <ul className='uppercase hidden m-auto  md:flex justify-around md:gap-10 gap-5 text-base lg:text-lg font-raleway items-center'>
         <Link aria-label="Services on Desktop Navbar Link" to="/services" onClick={() => setActiveLink("services")} className={` ${loc === "/services" ? "font-bold" : ''} hover:font-bold ${activeLink === "services" ? 'font-bold' : ""} transition-all duration-200 `}>Services</Link>
         <Link aria-label="About on Desktop Navbar Link" to="/about_us" onClick={() => setActiveLink("about")} className={`${loc === "/about_us" ? "font-bold " : ''} hover:font-bold ${activeLink === "about" ? 'font-bold' : ""} transition-all duration-200`}>About Us</Link>
         <Link aria-label="Contact on Desktop Navbar Link" to="/contact" onClick={() => setActiveLink("contact")} className={` ${loc === "/contact" ? "font-bold" : ""} hover:font-bold ${activeLink === "contact" ? 'font-bold' : ""} transition-all duration-200`}>Contact Us</Link>

@@ -14,12 +14,12 @@ const CheckType=()=>{
 
   return (
     <div>
-  <h1 className="font-raleway md:text-4xl text-2xl text-center font-semibold text-dark_green uppercase mb-8 mt-12">
+  <h1 className="font-raleway lg:text-4xl md:text-3xl text-xl text-center font-semibold text-dark_green uppercase mb-8 mt-12">
     What we offer to {type} projects?
   </h1>
 
  
-  <div className={`${CheckType()} z-10 font-raleway p-14 rounded-xl  flex flex-col  md:grid md:grid-cols-[1fr_auto_1fr]  gap-10 relative`}>
+  <div className={`${CheckType()} z-10 font-raleway p-14 rounded-xl  flex flex-col  lg:grid md:grid-cols-[1fr_auto_1fr]  gap-10 relative`}>
     
  
     <div className="flex flex-col gap-5 justify-between">
@@ -30,7 +30,7 @@ const CheckType=()=>{
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.2 }}
-            className="text-xl font-bold uppercase"
+            className="text-xl md:text-2xl font-bold uppercase"
           >
             {item.title}
           </motion.h3>
@@ -39,17 +39,17 @@ const CheckType=()=>{
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.4 }}
-            className="w-full mt-2 text-sm md:hidden"
+            className="w-full mt-2 text-base lg:hidden"
           >
             {item.text}
           </motion.p>
-          <hr className={`mb-3 mt-5 md:hidden ${type==="existing"?"border-t border-black/100":""}`} />
+          <hr className={`mb-3 mt-5 lg:hidden ${type==="existing"?"border-t border-black/100":""}`} />
         </div>
       ))}
     </div>
 
     
-    <motion.div className=" flex-col hidden md:flex items-center justify-between relative">
+    <motion.div className=" flex-col hidden lg:flex items-center justify-between relative">
       <div className="absolute w-1  bg-[#0D5C63] h-full"></div>
       {[...Array(4)].map((_, index) => (
         <motion.div
@@ -64,7 +64,7 @@ const CheckType=()=>{
     </motion.div>
 
   
-    <div className="hidden md:flex flex-col gap-5 justify-between">
+    <div className="hidden lg:flex flex-col gap-5 justify-between">
       {projects.map((line, index) => (
         <motion.p
           key={index}
@@ -72,7 +72,7 @@ const CheckType=()=>{
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.4 }}
-          className="font-raleway font-medium  leading-[170%]  tracking-[0]"
+          className="font-raleway text-base xl:text-lg font-medium   leading-[170%]  tracking-[0]"
         >
           {line.text}
         </motion.p>
