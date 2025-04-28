@@ -38,7 +38,7 @@ export default function HomeHeader() {
           whileTap={{scale:0.9}}
           transition={{duration:0.3, ease:"easeInOut"}}
           className='border-primary font-semibold px-3 py-2 text-sm md:text-md hover:text-dark_green hover:border-transparent hover:bg-white border-2 rounded-full md:px-4 md:py-2'>
-            Learn More
+             More About Our Company
           </motion.button>
         </Link>
         
