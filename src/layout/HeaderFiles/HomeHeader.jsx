@@ -19,17 +19,19 @@ export default function HomeHeader() {
         and turnkey solutions to build sustainable, high-impact operations.
       </p>
       <div className='flex items-center gap-4 h-auto mt-2 py-2'>
-        <Link aria-label="Consultation Contact Form" to="/contact">
-          <motion.button 
-          aria-label="Get Consult Now"
-          initial={{scale:1}}
-          whileHover={{scale:1.1}}
-          whileTap={{scale:0.9}}
-          transition={{duration:0.3, ease:"easeInOut"}}
-          className='bg-primary font-semibold rounded-full px-3 py-2 text-sm md:text-md md:px-4 md:py-2 hover:bg-white hover:text-dark_green'>
-            Get Consult Now
-          </motion.button>
-        </Link>
+      <Link aria-label="Consultation Contact Form" to="/contact">
+  <motion.button
+    aria-label="Get Consult Now"
+    initial={{ scale: 1 }}
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    transition={{ duration: 0.3, ease: "easeInOut" }}
+    className="bg-primary text-white font-semibold rounded-full px-3 py-2 text-sm md:text-base md:px-4 md:py-2 hover:bg-white hover:text-dark_green"
+  >
+    Get Consult Now
+  </motion.button>
+</Link>
+
         <Link aria-label="Learn More About UGOA" to='/about_us'>
           <motion.button 
           aria-label="learn more"
