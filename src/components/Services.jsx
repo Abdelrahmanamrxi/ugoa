@@ -97,7 +97,7 @@ useEffect(() => {
     <div className='relative overflow-hidden'>
         
     <div className='lg:m-8'>
-    <h1 className=' uppercase font-raleway w-1/12 lg:m-5 m-5 md:m-8 mb-5 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-4xl text-2xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
+    <h1 className=' uppercase font-raleway w-1/12 lg:m-5 m-5 md:m-8 mb-5 text-dark_green font-semibold flex  flex-row items-center gap-2 md:text-4xl sm:text-2xl text-xl'>Our Services <span className=''><GoArrowDownRight size={30}/></span></h1>
     <div className='flex flex-col m lg:justify-normal md:justify-center md:items-center lg:items-start'>
     <div id="services" ref={refProp} className="lg:grid lg:grid-cols-2 md:w-5/6 lg:w-full lg:grid-rows-2 m-5 flex flex-col gap-6">
         {services_data.map((service)=>{
