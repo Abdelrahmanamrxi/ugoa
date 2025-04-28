@@ -13,7 +13,7 @@ export default function ContactHeader() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.8, ease: "easeOut", delay: 0.2 }}
-        className="font-raleway font-bold text-opacity-90 text-offwhite md:text-3xl  text-2xl lg:text-4xl"
+        className="font-raleway font-bold text-opacity-90 text-offwhite md:text-3xl   text-2xl lg:text-4xl"
       >
         Contact Us for Expert Consultation
       </motion.h1>

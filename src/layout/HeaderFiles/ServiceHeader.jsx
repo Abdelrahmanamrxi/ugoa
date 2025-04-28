@@ -127,7 +127,7 @@ export default function ServiceHeader({scrollToServices}) {
          
          className='flex flex-row items-center justify-between xl:m-8 lg:m-4'>
   
-   <div className="relative hidden  z-10 xl:w-1/4 lg:w-1/3    lg:ml-8 lg:flex flex-col gap-6 text-white max-w-lg">
+   <div className="relative hidden  z-10 xl:w-1/3 lg:w-1/4   lg:ml-8 lg:flex flex-col gap-6 text-white max-w-lg">
    
    <div className="relative h-24 overflow-hidden">
      <AnimatePresence mode="wait">
@@ -175,7 +175,7 @@ export default function ServiceHeader({scrollToServices}) {
          ease: "easeIn" 
        }
      }}
-     className="leading-wide lg:text-lg font-raleway xl:text-2xl md:text-md  w-full"
+     className="leading-relaxed tracking-wider lg:text-lg font-raleway xl:text-2xl md:text-base  w-full"
    >
      {selected.text}
    </motion.p>
@@ -208,7 +208,7 @@ export default function ServiceHeader({scrollToServices}) {
         }}
         className="will-change-transform"
       >
-        <button onClick={scrollToServices} aria-label='Explore' className="bg-dark_green font-semibold font-raleway hover:bg-opacity-80 px-5 py-2">
+        <button onClick={scrollToServices} aria-label='Explore' className="bg-dark_green font-semibold hover:opacity-95 transition-opacity font-raleway hover:bg-opacity-80 px-5 py-2">
           Explore
         </button>
       </motion.div>
@@ -283,7 +283,7 @@ export default function ServiceHeader({scrollToServices}) {
             text: card.background_text
           });
         }}
-        className={`relative xl:w-48 xl:h-52 w-36 h-38 min-h-32 bg-white rounded-lg ${
+        className={`relative xl:w-48 xl:h-52 md:w-28 md:h-24 lg:w-36 lg:h-42 bg-white rounded-lg ${
           isSelected ? 'opacity-100 z-10' : 'opacity-50 z-0'
         } shadow-lg cursor-pointer overflow-hidden`}
         initial={{ scale: 1, x: 0, opacity: 0 }}
@@ -317,7 +317,7 @@ export default function ServiceHeader({scrollToServices}) {
         
         {/* Card Content */}
         <motion.div className="absolute bottom-0 w-full p-4 text-white">
-          <h3 className="text-xl font-raleway font-bold">{card.title}</h3>
+          <h3 className="xl:text-xl md:text-lg font-raleway font-bold">{card.title}</h3>
         </motion.div>
       </motion.div>
     );
@@ -437,7 +437,7 @@ export default function ServiceHeader({scrollToServices}) {
             opacity: 0 
           }}
         >
-          <button onClick={scrollToServices} aria-label="scrollToServices" className="bg-dark_green font-raleway font-medium px-5 py-2 rounded-md min-w-[120px]">
+          <button onClick={scrollToServices} aria-label="scrollToServices" className="bg-dark_green hover:opacity-95 transition-opacity font-raleway font-medium px-5 py-2 rounded-md min-w-[120px]">
             Explore
           </button>
         </motion.div>
