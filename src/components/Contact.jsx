@@ -233,7 +233,7 @@ useEffect(()=>{
     initial={{scale:1}}
     whileHover={{opacity:0.8}}
     whileTap={{scale:0.9}}
-    className='uppercase text-sm   md:text-sm font-semibold bg-primary text-white font-raleway rounded-full w-full md:w-1/3 py-3'>{
+    className='uppercase text-sm  md:text-sm font-semibold bg-primary text-white font-raleway rounded-full w-full md:w-1/3 py-3'>{
       Loading?(<div className='flex flex-row items-center justify-center gap-3'><p>Sending..</p><ImSpinner8 className='animate-spin'/></div>)
       :Success?
       (

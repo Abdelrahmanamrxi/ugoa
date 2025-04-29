@@ -23,7 +23,7 @@ const Services = ({refProp,scrollToServices}) => {
   const scrollRef=useRef(null)
  const CheckPadding=(id)=>{
    if(id===8 || id===7 || id==4 )
-    return ' '
+    return ''
    else
    return 'p-5'
  }
@@ -119,9 +119,9 @@ useEffect(() => {
                 ease: "easeInOut"
               }
               }}
-            key={service.id} className="shadow-md  cursor-pointer  flex flex-row">
+            key={service.id} className="shadow-md cursor-pointer  flex flex-row">
               
-  <img alt={service.title}  className={`${CheckPadding(service.id)} bg-dark_green lg:w-1/5 md:w-32 w-1/5 lg:h-full     object-contain   rounded-tl-lg rounded-bl-lg`} src={service.icon}/>
+  <img alt={service.title}  className={`${CheckPadding(service.id)} bg-dark_green lg:w-1/5 md:w-1/6 flex-shrink-0 w-1/5  lg:h-full  object-contain   rounded-tl-lg rounded-bl-lg`} src={service.icon}/>
     <div className="flex flex-col relative md:justify-center justify-between font-raleway gap-2 m-3">
       <h2 className="text-dark_green  text-lg sm:text-xl md:text-2xl font-semibold">{service.title}</h2>
       <ul className="text-gray-500 sm:tracking-wide text-xs leading-normal  sm:leading-relaxed sm:text-sm ">
