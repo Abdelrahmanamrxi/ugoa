@@ -51,6 +51,7 @@ export const whoWeAre = [
 
   import man from "../assets/man.jpeg";
   import woman from "../assets/woman.jpeg";
+  import kasaby from "../assets/El_kasaby.jpg";
   export const team=[
     {
       name: "Ahmed Elmizayen",
@@ -69,7 +70,7 @@ export const whoWeAre = [
     {
       name: "Ahmed Elkasaby",
       role: "Technical Director",
-      photo: man,
+      photo: kasaby,
       mail: "Ahmed_elkasaby@ugoa.me",
       linkedIn:"https://www.linkedin.com/in/ahmed-elkasaby-mba-b2698014a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     },

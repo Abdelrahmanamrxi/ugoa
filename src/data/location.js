@@ -2,7 +2,7 @@ const location_data = [
     {
       id: 1,
       country: "Egypt",
-      phone: "01001446520",
+      phone: "+201001446520",
       email: "ahmed_elmizayen@ugoa.me",
       location: "Gamal Abd ElNasser St., Kazan Mall",
     },

@@ -7,9 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function HomeServices() {
   const [displayservices, setDisplayServices] = useState(true);
-  const CheckIcon=()=>{
-
-  }
+  // const CheckIcon = () => {};
   return (
     <section className="relative px-6 mt-20">
       <motion.div
@@ -22,7 +20,11 @@ export default function HomeServices() {
         <h2 className="text-dark_green w-2/3 uppercase font-bold text-2xl lg:text-4xl">
           What we can do for you?
         </h2>
-        <GoArrowDownRight aria-hidden="true" size={25} className=" text-dark_green" />
+        <GoArrowDownRight
+          aria-hidden="true"
+          size={25}
+          className=" text-dark_green"
+        />
       </motion.div>
 
       <motion.div
@@ -48,29 +50,50 @@ export default function HomeServices() {
         />
       </motion.div>
 
-      <AnimatePresence mode="wait" key={displayservices.toString()}> {/* Added key to AnimatePresence */}
+      <AnimatePresence mode="wait" key={displayservices.toString()}>
         {displayservices ? (
           <motion.ul
             key="services1"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: [0,1], x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between items-center"
+            initial="hidden"
+            whileInView="visible"
+            exit="hidden"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {
+                opacity: 0,
+              },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.3,
+                  when: "beforeChildren",
+                },
+              },
+            }}
+            transition={{ duration: 1 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 py-4 justify-between items-center"
           >
             {homeServices1.map((data, index) => (
-              <ul>
-              <li className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4">
+              <motion.li
+                key={index}
+                whileHover={{scale:1.1}}
+                whileTap={{scale:0.95}}
+                variants={{
+                  hidden: { opacity: 0, y: 50, scale:0.7 },
+                  visible: { opacity: 1, y: 0, scale:1 },
+                }}
+                transition={{duration:0.3}}
+                className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
+              >
                 <Link
                   to="/services"
                   state={{ scrollTo: data.serviceID }}
-                  key={index}
                   aria-label="View First 3 Services in Service Page"
                   className="w-full h-full flex flex-col items-center justify-start"
                 >
                   <img
                     src={data.icon}
-                    className={`${data.id % 2 === 0 ? 'w-25' : 'w-10'} h-20`}
+                    className={`${data.id % 2 === 0 ? "w-25" : "w-10"} h-20`}
                     width={data.id % 2 === 0 ? 100 : 40}
                     height={80}
                     alt={`${data.title} - For UGOA`}
@@ -79,45 +102,61 @@ export default function HomeServices() {
                     {data.title}
                   </h3>
                 </Link>
-              </li>
-            </ul>
-            
+              </motion.li>
             ))}
           </motion.ul>
         ) : (
           <motion.ul
-            key="services2"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between"
+          key="services2"
+          initial="hidden"
+          whileInView="visible"
+          exit="hidden"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {
+              opacity: 0,
+            },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.3,
+                when: "beforeChildren",
+              },
+            },
+          }}
+          transition={{ duration: 1 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 py-4 justify-between items-center"
           >
             {homeServices2.map((data, index) => (
-            <ul>
-            <li
-              key={index}
-              className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
-            >
-              <Link
-                to="/services"
-                state={{ scrollTo: data.serviceID }}
-                aria-label="View Last 3 Services in Services Page"
-                className="w-full h-full flex flex-col items-center"
+              <motion.li
+                key={index}
+                whileHover={{scale:1.1}}
+                whileTap={{scale:0.95}}
+                variants={{
+                  hidden: { opacity: 0, y: 50, scale:0.7 },
+                  visible: { opacity: 1, y: 0, scale:1 },
+                }}
+                transition={{duration:0.3}}
+                className="bg-dark_green h-[190px] gap-4 rounded-3xl flex flex-col justify-start items-center p-4"
               >
-                <img
-                  src={data.icon}
-                  width={data.id % 2 === 0 ? 100 : 40}
-                  height={80}
-                  className={`${data.id % 2 === 0 ? 'w-25' : 'w-10'} h-20`}
-                  alt={`${data.title} - For UGOA`}
-                />
-                <h4 className="text-white text-center font-semibold text-sm lg:text-lg">
-                  {data.title}
-                </h4>
-              </Link>
-            </li>
-          </ul>
+                <Link
+                  to="/services"
+                  state={{ scrollTo: data.serviceID }}
+                  aria-label="View Last 3 Services in Services Page"
+                  className="w-full h-full flex flex-col items-center justify-start"
+                >
+                  <img
+                    src={data.icon}
+                    width={data.id % 2 === 0 ? 100 : 40}
+                    height={80}
+                    className={`${data.id % 2 === 0 ? "w-25" : "w-10"} h-20`}
+                    alt={`${data.title} - For UGOA`}
+                  />
+                  <h4 className="text-white text-center font-semibold text-sm lg:text-lg">
+                    {data.title}
+                  </h4>
+                </Link>
+              </motion.li>
             ))}
           </motion.ul>
         )}
