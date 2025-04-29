@@ -28,7 +28,7 @@ export default function WhyUGOA() {
       viewport={{once:true}}
       className="w-full px-6 mt-40 flex flex-col items-center"
     >
-      <h2 className="text-dark_green text-center w-2/3 uppercase font-bold text-lg md:text-3xl">
+      <h2 className="text-dark_green text-center w-2/3 uppercase font-bold text-2xl md:text-4xl">
         Why UGOA?
       </h2>
 
@@ -75,7 +75,7 @@ export default function WhyUGOA() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -10, opacity: 0 }}
                 transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
-                className="text-white uppercase font-bold text-sm md:text-xl pb-2" // Added pb-2 for spacing
+                className="text-white uppercase font-bold text-lg lg:text-3xl pb-2" // Added pb-2 for spacing
                 key={reason.title}
               >
                 {reason.title}
@@ -92,7 +92,7 @@ export default function WhyUGOA() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 30 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
-                className="text-white font-light text-xs md:text-lg text-justify"
+                className="text-white font-light text-sm lg:text-lg text-justify"
                 key={reason.description}
               >
                 {reason.description}
@@ -109,10 +109,10 @@ export default function WhyUGOA() {
             objectFit: "cover",
           }}
         >
-          <h2 className="text-dark_green w-2/3 text-center uppercase font-bold text-lg md:text-3xl">
+          <h2 className="text-dark_green w-2/3 text-center uppercase font-bold text-2xl lg:text-4xl">
             +41
           </h2>
-          <h3 className="text-dark_green text-center w-full uppercase font-bold text-base md:text-2xl">
+          <h3 className="text-dark_green text-center w-full uppercase font-bold text-xl md:text-2xl">
             Years of recycling experience
           </h3>
         </motion.div>

@@ -15,11 +15,11 @@ export default function HomeServices() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 2, ease: "easeInOut" }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
         viewport={{ once: true }}
         className="flex w-full sm:w-1/2 justify-start items-center gap-4"
       >
-        <h2 className="text-dark_green w-2/3 uppercase font-bold text-lg md:text-3xl">
+        <h2 className="text-dark_green w-2/3 uppercase font-bold text-2xl lg:text-4xl">
           What we can do for you?
         </h2>
         <GoArrowDownRight aria-hidden="true" size={25} className=" text-dark_green" />
@@ -28,7 +28,7 @@ export default function HomeServices() {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 2, ease: "easeInOut" }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
         viewport={{ once: true }}
         className="flex p-2 justify-between"
       >
@@ -75,7 +75,7 @@ export default function HomeServices() {
                     height={80}
                     alt={`${data.title} - For UGOA`}
                   />
-                  <h3 className="text-white text-center font-semibold text-sm md:text-lg">
+                  <h3 className="text-white text-center font-semibold text-base lg:text-lg">
                     {data.title}
                   </h3>
                 </Link>

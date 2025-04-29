@@ -21,11 +21,11 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           viewport={{ once: true }}
           className="flex md:w-1/4 justify-start md:justify-center items-center gap-4"
         >
-          <h2 className="text-dark_green uppercase font-bold text-lg md:text-3xl">
+          <h2 className="text-dark_green uppercase font-bold text-2xl lg:text-4xl">
             Our Approach
           </h2>
           <GoArrowDownRight
@@ -38,9 +38,9 @@ export default function Home() {
         <motion.p
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           viewport={{ once: true }}
-          className="w-full bg-white rounded-3xl md:py-8 px-6 py-6 shadow-[0_4px_30px_rgba(0,0,0,0.5)] md:w-1/2 font-raleway font-light text-sm xl:text-xl text-justify"
+          className="w-full  bg-white rounded-3xl md:py-8 px-6 py-6 shadow-[0_4px_30px_rgba(0,0,0,0.5)] md:w-1/2 font-raleway font-light text-base lg:text-lg text-justify"
         >
           At UGOA Consultation, we revolutionize recycling with innovative
           solutions, expertise, and a commitment to sustainability. We empower

@@ -19,8 +19,8 @@ export default function TeamCard({ name, role, image, email, linkedin }) {
 
             {/* Name & Role */}
             <div className="flex absolute flex-col bottom-6 py-4 justify-center items-center">
-                <h3 className="text-notBlack font-bold font-raleway text-lg md:text-xl xl:text-2xl">{name}</h3>
-                <h4 className="text-gray-500 font-raleway font-light text-sm lg:text-base xl:text-xl">{role}</h4>
+                <h3 className="text-notBlack font-bold font-raleway text-lg lg:text-2xl">{name}</h3>
+                <p className="text-gray-600 font-raleway font-light text-sm lg:text-lg">{role}</p>
             </div>
 
             {/* Social Icons - Only Show When Hovering on the Card */}

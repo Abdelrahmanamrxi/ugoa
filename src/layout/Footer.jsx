@@ -99,7 +99,7 @@ ${email}`,
       {/* === SECTION 1: LOGO === */}
       <div className="flex justify-center">
         <img src={whiteLogo}     width={600}  height={200} alt="Company Footer UGOA Logo" loading="lazy" 
-        className="min-w-full object-cover xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm" />
+        className="min-w-full object-cover lg:max-w-xl  md:max-w-lg max-w-md" />
       </div>
 
       {/* === SECTION 2: CONTACT INFO === */}
@@ -111,13 +111,13 @@ ${email}`,
 
         <div className="flex w-full gap-3 items-center">
           <GoArrowDownRight aria-hidden="true" size={25} className="text-white" />
-          <h3 className="uppercase w-full text-white font-semibold text-base sm:text-lg lg:text-xl xl:text-2xl">
+          <h4 className="uppercase w-full text-white font-semibold text-base lg:text-xl">
             Contact Us
-          </h3>
+          </h4>
         </div>
 
         <div className="flex flex-col gap-2 xl:gap-10 lg:gap-8 md:gap-6 sm:gap-4">
-          <p className="text-white text-justify  font-light w-3/4 text-xs sm:text-sm lg:text-base xl:text-lg">
+          <p className="text-white text-justify  font-light w-3/4 md:w-full text-sm lg:text-base">
             Contact us today to schedule a consultation and discover how we can help your business thrive.
           </p>
 
@@ -143,9 +143,9 @@ ${email}`,
         md:gap-6 md:px-6 md:py-9
         sm:justify-start sm:items-start sm:px-4 sm:py-6">
 
-        <h2 className="uppercase w-full text-white font-semibold text-base sm:text-lg lg:text-xl xl:text-2xl">
+        <h4 className="uppercase w-full text-white font-semibold text-base lg:text-xl">
           Get a Free Consultation
-        </h2>
+        </h4>
 
         {/* Email Input & Button */}
         <form onSubmit={sendEmail} className="flex items-center gap-3 py-4 w-full">
@@ -176,17 +176,17 @@ ${email}`,
         <div className="flex flex-col  gap-4">
           <div className="flex gap-3  items-center">
             <div className="footerIcon"><FaPhoneAlt aria-hidden="true" size={15} /></div>
-            <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">+971545423530</p>
+            <p className="text-white text-xs lg:text-base font-light">+971545423530</p>
           </div>
 
           <div className="flex gap-3 items-center">
             <div className="footerIcon"><IoMail aria-hidden="true" size={15} /></div>
-            <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">ahmed_elmizayen@ugoa.me</p>
+            <p className="text-white text-xs lg:text-base font-light">ahmed_elmizayen@ugoa.me</p>
           </div>
 
           <div className="flex gap-3 items-center">
             <div className="footerIcon"><MdLocationOn aria-hidden="true" /></div>
-            <p className="text-white text-xs sm:text-sm lg:text-base xl:text-lg font-light">
+            <p className="text-white text-xs lg:text-base font-light">
               Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, UAE
             </p>
           </div>

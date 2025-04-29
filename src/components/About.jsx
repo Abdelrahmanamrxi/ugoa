@@ -9,6 +9,7 @@ import { TiArrowForward } from "react-icons/ti";
 import Map from "./Map.jsx";
 import TeamSection from "./TeamSection.jsx";
 import maze from "../assets/background_80.jpg";
+import horizontalImg from "../assets/horizontalImg.svg";
 
 const fadeInVariants = {
   hidden: { opacity: 0, y: 50, filter: "blur(8px)", scale: 0.8 },
@@ -25,7 +26,9 @@ export default function About() {
   return (
     <>
       {/* Section 1 */}
-      <div className="flex flex-col bg-darkWhite sm:flex-row gap-6 px-4 py-10 justify-center items-center shadow-xl">
+      <div 
+      style={{backgroundImage: `url(${maze}`, objectFit:"cover", }}
+      className="flex flex-col bg-darkWhite sm:flex-row gap-6 px-4 py-10 justify-center items-center shadow-xl">
         <motion.img
           className="w-1/2 max-w-[250px]"
           width={500}
@@ -38,7 +41,9 @@ export default function About() {
         />
 
         <motion.p
-          className="sm:w-1/2 font-raleway font-light text-sm xl:text-xl text-justify"
+          className="sm:w-1/2 bg-darkWhite p-6 rounded-xl 
+          shadow-[0_4px_30px_rgba(0,0,0,0.5)] font-raleway font-light 
+          text-base lg:text-lg text-justify"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 1 }}
@@ -84,11 +89,11 @@ export default function About() {
         >
           <div className="flex justify-start gap-2 lg:gap-6 items-center">
             <img alt="Vision" width={64} height={64} src={visionIcon} className="w-[40px] md:min-w-[64px]" />
-            <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">
+            <h2 className="font-raleway text-dark_green uppercase font-bold text-2xl lg:text-3xl">
               Vision
             </h2>
           </div>
-          <p className="font-raleway font-light text-justify xl:text-xl w-full">
+          <p className="font-raleway font-light text-justify text-base lg:text-lg w-full">
             To lead the transformation of the global recycling industry by
             providing strategic solutions that drive circular economies,
             sustainability, and operational excellence.
@@ -108,11 +113,11 @@ export default function About() {
               src={visionIcon}
               className="w-[40px] text-dark_green md:min-w-[64px]"
             />
-            <h2 className="font-raleway text-dark_green uppercase font-bold text-lg md:text-3xl">
+            <h2 className="font-raleway text-dark_green uppercase font-bold text-2xl lg:text-3xl">
               Mission
             </h2>
           </div>
-          <p className="font-raleway font-light xl:text-xl text-justify w-full">
+          <p className="font-raleway font-light text-base lg:text-lg text-justify w-full">
             We empower recyclers, brand owners, and governments with expert
             consultancy, innovative strategies, and supply chain solutions to
             optimize recycling operations, enhance sustainability, and achieve
@@ -133,7 +138,7 @@ export default function About() {
           viewport={{ once: true, amount: 1 }}
           className="flex items-center gap-4"
         >
-          <h2 className="font-raleway text-xl md:text-4xl font-bold text-dark_green">
+          <h2 className="font-raleway text-2xl lg:text-4xl font-bold text-dark_green">
             Who we are
           </h2>
           <GoArrowDownRight size={30} className=" text-dark_green " />
@@ -148,16 +153,16 @@ export default function About() {
                 viewport={{ once: true, amount: 0.5 }}
                 variants={fadeInVariants}
                 key={data.id}
-                className={`flex max-h-[220px] lg:h-[30vh] relative items-center px-4 py-10 lg:px-14 lg:py-8 text-justify over
+                className={`flex h-[350px] lg:h-[25vh] relative items-center px-4 py-10 lg:px-14 lg:py-8 text-justify over
                                 ${data.role ? "bg-dark_green" : "bg-primary"}
                                 ${data.border} w-full h-64`}
               >
-                <span className="font-semibold text-sm sm:text-lg md:text-xl xl:text-2xl">
+                <span className="font-semibold text-lg xl:text-2xl">
                   {data.title}
                   <p
                     className={`${
                       data.role ? "font-bold" : "font-light"
-                    } text-xs md:text-sm lg:text-lg xl:text-2xl`}
+                    } text-base lg:text-lg`}
                   >
                     {data.content}
                   </p>
@@ -187,10 +192,6 @@ export default function About() {
       whileInView={{opacity:1}}
       transition={{duration:1, ease:"easeInOut"}}
       viewport={{once:true}}
-       style={{
-        backgroundImage: `url(${maze})`,
-        objectFit:"cover",
-      }}
       className="mt-32 flex h-full flex-col lg:flex-row gap-6 justify-center items-center">
         {/* Image Container */}
         <motion.div
@@ -201,10 +202,8 @@ export default function About() {
         className="w-full h-auto flex justify-center items-center overflow-hidden"
       >
     <img
-      src={vLogo}
-      width={500}
-      height={250}
-      className="w-64 relative bottom-6 lg:max-w-[500px] object-cover"
+      src={horizontalImg}
+      className="w-full  object-cover"
       alt="UGOA Maze Logo Background Identity"
     
     />
@@ -218,7 +217,7 @@ export default function About() {
             viewport={{ once: true, amount: 0.5 }}
             className="flex items-center gap-4"
           >
-            <h2 className="font-raleway text-2xl md:text-4xl font-bold text-dark_green uppercase">
+            <h2 className="font-raleway text-2xl lg:text-4xl font-bold text-dark_green uppercase">
               What we do
             </h2>
             <GoArrowDownRight size={30} className=" text-dark_green " />
@@ -239,7 +238,7 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true }}
             className="font-raleway flex justify-center items-center flex-col gap-6 text-justify
-                                font-light text-lg xl:text-xl"
+                                font-light text-base lg:text-lg"
           >
             <motion.p
               variants={{

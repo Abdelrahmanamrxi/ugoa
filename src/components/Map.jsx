@@ -53,7 +53,7 @@ function Map() {
 
   return (
     <div className="bg-dark_green gap-8 px-2 md:px-10 py-5 w-full h-full flex flex-col justify-center lg:justify-start items-center lg:items-start rounded-xl md:rounded-3xl relative">
-      <h2 className="text-white pt-10 md:px-4 font-bold text-lg md:text-3xl uppercase font-raleway">
+      <h2 className="text-white pt-10 md:px-4 font-bold text-2xl lg:text-4xl uppercase font-raleway">
         Our Presence
       </h2>
       
@@ -74,7 +74,7 @@ function Map() {
               viewport={{ once: true, amount: 0.5 }}
               className="flex justify-between items-center w-full"
             >
-              <h3 className="md:text-xl text-lg font-medium font-raleway text-white">
+              <h3 className="lg:text-2xl text-lg font-medium font-raleway w-2/3 lg:w-full text-white">
                 What services does Conscellence offer?
               </h3>
               <GoArrowDownRight size={25} className="text-white" />
@@ -94,7 +94,7 @@ function Map() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-justify font-raleway md:text-lg font-light w-full text-sm"
+            className="text-white text-justify font-raleway lg:text-lg font-light w-full text-sm"
           >
             We take pride in the wealth of
             experience we have accumulated over the years,

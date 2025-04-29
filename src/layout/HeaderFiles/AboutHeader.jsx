@@ -28,7 +28,7 @@ useEffect(() => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.8, ease: "easeOut", delay: 0.2 }}
-              className="font-raleway uppercase font-bold text-white text-left md:text-4xl text-2xl"
+              className="font-raleway uppercase font-bold text-white text-left lg:text-4xl text-2xl"
             >
               UGOA
                 <AnimatePresence mode="wait">
@@ -49,7 +49,7 @@ useEffect(() => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, ease: "easeOut", delay: 1.5 }}
-              className="w-full mt-5 text-left font-light text-white font-raleway text-sm md:text-lg"
+              className="w-full mt-5 text-left font-light text-white font-raleway text-base lg:text-lg"
             >
               Guiding Your Success Journey Through Expertise and Innovation
             </motion.p>
