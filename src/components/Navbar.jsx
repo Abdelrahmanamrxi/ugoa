@@ -38,14 +38,13 @@ const Navbar = ({ loc }) => {
   };
 
   return (
-    <nav className='flex relative md:p-8 p-5 items-center justify-between'>
+    <nav className='flex relative md:p-10 p-5 items-center justify-between'>
       <Link to="/" onClick={() => setActiveLink("/")} className="cursor-pointer">
           <img src={Logo} alt="UGOA-Logo"  width={200} height={200} className='w-16 md:w-20 h-auto object-cover ' />
       </Link>
       
 
       <IoMdMenu onClick={() => { set_Menu(true); }} className='md:hidden cursor-pointer flex' size={30} />
-
       <AnimatePresence>
         {Menu && (
           <motion.div
@@ -122,14 +121,12 @@ const Navbar = ({ loc }) => {
         )}
       </AnimatePresence>
 
-      <ul className='uppercase hidden m-auto  md:flex justify-around md:gap-10 gap-5 text-base lg:text-lg font-raleway items-center'>
+      <ul className='uppercase hidden   md:flex justify-around md:gap-10 gap-5 text-base lg:text-lg font-raleway items-center'>
         <Link aria-label="Services on Desktop Navbar Link" to="/services" onClick={() => setActiveLink("services")} className={` ${loc === "/services" ? "font-bold" : ''} hover:font-bold ${activeLink === "services" ? 'font-bold' : ""} transition-all duration-200 `}>Services</Link>
         <Link aria-label="About on Desktop Navbar Link" to="/about_us" onClick={() => setActiveLink("about")} className={`${loc === "/about_us" ? "font-bold " : ''} hover:font-bold ${activeLink === "about" ? 'font-bold' : ""} transition-all duration-200`}>About Us</Link>
         <Link aria-label="Contact on Desktop Navbar Link" to="/contact" onClick={() => setActiveLink("contact")} className={` ${loc === "/contact" ? "font-bold" : ""} hover:font-bold ${activeLink === "contact" ? 'font-bold' : ""} transition-all duration-200`}>Contact Us</Link>
       </ul>
-      <div className='hidden md:flex'>
-        <p className='border-2 p-2 text-sm rounded-full'>010-2589-6653</p>
-      </div>
+     
     </nav>
   );
 };
