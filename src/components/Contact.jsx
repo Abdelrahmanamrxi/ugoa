@@ -275,18 +275,18 @@ useEffect(()=>{
             initial={{opacity:0}}
             animate={{opacity:1}}
             transition={{duration:1,ease:easeInOut}}
-            key={current} className='w-full flex flex-col justify-center md:flex-row gap-5'>
-                <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/3 lg:w-1/3'>
+            key={current} className='w-full flex flex-col justify-center   lg:flex-row gap-5'>
+                <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md border-2 p-8 w-full   lg:w-1/3'>
                     <h3><MdOutlinePhone className="text-dark_green " size={30}/></h3>
                     <h4 className="text-dark_navy text-lg font-semibold">Phone</h4>
                     <p className='text-gray-600  text-base lg:text-base '>{data.phone}</p>
                 </div>
-                <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md  border-2 p-8 w-full md:w-1/3 lg:w-1/3'>
+                <div className='flex font-raleway flex-col gap-2 rounded-md shadow-md  border-2 p-8 w-full  lg:w-1/3'>
                     <h3><MdOutlineEmail className="text-dark_green " size={30}/></h3>
                     <h4 className="text-dark_navy text-lg font-semibold">Email</h4>
                     <p className='text-gray-600 text-base  lg:text-base break-words'>{data.email}</p>
                 </div>
-                <div className='flex font-raleway flex-col hover:scale-none bg-dark_green gap-2 rounded-md shadow-md border-2 p-8 w-full md:w-1/3 lg:w-1/3'>
+                <div className='flex font-raleway flex-col hover:scale-none bg-dark_green gap-2 rounded-md shadow-md border-2 p-8 w-full  lg:w-1/3'>
                     <h3><CiLocationOn  className="text-white " size={30}/></h3>
                     <h4 className="text-white font-semibold text-lg">Address</h4>
                     <p className='text-white text-base lg:text-base '>{data.location}</p>
