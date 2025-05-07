@@ -3,6 +3,7 @@ User-agent: *
 Disallow: /private/
 
 # Allow all crawlers to index everything else
+User-agent: *
 Allow: /
 
 # Block a specific crawler (e.g., Bingbot)
