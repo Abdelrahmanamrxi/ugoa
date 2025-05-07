@@ -103,7 +103,7 @@ function Map() {
             insights to assist our customers, regardless of their location.
             Our team has operated in Europe, Southeast Asia, the
             Middle East, North America, and South America.
-            At present, we are actively involved in four projects
+            At present, we are actively involved in multiple projects
             located in Egypt, Saudi Arabia, Oman, UAE, Morocco,
             Nigeria, Ghana and Mozambique.
           </motion.p>
