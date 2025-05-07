@@ -12,6 +12,12 @@ import { MdOutlinePhone } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import emailjs from "@emailjs/browser"
 import { LanguageCheck } from '../utility/utility.jsx'
+
+const serviceID=import.meta.env.VITE_SERVICE_ID;
+const publicKey=import.meta.env.VITE_PUBLIC_KEY;
+const template_two=import.meta.env.VITE_TEMPLATE_2;
+
+
 const EGMAP = lazy(() => import('../utility/EGMap.jsx'))
 const UAEMAP = lazy(() => import('../utility/UAEMap.jsx'))
 import { input_variable, currently_selected, not_selected } from '../utility/ContactFunc.jsx';
@@ -73,10 +79,10 @@ const Contact = () => {
       if (!formData.debouncing && !formData.TimeRemaining) {
         set_loading(true)
         const response = await emailjs.sendForm(
-          "service_bvfpqoq",
-          "template_8t880ks",
+          serviceID,
+          template_two,
           form.current,
-          "Va34B1zugS_h13e2k"
+          publicKey
         );
         console.log("Email has been Sent:", response.text);
         form.current.reset();
