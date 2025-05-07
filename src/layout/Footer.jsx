@@ -1,4 +1,4 @@
-import React, { memo, useState,useEffect } from "react";
+import React, { memo, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
@@ -7,33 +7,32 @@ import whiteLogo from "../assets/Vertical_White_Comp_2.png";
 import locationIcon from "../assets/locationIcon.svg";
 import { GoArrowDownRight } from "react-icons/go";
 import { IoMdMail } from "react-icons/io";
-import { useDispatch,useSelector } from "react-redux";
-import { setDebounce,setTime,setTimeRemaining } from "../store/FormSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setDebounce, setTime, setTimeRemaining } from "../store/FormSlice";
 import { MdLocationOn } from "react-icons/md";
 import { motion } from "framer-motion";
 
 function Footer() {
-  const [iconHover, setIconHover]=useState(false);
+  const [iconHover, setIconHover] = useState(false);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const dispatch=useDispatch()
-  const {debouncing,TimeRemaining}=useSelector((state)=>state.formData)
+  const dispatch = useDispatch()
+  const { debouncing, TimeRemaining } = useSelector((state) => state.formData)
   const sendEmail = (e) => {
     e.preventDefault();
     setLoading(true);
-    const serviceID = "service_b5wn7kd"; // Your EmailJS service ID
-    const templateID = "template_osbcbda"; // Replace with your EmailJS template ID
-    const publicKey = "15yh83s6ohhngZ2Zc"; // Replace with your EmailJS public key
-    let now=new Date()
-    const formattedTime = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} at ${
-      now.getHours() % 12 || 12
-    }:${now.getMinutes().toString().padStart(2, "0")} ${now.getHours() >= 12 ? "PM" : "AM"}`;
+    const serviceID = "service_bvfpqoq"; // Your EmailJS service ID
+    const templateID = "template_gm3o9wz"; // Replace with your EmailJS template ID
+    const publicKey = "Va34B1zugS_h13e2k"; // Replace with your EmailJS public key
+    let now = new Date()
+    const formattedTime = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} at ${now.getHours() % 12 || 12
+      }:${now.getMinutes().toString().padStart(2, "0")} ${now.getHours() >= 12 ? "PM" : "AM"}`;
 
-    if(!debouncing){
-    const templateParams = {
-      user_email: email,
-      time:formattedTime,
-      message: `Dear UGOA Team,
+    if (!debouncing) {
+      const templateParams = {
+        user_email: email,
+        time: formattedTime,
+        message: `Dear UGOA Team,
 
 I hope this email finds you well. I am reaching out to explore potential collaboration opportunities and discuss how your expertise in business consulting can align with our goals.
 
@@ -43,63 +42,63 @@ Looking forward to your response.
 
 Best regards,  
 ${email}`,
-    }
-    ;
+      }
+        ;
 
-    emailjs
-      .send(serviceID, templateID, templateParams, publicKey)
-      .then((response) => {
-        console.log("Email sent successfully!", response.status, response.text);     
-      })
-      .catch((error) => {
-        console.error("Failed to send email", error);
-      })
-      .finally(() => {
-        const now = new Date().getTime();
-        dispatch(setDebounce(true))
-        localStorage.setItem('debouncing',true)
-        setLoading(false)
-        dispatch(setTime(now))
-        localStorage.setItem('last_time',now)
-       
-      });
+      emailjs
+        .send(serviceID, templateID, templateParams, publicKey)
+        .then((response) => {
+          console.log("Email sent successfully!", response.status, response.text);
+        })
+        .catch((error) => {
+          console.error("Failed to send email", error);
+        })
+        .finally(() => {
+          const now = new Date().getTime();
+          dispatch(setDebounce(true))
+          localStorage.setItem('debouncing', true)
+          setLoading(false)
+          dispatch(setTime(now))
+          localStorage.setItem('last_time', now)
 
-    setEmail(""); 
+        });
+
+      setEmail("");
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     let IntervalID;
-    const updateTimeSpam=()=>{
-      const last_time=parseInt(localStorage.getItem('last_time')) || 0
+    const updateTimeSpam = () => {
+      const last_time = parseInt(localStorage.getItem('last_time')) || 0
       const currentTime = new Date().getTime();
       const timeDifference = currentTime - last_time;
-      
+
       if (!debouncing || timeDifference >= 60000) {
-           dispatch(setDebounce(false))
-           dispatch(setTime(null))
-           localStorage.setItem('debouncing',false)
-           localStorage.setItem('last_time',null)
-           clearInterval(IntervalID)
-           dispatch(setTimeRemaining(null))
-           
+        dispatch(setDebounce(false))
+        dispatch(setTime(null))
+        localStorage.setItem('debouncing', false)
+        localStorage.setItem('last_time', null)
+        clearInterval(IntervalID)
+        dispatch(setTimeRemaining(null))
+
       }
-    
+
     }
-     IntervalID = setInterval(updateTimeSpam, 1000);
+    IntervalID = setInterval(updateTimeSpam, 1000);
     return () => clearInterval(IntervalID);
-    
-  },[debouncing])
+
+  }, [debouncing])
   return (
     <footer className="w-full font-raleway mt-24 grid grid-cols-1 divide-y items-start justify-center gap-4 bg-secondary px-4 py-2
       xl:gap-12 xl:px-12 xl:py-10
        lg:gap-10 lg:px-10 lg:py-8 
       md:grid-cols-3 md:gap-8 md:px-8 md:py-6 md:divide-x md:divide-y-0
       sm:grid-cols-1 sm:gap-6 sm:px-6 sm:py-4 sm:divide-y">
-      
+
       {/* === SECTION 1: LOGO === */}
       <div className="flex justify-center">
-        <img src={whiteLogo}     width={600}  height={200} alt="Company Footer UGOA Logo" loading="lazy" 
-        className="min-w-full object-cover lg:max-w-xl  md:max-w-lg max-w-md" />
+        <img src={whiteLogo} width={600} height={200} alt="Company Footer UGOA Logo" loading="lazy"
+          className="min-w-full object-cover lg:max-w-xl  md:max-w-lg max-w-md" />
       </div>
 
       {/* === SECTION 2: CONTACT INFO === */}
@@ -121,17 +120,17 @@ ${email}`,
             Contact us today to schedule a consultation and discover how we can help your business thrive.
           </p>
 
-            <motion.a target="_blank" href="https://www.linkedin.com/company/ugoa-consulting/" 
+          <motion.a target="_blank" href="https://www.linkedin.com/company/ugoa-consulting/"
             aria-label="Goes to the Company Linkedin Profile"
-            whileHover={{scale:1.1}}
-            whileTap={{scale:0.95}}
-            transition={{duration:0.5, ease:"easeInOut"}}
-            onMouseOver={()=>setIconHover(true)}
-            onMouseLeave={()=> setIconHover(false)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            onMouseOver={() => setIconHover(true)}
+            onMouseLeave={() => setIconHover(false)}
             className="md:py-2 py-1 bg-dark_green hover:bg-white hover:text-dark_green w-1/4 md:w-1/2
              flex justify-center items-center rounded-full">
-              <FaLinkedinIn aria-hidden="true" size={15} className={`${iconHover ? 'text-dark_green' : 'text-white'}`} />
-            </motion.a>
+            <FaLinkedinIn aria-hidden="true" size={15} className={`${iconHover ? 'text-dark_green' : 'text-white'}`} />
+          </motion.a>
 
         </div>
       </div>
@@ -161,7 +160,7 @@ ${email}`,
             />
           </div>
 
-          <button aria-label="Submit" type="submit" disabled={debouncing} 
+          <button aria-label="Submit" type="submit" disabled={debouncing}
             className="bg-dark_green hover:bg-dark_green/80 transition text-white font-medium px-3 py-2 h-10 
             rounded-full flex items-center justify-center gap-2 shrink-0">
             <span className="text-xs uppercase hidden xl:block">{loading ? "Sending..." : "Get Started"}</span>
@@ -169,7 +168,7 @@ ${email}`,
               <MdArrowUpward aria-hidden="true" size={16} className="rotate-45" />
             </div>
           </button>
-         
+
         </form>
 
         {/* Contact Details */}
