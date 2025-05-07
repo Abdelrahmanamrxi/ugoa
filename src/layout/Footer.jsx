@@ -152,7 +152,7 @@ ${email}`,
             <IoMdMail aria-hidden="true" size={18} className="text-gray-500" />
             <input
               type="email"
-              className="bg-transparent w-full outline-none  font-medium placeholder-gray-400 text-base"
+              className="bg-transparent w-full outline-none  font-medium placeholder-gray-400 text-xs lg:text-sm"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

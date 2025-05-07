@@ -49,8 +49,8 @@ export const whoWeAre = [
   ];
 
 
-  import man from "../assets/man.jpeg";
-  import woman from "../assets/woman.jpeg";
+  import man from "../assets/ElMon.jpg";
+  import woman from "../assets/Ghada.jpg";
   import kasaby from "../assets/El_kasaby.jpg";
   export const team=[
     {
