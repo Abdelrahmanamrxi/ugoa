@@ -1,6 +1,7 @@
 # Disallow all crawlers from a specific folder
 User-agent: *
 Disallow: /private/
+Disallow: /index.html
 
 # Allow all crawlers to index everything else
 User-agent: *
