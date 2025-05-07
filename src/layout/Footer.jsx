@@ -12,8 +12,8 @@ import { setDebounce, setTime, setTimeRemaining } from "../store/FormSlice";
 import { MdLocationOn } from "react-icons/md";
 import { motion } from "framer-motion";
 
-const serviceID=import.meta.env.VITE_SERVICE_ID;
-const publicKey=import.meta.env.VITE_PUBLIC_KEY;
+const ServiceID=import.meta.env.VITE_SERVICE_ID;
+const PublicKey=import.meta.env.VITE_PUBLIC_KEY;
 const template_one=import.meta.env.VITE_TEMPLATE_1;
 
 function Footer() {
@@ -25,9 +25,9 @@ function Footer() {
   const sendEmail = (e) => {
     e.preventDefault();
     setLoading(true);
-    const serviceID = serviceID; // Your EmailJS service ID
+    const serviceID = ServiceID; // Your EmailJS service ID
     const templateID = template_one; // Replace with your EmailJS template ID
-    const publicKey = publicKey; // Replace with your EmailJS public key
+    const publicKey = PublicKey; // Replace with your EmailJS public key
     let now = new Date()
     const formattedTime = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} at ${now.getHours() % 12 || 12
       }:${now.getMinutes().toString().padStart(2, "0")} ${now.getHours() >= 12 ? "PM" : "AM"}`;
