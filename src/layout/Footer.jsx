@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDebounce, setTime, setTimeRemaining } from "../store/FormSlice";
 import { MdLocationOn } from "react-icons/md";
 import { motion } from "framer-motion";
+const publicKey=import.meta.env.VITE_PUBLIC_KEY
+const service=import.meta.env.VITE_SERVICE_ID
 
 function Footer() {
   const [iconHover, setIconHover] = useState(false);
