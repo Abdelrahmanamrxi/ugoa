@@ -28,7 +28,7 @@ export default function HomeHeader() {
     transition={{ duration: 0.3, ease: "easeInOut" }}
     className="bg-primary border-primary border-2 hover:border-transparent text-white font-semibold rounded-full px-3 py-2 text-xs lg:text-base md:px-4 md:py-2 hover:bg-white hover:text-dark_green"
   >
-    Get Consult Now
+    Get Consultation Now
   </motion.button>
 </Link>
 
