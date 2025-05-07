@@ -1,0 +1,10 @@
+# Allow all user agents to crawl the entire site
+User-agent: *
+Disallow:
+
+# Disallow a specific folder
+Disallow: /private/
+
+# Allow a specific user agent (Googlebot) to access a particular folder
+User-agent: Googlebot
+Allow: /public/
