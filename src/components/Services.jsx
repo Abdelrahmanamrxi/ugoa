@@ -68,7 +68,7 @@ const Services = ({refProp,scrollToServices}) => {
     });
   }
 }, [state?.scrollTo]);
- console.log(service)
+ 
 useEffect(() => {
   const checkMobile = () => {
     setIsMobile(window.innerWidth <= 768); 
