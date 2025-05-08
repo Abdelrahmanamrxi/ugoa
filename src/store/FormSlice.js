@@ -33,6 +33,6 @@ const formData=createSlice({
     }
 
 })
-console.log(formData.getInitialState())
+
 export default formData.reducer;
 export const {setData,setDebounce,setTime,setTimeRemaining}=formData.actions
