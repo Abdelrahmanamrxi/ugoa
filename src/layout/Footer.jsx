@@ -177,9 +177,16 @@ ${email}`,
 
         {/* Contact Details */}
         <div className="flex flex-col  gap-4">
-          <div className="flex gap-3  items-center">
+          <div className="flex gap-3 items-center">
             <div className="footerIcon"><FaPhoneAlt aria-hidden="true" size={15} /></div>
-            <p className="text-white text-xs lg:text-base font-light">+971545423530</p>
+            <div className="flex flex-col gap-1">
+            <p className="text-white text-xs lg:text-base font-light">
+            +971545423530
+            </p>
+            <p className="text-white text-xs lg:text-base font-light">
+            +201001446520
+            </p>
+            </div>
           </div>
 
           <div className="flex gap-3 items-center">
